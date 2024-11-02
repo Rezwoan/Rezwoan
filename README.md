@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭 I’m currently working on Java Management Project <br>
+🔭  <br>
 
 
 ## 🌐 Socials:
