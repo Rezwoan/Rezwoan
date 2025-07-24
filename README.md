@@ -87,9 +87,10 @@ Hi, I’m **Din Muhammad Rezwoan**, a Computer Science & Engineering student bas
 </p>
 
 ---
-
+<!--
 <p align="center">
   <a href="https://visitcount.itsvg.in">
     <img src="https://visitcount.itsvg.in/api?id=Rezwoan&icon=0&color=0" />
   </a>
 </p>
+-->
