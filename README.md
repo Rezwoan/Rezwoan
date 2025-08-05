@@ -8,7 +8,7 @@ Hi, I’m **Din Muhammad Rezwoan**, a Computer Science & Engineering student bas
 ---
 
 ## 🚀 Portfolio
-🔗 [**rezwoan.com**](Rezwoan.me)
+🔗 [**rezwoan.me**](Rezwoan.me)
 
 ---
 
