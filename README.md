@@ -1,6 +1,10 @@
 
 # 💻 Din Muhammad Rezwoan
 
+<h1 align="center">
+    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&color=00b300&lines=Hi+There!+👋;+I'm+Rezwoan!;+CS+student+at+AIUB" />
+</h1>
+
 Hi, I’m **Din Muhammad Rezwoan**, a Computer Science & Engineering student based in Dhaka, Bangladesh. I specialize in writing clean, efficient code and developing scalable applications. I’m passionate about full-stack development, automation, and building real-world software solutions. I love solving complex problems and constantly push myself to improve as a developer.
 
 📌 Currently focused on developing robust desktop, web, and backend applications using C++, Python, JavaScript, and modern frameworks.
