@@ -1,100 +1,149 @@
+<!-- ===== HEADER WAVE ===== -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:00b4d8,100:00f5a0&height=220&section=header&text=Din%20Muhammad%20Rezwoan&fontSize=42&fontColor=ffffff&fontAlignY=35&animation=fadeIn&desc=Full-Stack%20Developer%20%7C%20Problem%20Solver%20%7C%20CS%20Student&descSize=18&descColor=c9d1d9&descAlignY=55" />
 
-# 💻 Din Muhammad Rezwoan
-
-<h1 align="center">
-    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&color=00b300&lines=Hi+There!+👋;+I'm+Rezwoan!;+CS+student+at+AIUB" />
-</h1>
-
-Hi, I’m **Din Muhammad Rezwoan**, a Computer Science & Engineering student based in Dhaka, Bangladesh. I specialize in writing clean, efficient code and developing scalable applications. I’m passionate about full-stack development, automation, and building real-world software solutions. I love solving complex problems and constantly push myself to improve as a developer.
-
-📌 Currently focused on developing robust desktop, web, and backend applications using C++, Python, JavaScript, and modern frameworks.
-
----
-
-## 🚀 Portfolio
-🔗 [**rezwoan.me**](http://rezwoan.me)
-
----
-
-## 🌐 Connect with Me
-
+<!-- ===== TYPING SVG ===== -->
 <div align="center">
-  <a href="https://www.facebook.com/ager.id.hack.hoye.gase" target="_blank">
-    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/facebook/default.svg" width="40" height="40" alt="Facebook" />
-  </a>
-  <a href="https://twitter.com/XRezwoan" target="_blank">
-    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/twitter/default.svg" width="40" height="40" alt="Twitter" />
-  </a>
-  <a href="https://www.instagram.com/din.muhammad.rezwoan" target="_blank">
-    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/instagram/default.svg" width="40" height="40" alt="Instagram" />
-  </a>
-  <a href="https://www.linkedin.com/in/din-muhammad-rezwoan-b4b87020a" target="_blank">
-    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/linkedin/default.svg" width="40" height="40" alt="LinkedIn" />
-  </a>
-  <a href="https://wa.me/8801643751861" target="_blank">
-    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/whatsapp/default.svg" width="40" height="40" alt="WhatsApp" />
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=4000&pause=1000&color=00F5A0&center=true&vCenter=true&multiline=true&repeat=true&random=false&width=600&height=100&lines=%F0%9F%91%8B+Hey+there%2C+I'm+Rezwoan!;%F0%9F%92%BB+Building+things+that+matter;%F0%9F%9A%80+Always+shipping%2C+always+learning" alt="Typing SVG" />
   </a>
 </div>
 
----
+<br/>
 
-## 🌟 Highlights
-
-- 🧩 Developed automation and error-handling scripts for **Playchike** (freelance).
-- 🛒 Built a custom admin dashboard and content tools for **TheMothersHub** project.
-- 🧠 Created Python utilities for scraping, parsing, and organizing resumes (**Fursume**).
-- 🛠️ Designed CLI tools and monitoring scripts for personal and client-side projects.
-- 🔐 Focused on robust code, permission-based access, and scalable architecture.
-
----
-
-## 💻 Tech Stack
-
-<p align="center">
-  <img src="https://img.shields.io/badge/C-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" />
-  <img src="https://img.shields.io/badge/C++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
-  <img src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" />
-  <img src="https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/React-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
-  <img src="https://img.shields.io/badge/Node.js-%23339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/SQLite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white" />
-  <img src="https://img.shields.io/badge/Django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white" />
-  <img src="https://img.shields.io/badge/Flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white" />
-  <img src="https://img.shields.io/badge/TailwindCSS-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  <img src="https://img.shields.io/badge/Bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white" />
-  <img src="https://img.shields.io/badge/GitHub Pages-121013?style=for-the-badge&logo=github&logoColor=white" />
-  <img src="https://img.shields.io/badge/Heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white" />
-  <img src="https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white" />
-</p>
-
----
-
-## 📊 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Rezwoan&theme=dark&hide_border=false" />
-  <br/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Rezwoan&theme=dark&hide_border=false" />
-  <br/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Rezwoan&theme=dark&hide_border=false&layout=compact" />
-</p>
-
----
-
-## 🐍 GitHub Activity Snake
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" alt="Snake animation" />
-</p>
-
----
-<!--
-<p align="center">
-  <a href="https://visitcount.itsvg.in">
-    <img src="https://visitcount.itsvg.in/api?id=Rezwoan&icon=0&color=0" />
+<!-- ===== PROFILE VIEWS + FOLLOWERS ===== -->
+<div align="center">
+  <a href="https://github.com/Rezwoan">
+    <img src="https://komarev.com/ghpvc/?username=Rezwoan&label=Profile%20Views&color=00b4d8&style=for-the-badge" alt="Profile Views" />
   </a>
-</p>
--->
+  &nbsp;
+  <a href="https://github.com/Rezwoan?tab=followers">
+    <img src="https://img.shields.io/github/followers/Rezwoan?label=Followers&style=for-the-badge&color=00f5a0&labelColor=0d1117" alt="Followers" />
+  </a>
+</div>
+
+<br/>
+
+<!-- ===== ABOUT ME ===== -->
+## <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28"> &nbsp;About Me
+
+I'm a **Computer Science & Engineering** student at **AIUB**, based in Dhaka, Bangladesh 🇧🇩
+
+I build clean, scalable applications and love turning ideas into real-world software. From full-stack web apps to automation scripts and CLI tools — if it solves a problem, I'm in.
+
+```yaml
+🔭 Currently:  Building robust desktop, web & backend applications
+🌱 Learning:   System Design, Cloud Architecture, DevOps
+💼 Experience:  Freelance developer — Playchike, TheMothersHub, Fursume
+🎯 Goals:      Contribute to open-source & ship impactful products
+⚡ Fun Fact:   I debug in my dreams (and sometimes it works)
+```
+
+<br/>
+
+<!-- ===== CONNECT WITH ME ===== -->
+## 🔗 &nbsp;Connect With Me
+
+<div align="center">
+  <a href="https://www.linkedin.com/in/din-muhammad-rezwoan-b4b87020a" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>&nbsp;
+  <a href="https://twitter.com/XRezwoan" target="_blank">
+    <img src="https://img.shields.io/badge/X_(Twitter)-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" />
+  </a>&nbsp;
+  <a href="http://rezwoan.me" target="_blank">
+    <img src="https://img.shields.io/badge/Portfolio-00f5a0?style=for-the-badge&logo=googlechrome&logoColor=0d1117" alt="Portfolio" />
+  </a>&nbsp;
+  <a href="https://www.facebook.com/ager.id.hack.hoye.gase" target="_blank">
+    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook" />
+  </a>&nbsp;
+  <a href="https://www.instagram.com/din.muhammad.rezwoan" target="_blank">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
+  </a>&nbsp;
+  <a href="https://wa.me/8801643751861" target="_blank">
+    <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp" />
+  </a>
+</div>
+
+<br/>
+
+<!-- ===== TECH STACK ===== -->
+## 🛠️ &nbsp;Tech Stack
+
+<div align="center">
+
+### 💻 Languages
+<a href="https://skillicons.dev">
+  <img src="https://skillicons.dev/icons?i=c,cpp,python,java,js,html,css&theme=dark" alt="Languages" />
+</a>
+
+### ⚡ Frameworks & Libraries
+<a href="https://skillicons.dev">
+  <img src="https://skillicons.dev/icons?i=react,django,flask,nodejs,tailwind,bootstrap&theme=dark" alt="Frameworks" />
+</a>
+
+### 🧰 Tools & Platforms
+<a href="https://skillicons.dev">
+  <img src="https://skillicons.dev/icons?i=git,github,vscode,sqlite,heroku,digitalocean,linux,docker&theme=dark" alt="Tools" />
+</a>
+
+</div>
+
+<br/>
+
+<!-- ===== GITHUB STATS ===== -->
+## 📊 &nbsp;GitHub Stats
+
+<div align="center">
+  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=Rezwoan&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00f5a0&icon_color=00b4d8&text_color=c9d1d9&ring_color=00f5a0" alt="GitHub Stats" />
+  &nbsp;
+  <img width="49%" src="https://streak-stats.demolab.com?user=Rezwoan&theme=tokyonight&hide_border=true&background=0d1117&ring=00f5a0&fire=00f5a0&currStreakLabel=00f5a0&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=555555" alt="GitHub Streak" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img width="40%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Rezwoan&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00f5a0&text_color=c9d1d9" alt="Top Languages" />
+</div>
+
+<br/>
+
+<!-- ===== GITHUB TROPHIES ===== -->
+## 🏆 &nbsp;GitHub Trophies
+
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=Rezwoan&theme=algolia&no-frame=true&no-bg=true&column=7&margin-w=10" alt="GitHub Trophies" />
+</div>
+
+<br/>
+
+<!-- ===== ACTIVITY GRAPH ===== -->
+## 📈 &nbsp;Contribution Graph
+
+<div align="center">
+  <img width="95%" src="https://github-readme-activity-graph.vercel.app/graph?username=Rezwoan&bg_color=0d1117&color=00f5a0&line=00b4d8&point=ffffff&area=true&area_color=00b4d8&hide_border=true" alt="Activity Graph" />
+</div>
+
+<br/>
+
+<!-- ===== SNAKE ANIMATION ===== -->
+## 🐍 &nbsp;Contribution Snake
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" />
+    <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" alt="Snake animation" />
+  </picture>
+</div>
+
+<br/>
+
+<!-- ===== RANDOM DEV QUOTE ===== -->
+<div align="center">
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" />
+</div>
+
+<br/>
+
+<!-- ===== FOOTER WAVE ===== -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:00b4d8,100:00f5a0&height=120&section=footer" />
