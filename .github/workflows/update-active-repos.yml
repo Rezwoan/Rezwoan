@@ -22,20 +22,22 @@ jobs:
             const fs = require('fs');
             const thirtyDaysAgo = new Date();
             thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+            const dateStr = thirtyDaysAgo.toISOString().split('T')[0];
+            const username = context.repo.owner;
 
-            // Get all repos for the authenticated user
-            const repos = await github.paginate(github.rest.repos.listForAuthenticatedUser, {
-              sort: 'pushed',
-              direction: 'desc',
-              per_page: 100,
-              type: 'owner'
+            // Search for repos updated in the last 30 days
+            const q = `user:${username} pushed:>=${dateStr} fork:false`;
+            
+            const response = await github.rest.search.repos({
+              q,
+              sort: 'updated',
+              order: 'desc',
+              per_page: 10
             });
 
-            // Filter to repos pushed in the last 30 days, exclude the profile repo
-            const activeRepos = repos
-              .filter(r => new Date(r.pushed_at) >= thirtyDaysAgo)
-              .filter(r => r.name !== r.owner.login)
-              .filter(r => !r.fork)
+            // Filter out the profile repo itself
+            const activeRepos = response.data.items
+              .filter(r => r.name !== username)
               .slice(0, 6);
 
             if (activeRepos.length === 0) {
