@@ -9,18 +9,18 @@
 <br/>
 
 ```console
-$ neofetch --profile username
+$ neofetch --profile rezwoan
 
        /////////////////        root@rezwoan:~$
-     /////////////////////      ----------------
-   ///                 ///      OS:     Computer Science Student @ AIUB
-  ///   ///       ///   ///     KERNEL: Problem Solver
- ///    ///       ///    ///    SHELL:  Full-Stack Web & Backend
- ///                     ///    UPTIME: Learning since 2021
- ///   ///           /// ///    DE:     Dhaka, Bangladesh 🇧🇩
-  ///   /////////////// ///     EDITOR: VS Code
-   ///                 ///      PORT:   rezwoan.me
-     /////////////////////      LINK:   github.com/Rezwoan
+     /////////////////////      ---------------
+   ///                 ///      OS:      CS Student @ AIUB
+  ///   ///       ///   ///     KERNEL:  Problem Solver
+ ///    ///       ///    ///    SHELL:   Full-Stack Web & Backend
+ ///                     ///    UPTIME:  Learning since 2021
+ ///   ///           /// ///    DE:      Dhaka, Bangladesh
+  ///   /////////////// ///     EDITOR:  VS Code
+   ///                 ///      PORT:    rezwoan.me
+     /////////////////////      LINK:    github.com/Rezwoan
        /////////////////
 ```
 
@@ -29,7 +29,9 @@ $ neofetch --profile username
 <br/>
 
 <!-- ===== DYNAMIC FEEDS (TERMINAL STYLE) ===== -->
-## 💻 `user@rezwoan:~$ cat currently_working_on.md`
+<div align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+cat+currently_working_on.md" alt="Typing SVG" />
+</div>
 
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
@@ -43,7 +45,9 @@ $ connection established
 
 <br/>
 
-## 📡 `user@rezwoan:~$ tail -f recent_activity.log`
+<div align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+tail+-f+recent_activity.log" alt="Typing SVG" />
+</div>
 
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
@@ -57,7 +61,9 @@ $ connection established
 <br/>
 
 <!-- ===== HIGH CONTRAST TECH STACK ===== -->
-## ⚙️ `user@rezwoan:~$ sudo apt install stack`
+<div align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+sudo+apt+install+stack" alt="Typing SVG" />
+</div>
 
 <div align="center">
   <a href="https://skillicons.dev">
@@ -68,7 +74,9 @@ $ connection established
 <br/>
 
 <!-- ===== 3D ISOMETRIC CITY ===== -->
-## 🏙️ `user@rezwoan:~$ ./render_3d_contributions.sh`
+<div align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=600&lines=user%40rezwoan%3A~%24+.%2Frender_3d_contributions.sh" alt="Typing SVG" />
+</div>
 
 <div align="center">
   <picture>
@@ -80,7 +88,9 @@ $ connection established
 <br/>
 
 <!-- ===== NEON STATS ===== -->
-## 🤖 `user@rezwoan:~$ htop --stats`
+<div align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+htop+--stats" alt="Typing SVG" />
+</div>
 
 <div align="center">
   <img width="60%" src="https://streak-stats.demolab.com?user=Rezwoan&theme=tokyonight&hide_border=true&background=0d1117&ring=39FF14&fire=FF00FF&currStreakLabel=00FFFF&sideLabels=FFFFFF&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=FFFFFF" alt="GitHub Streak" />
@@ -88,8 +98,21 @@ $ connection established
 
 <br/>
 
+<!-- ===== SNAKE ANIMATION ===== -->
+<div align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+.%2Fplay_snake.py" alt="Typing SVG" />
+</div>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" alt="Snake animation" />
+</div>
+
+<br/>
+
 <!-- ===== CONNECT ===== -->
-## 🌐 `user@rezwoan:~$ ssh connect@socials`
+<div align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+ssh+connect%40socials" alt="Typing SVG" />
+</div>
 
 <div align="center">
   <a href="https://www.linkedin.com/in/din-muhammad-rezwoan-b4b87020a" target="_blank">
