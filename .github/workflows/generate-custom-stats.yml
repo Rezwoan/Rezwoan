@@ -49,7 +49,12 @@ jobs:
               console.log('Commits search failed, defaulting to 0:', e.message);
             }
 
-            // 5. Format SVG Bars
+            // 5. Calculate Metrics
+            const cpuUsage = Math.floor(Math.random() * 40) + 10; // Randomize load for aesthetics
+            const memUsage = Math.min(100, Math.round((repos.length / 100) * 100)); // Repos vs 100%
+            const swpUsage = Math.min(100, Math.round((totalCommits / 2000) * 100)); // Commits vs 2k capacity
+
+            // 6. Format SVG Bars
             const w = 18; // width in chars for bar
             const cpuFill = Math.round((cpuUsage / 100) * w);
             const memFill = Math.round((memUsage / 100) * w);
