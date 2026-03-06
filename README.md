@@ -107,7 +107,7 @@ _🕐 Last updated: Mar 6, 2026_
 > _Auto-updated every 6 hours with my latest GitHub activity._
 
 <!--START_SECTION:activity-->
-1. _⏳ Waiting for first workflow run..._
+1. ℹ️ Assigned issue [#14](https://github.com/Rezwoan/AlgoRace/issues/14) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
 <!--END_SECTION:activity-->
 
 <br/>
