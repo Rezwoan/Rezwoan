@@ -1,7 +1,5 @@
 <div align="center">
-  <picture>
-    <img src="https://capsule-render.vercel.app/api?type=rect&color=0d1117&height=220&section=header&text=%24%20whoami&fontSize=42&fontColor=39FF14&fontAlignY=35&desc=Din%20Muhammad%20Rezwoan%20%7C%20Full-Stack%20Dev%20%7C%20System%20Builder&descSize=18&descColor=00FFFF&descAlignY=55" width="100%" />
-  </picture>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1000&color=39FF14&center=true&vCenter=true&width=800&height=180&lines=%24+whoami;loading+profile+data...;Din+Muhammad+Rezwoan+%7C+Full-Stack+Dev+%7C+System+Builder" alt="Typing SVG Whoami" />
 </div>
 
 <!-- ===== NEOFETCH TERMINAL ===== -->
@@ -9,7 +7,7 @@
 <br/>
 
 ```console
-$ neofetch --profile rezwoan
+$ neofetch --profile username
 
        /////////////////        root@rezwoan:~$
      /////////////////////      ---------------
@@ -29,9 +27,7 @@ $ neofetch --profile rezwoan
 <br/>
 
 <!-- ===== DYNAMIC FEEDS (TERMINAL STYLE) ===== -->
-<div align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+cat+currently_working_on.md" alt="Typing SVG" />
-</div>
+## 💻 `user@rezwoan:~$ cat currently_working_on.md`
 
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
@@ -45,9 +41,7 @@ $ connection established
 
 <br/>
 
-<div align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+tail+-f+recent_activity.log" alt="Typing SVG" />
-</div>
+## 📡 `user@rezwoan:~$ tail -f recent_activity.log`
 
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
@@ -61,9 +55,7 @@ $ connection established
 <br/>
 
 <!-- ===== HIGH CONTRAST TECH STACK ===== -->
-<div align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+sudo+apt+install+stack" alt="Typing SVG" />
-</div>
+## ⚙️ `user@rezwoan:~$ sudo apt install stack`
 
 <div align="center">
   <a href="https://skillicons.dev">
@@ -74,9 +66,7 @@ $ connection established
 <br/>
 
 <!-- ===== 3D ISOMETRIC CITY ===== -->
-<div align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=600&lines=user%40rezwoan%3A~%24+.%2Frender_3d_contributions.sh" alt="Typing SVG" />
-</div>
+## 🏙️ `user@rezwoan:~$ ./render_3d_contributions.sh`
 
 <div align="center">
   <picture>
@@ -88,9 +78,7 @@ $ connection established
 <br/>
 
 <!-- ===== NEON STATS ===== -->
-<div align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+htop+--stats" alt="Typing SVG" />
-</div>
+## 🤖 `user@rezwoan:~$ htop --stats`
 
 <div align="center">
   <img width="60%" src="https://streak-stats.demolab.com?user=Rezwoan&theme=tokyonight&hide_border=true&background=0d1117&ring=39FF14&fire=FF00FF&currStreakLabel=00FFFF&sideLabels=FFFFFF&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=FFFFFF" alt="GitHub Streak" />
@@ -110,9 +98,7 @@ $ connection established
 <br/>
 
 <!-- ===== CONNECT ===== -->
-<div align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+ssh+connect%40socials" alt="Typing SVG" />
-</div>
+## 🌐 `user@rezwoan:~$ ssh connect@socials`
 
 <div align="center">
   <a href="https://www.linkedin.com/in/din-muhammad-rezwoan-b4b87020a" target="_blank">
