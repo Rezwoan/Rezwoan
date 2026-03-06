@@ -29,11 +29,14 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-```console
-$ fetching repos...
-$ connection established
-[No repos updated yet, check back soon]
-```
+_🕐 Last updated: Mar 6, 2026_
+
+| | |
+|---|---|
+| **🌐 [AlgoRace](https://github.com/Rezwoan/AlgoRace)**<br/>AlgoRace - Maze Race with Pathfinding Visualization. Built w<br/>`Misc` ⭐ 0 🍴 0 | **🌐 [PROGRAMMING-IN-PYTHON](https://github.com/Rezwoan/PROGRAMMING-IN-PYTHON)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
+| **🌐 [AutoLoot-CoC-Attacker](https://github.com/Rezwoan/AutoLoot-CoC-Attacker)**<br/>_No description_<br/>`Python` ⭐ 1 🍴 0 | **🌐 [S.N.A.P.](https://github.com/Rezwoan/S.N.A.P.)**<br/>Systematic Node Analysis & Pathfinding<br/>`Misc` ⭐ 1 🍴 0 |
+| **🌐 [chikook](https://github.com/Rezwoan/chikook)**<br/>_No description_<br/>`JavaScript` ⭐ 0 🍴 0 | **🌐 [Minecraft-World](https://github.com/Rezwoan/Minecraft-World)**<br/>Online Backup of Minecraft world.<br/>`Batchfile` ⭐ 0 🍴 0 |
+
 <!--END_SECTION:active-repos-->
 
 <br/>
