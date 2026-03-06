@@ -81,7 +81,14 @@ _🕐 Last updated: Mar 6, 2026_
 
 <!--START_SECTION:htop-stats-->
 ```console
-$ calculating statistics...
+$ htop --user Rezwoan
+
+  1  [||||||||            ]  41.0%  Tasks:   29 repos, 275 commits
+  2  [||||||              ]  29.0%  Uptime: 2139 days (Joined 2020)
+  3  [|||                 ]  14.0%  Stars:    4 earned, 1 forks
+--------------------------------------------------------------------------------
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+Rezwoan   1337 99.0 12.0 923.4m 142m pts/1    R+   2020 99:99 /bin/dev/code
 ```
 <!--END_SECTION:htop-stats-->
 
