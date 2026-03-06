@@ -64,19 +64,29 @@ jobs:
             const memBar = getBar(memUsage);
             const swpBar = getBar(swpUsage);
             
-            const htopAscii = `\`\`\`console
-            $ htop --user ${username}
+            // ANSI escape codes for vibrant colors in GitHub Markdown
+            const G = '\x1b[1;32m'; // Bright Green
+            const C = '\x1b[1;36m'; // Bright Cyan
+            const Y = '\x1b[1;33m'; // Bright Yellow
+            const W = '\x1b[1;37m'; // Bright White
+            const R = '\x1b[0m';    // Reset
             
-              1  ${cpuBar} ${cpuUsage.toString().padStart(3, ' ')}.0%  Tasks: ${user.public_repos.toString().padStart(4, ' ')} repos, ${totalCommits} commits
-              2  ${memBar} ${memUsage.toString().padStart(3, ' ')}.0%  Uptime: ${diffDays} days (Joined ${joinYear})
-              3  ${swpBar} ${swpUsage.toString().padStart(3, ' ')}.0%  Stars: ${totalStars.toString().padStart(4, ' ')} earned, ${totalForks} forks
-            --------------------------------------------------------------------------------
-            USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-            ${username.padEnd(8, ' ')}  1337 99.0 12.0 923.4m 142m pts/1    R+   ${joinYear} 99:99 /bin/dev/code
-            \`\`\``;
+            const fmtBar = (b) => `[${G}${b.slice(1, -1)}${R}]`;
             
-            // Fix indentation from string literal
-            const formattedAscii = htopAscii.replace(/^            /gm, '');
+            const htopAscii = [
+              '```ansi',
+              `${W}$ htop --user ${username}${R}`,
+              '',
+              `  1  ${fmtBar(cpuBar)} ${Y}${cpuUsage.toString().padStart(3, ' ')}.0%${R}  ${W}Tasks:${R}  ${user.public_repos.toString().padStart(4, ' ')} repos, ${totalCommits} commits`,
+              `  2  ${fmtBar(memBar)} ${Y}${memUsage.toString().padStart(3, ' ')}.0%${R}  ${W}Uptime:${R} ${diffDays} days (Joined ${joinYear})`,
+              `  3  ${fmtBar(swpBar)} ${Y}${swpUsage.toString().padStart(3, ' ')}.0%${R}  ${W}Stars:${R}  ${totalStars.toString().padStart(4, ' ')} earned, ${totalForks} forks`,
+              `${C}--------------------------------------------------------------------------------${R}`,
+              `${G}USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND${R}`,
+              `${W}${username.padEnd(8, ' ')}${R}  1337 99.0 12.0 923.4m 142m pts/1    R+   ${joinYear} 99:99 /bin/dev/code`,
+              '```'
+            ].join('\n');
+            
+            const formattedAscii = htopAscii;
 
             // 6. Inject into README
             const readmePath = 'README.md';
