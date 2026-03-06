@@ -77,11 +77,14 @@ _🕐 Last updated: Mar 6, 2026_
 
 <br/>
 
-<!-- ===== NEON STATS ===== -->
-## 🤖 `user@rezwoan:~$ htop --stats`
-
 <div align="center">
-  <img width="60%" src="https://streak-stats.demolab.com?user=Rezwoan&theme=tokyonight&hide_border=true&background=0d1117&ring=39FF14&fire=FF00FF&currStreakLabel=00FFFF&sideLabels=FFFFFF&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=FFFFFF" alt="GitHub Streak" />
+
+<!--START_SECTION:htop-stats-->
+```console
+$ calculating statistics...
+```
+<!--END_SECTION:htop-stats-->
+
 </div>
 
 <br/>

@@ -1,0 +1,99 @@
+name: Generate Custom Htop Stats
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate htop stats
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const username = context.repo.owner;
+            
+            // 1. Fetch User Data
+            const { data: user } = await github.rest.users.getByUsername({ username });
+            
+            // 2. Calculate Uptime
+            const joinDate = new Date(user.created_at);
+            const now = new Date();
+            const diffTime = Math.abs(now - joinDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const joinYear = joinDate.getFullYear();
+            
+            // 3. Fetch Repos & Stars
+            const repos = await github.paginate(github.rest.repos.listForUser, {
+              username,
+              type: 'owner'
+            });
+            const totalStars = repos.filter(r => !r.fork).reduce((acc, r) => acc + r.stargazers_count, 0);
+            const totalForks = repos.filter(r => !r.fork).reduce((acc, r) => acc + r.forks_count, 0);
+            
+            // 4. Fetch Commits (using Search API)
+            let totalCommits = 0;
+            try {
+              const { data: commits } = await github.rest.search.commits({
+                q: `author:${username}`
+              });
+              totalCommits = commits.total_count;
+            } catch (e) {
+              console.log('Commits search failed, defaulting to 0:', e.message);
+            }
+
+            // 5. Format ASCII Bars
+            function getBar(percent, width=20) {
+              const filled = Math.min(width, Math.max(0, Math.round((percent / 100) * width)));
+              const empty = width - filled;
+              return '[' + '|'.repeat(filled) + ' '.repeat(empty) + ']';
+            }
+            
+            const cpuUsage = Math.floor(Math.random() * 40) + 10; // Randomize load for aesthetics
+            const memUsage = Math.min(100, Math.round((repos.length / 100) * 100)); // Repos vs 100%
+            const swpUsage = Math.min(100, Math.round((totalCommits / 2000) * 100)); // Commits vs 2k capacity
+            
+            const cpuBar = getBar(cpuUsage);
+            const memBar = getBar(memUsage);
+            const swpBar = getBar(swpUsage);
+            
+            const htopAscii = `\`\`\`console
+            $ htop --user ${username}
+            
+              1  ${cpuBar} ${cpuUsage.toString().padStart(3, ' ')}.0%  Tasks: ${user.public_repos.toString().padStart(4, ' ')} repos, ${totalCommits} commits
+              2  ${memBar} ${memUsage.toString().padStart(3, ' ')}.0%  Uptime: ${diffDays} days (Joined ${joinYear})
+              3  ${swpBar} ${swpUsage.toString().padStart(3, ' ')}.0%  Stars: ${totalStars.toString().padStart(4, ' ')} earned, ${totalForks} forks
+            --------------------------------------------------------------------------------
+            USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+            ${username.padEnd(8, ' ')}  1337 99.0 12.0 923.4m 142m pts/1    R+   ${joinYear} 99:99 /bin/dev/code
+            \`\`\``;
+            
+            // Fix indentation from string literal
+            const formattedAscii = htopAscii.replace(/^            /gm, '');
+
+            // 6. Inject into README
+            const readmePath = 'README.md';
+            let readmeStr = fs.readFileSync(readmePath, 'utf8');
+            
+            const startMarker = '<!--START_SECTION:htop-stats-->';
+            const endMarker = '<!--END_SECTION:htop-stats-->';
+            const regex = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`, 'g');
+            
+            readmeStr = readmeStr.replace(regex, `${startMarker}\n${formattedAscii}\n${endMarker}`);
+            
+            fs.writeFileSync(readmePath, readmeStr);
+
+      - name: Commit & Push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add README.md
+          git commit -m "🤖 updated custom htop stats" || exit 0
+          git push
