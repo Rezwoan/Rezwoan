@@ -80,16 +80,9 @@ _🕐 Last updated: Mar 6, 2026_
 <div align="center">
 
 <!--START_SECTION:htop-stats-->
-```ansi
-[1;37m$ htop --user Rezwoan[0m
-
-  1  [[1;32m|||||||||           [0m] [1;33m 46.0%[0m  [1;37mTasks:[0m    29 repos, 276 commits
-  2  [[1;32m||||||              [0m] [1;33m 29.0%[0m  [1;37mUptime:[0m 2139 days (Joined 2020)
-  3  [[1;32m|||                 [0m] [1;33m 14.0%[0m  [1;37mStars:[0m     4 earned, 1 forks
-[1;36m--------------------------------------------------------------------------------[0m
-[1;32mUSER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND[0m
-[1;37mRezwoan [0m  1337 99.0 12.0 923.4m 142m pts/1    R+   2020 99:99 /bin/dev/code
-```
+<picture>
+  <img src="profile-htop.svg" alt="Htop Stats" width="100%" />
+</picture>
 <!--END_SECTION:htop-stats-->
 
 </div>
