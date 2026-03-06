@@ -1,9 +1,8 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1000&color=39FF14&center=true&vCenter=true&width=800&height=180&lines=%24+whoami;loading+profile+data...;Din+Muhammad+Rezwoan+%7C+Full-Stack+Dev+%7C+System+Builder" alt="Typing SVG Whoami" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=500&color=39FF14&center=true&vCenter=true&width=800&height=120&duration=1500&multiline=true&lines=%24+whoami;Din+Muhammad+Rezwoan+%7C+Full-Stack+Dev+%7C+System+Builder" alt="Typing SVG Whoami" />
 </div>
 
 <!-- ===== NEOFETCH TERMINAL ===== -->
-<div align="center">
 <br/>
 
 ```console
@@ -21,8 +20,6 @@ $ neofetch --profile username
      /////////////////////      LINK:    github.com/Rezwoan
        /////////////////
 ```
-
-</div>
 
 <br/>
 
