@@ -90,9 +90,7 @@ _🕐 Last updated: Mar 6, 2026_
 <br/>
 
 <!-- ===== SNAKE ANIMATION ===== -->
-<div align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=39FF14&width=500&lines=user%40rezwoan%3A~%24+.%2Fplay_snake.py" alt="Typing SVG" />
-</div>
+## 🐍 `user@rezwoan:~$ ./play_snake.py`
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" alt="Snake animation" />
