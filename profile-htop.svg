@@ -1,4 +1,4 @@
-<svg width="680" height="230" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 230">
+<svg width="680" height="270" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 270">
   <rect width="100%" height="100%" fill="#0d1117" rx="10" stroke="#39FF14" stroke-width="1"/>
   <style>
     .txt { font-family: 'Courier New', monospace; font-size: 14px; fill: #ffffff; }
@@ -10,12 +10,15 @@
   <g class="txt" xml:space="preserve">
     <text x="20" y="30" class="green">$ htop --user Rezwoan</text>
     
-    <text x="40" y="70">1 [<tspan class="green">||||              </tspan>] <tspan class="yellow"> 24.0%</tspan>  Tasks:    29 repos, 278 commits</text>
+    <text x="40" y="70">1 [<tspan class="green">||||||||          </tspan>] <tspan class="yellow"> 44.0%</tspan>  Tasks:    29 repos, 278 commits</text>
     <text x="40" y="95">2 [<tspan class="green">|||||             </tspan>] <tspan class="yellow"> 29.0%</tspan>  Uptime: 2139 days (Joined 2020)</text>
     <text x="40" y="120">3 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 14.0%</tspan>  Stars:     4 earned, 1 forks</text>
     
     <text x="20" y="150" class="cyan">--------------------------------------------------------------------------------</text>
-    <text x="20" y="180" class="green">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</text>
-    <text x="20" y="205"><tspan class="magenta">Rezwoan </tspan>  1337 99.0 12.0 923.4m 142m pts/1    R+   2020 99:99 /bin/dev/code</text>
+    <text x="20" y="180"><tspan class="magenta">Current Streak:</tspan> 1 days (Mar 6, 2026 - Mar 6, 2026)</text>
+    <text x="20" y="200"><tspan class="magenta">Longest Streak:</tspan> 6 days (Feb 22, 2026 - Feb 27, 2026)</text>
+    
+    <text x="20" y="235" class="green">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</text>
+    <text x="20" y="255"><tspan class="cyan">Rezwoan </tspan>  1337 99.0 12.0 923.4m 142m pts/1    R+   2020 99:99 /bin/dev/code</text>
   </g>
 </svg>
