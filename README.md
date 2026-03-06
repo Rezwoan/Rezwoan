@@ -4,7 +4,7 @@
 <!-- ===== TYPING SVG ===== -->
 <div align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=4000&pause=1000&color=00F5A0&center=true&vCenter=true&multiline=true&repeat=true&random=false&width=600&height=100&lines=%F0%9F%91%8B+Hey+there%2C+I'm+Rezwoan!;%F0%9F%92%BB+Building+things+that+matter;%F0%9F%9A%80+Always+shipping%2C+always+learning" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=4000&pause=1000&color=00F5A0&center=true&vCenter=true&repeat=true&random=false&width=435&height=45&lines=Hey+there!+I'm+Rezwoan+%F0%9F%91%8B;Building+things+that+matter+%F0%9F%9A%80;Always+shipping%2C+always+learning+%F0%9F%92%BB" alt="Typing SVG" />
   </a>
 </div>
 
@@ -40,6 +40,15 @@ I build clean, scalable applications and love turning ideas into real-world soft
 
 <br/>
 
+<!-- ===== PORTFOLIO ===== -->
+<div align="center">
+  <a href="http://rezwoan.me" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Check_Out_My_Portfolio-rezwoan.me-00f5a0?style=for-the-badge&logoColor=0d1117&labelColor=0d1117" alt="Portfolio" />
+  </a>
+</div>
+
+<br/>
+
 <!-- ===== CONNECT WITH ME ===== -->
 ## 🔗 &nbsp;Connect With Me
 
@@ -49,9 +58,6 @@ I build clean, scalable applications and love turning ideas into real-world soft
   </a>&nbsp;
   <a href="https://twitter.com/XRezwoan" target="_blank">
     <img src="https://img.shields.io/badge/X_(Twitter)-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" />
-  </a>&nbsp;
-  <a href="http://rezwoan.me" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-00f5a0?style=for-the-badge&logo=googlechrome&logoColor=0d1117" alt="Portfolio" />
   </a>&nbsp;
   <a href="https://www.facebook.com/ager.id.hack.hoye.gase" target="_blank">
     <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook" />
@@ -70,48 +76,40 @@ I build clean, scalable applications and love turning ideas into real-world soft
 ## 🛠️ &nbsp;Tech Stack
 
 <div align="center">
-
-### 💻 Languages
-<a href="https://skillicons.dev">
-  <img src="https://skillicons.dev/icons?i=c,cpp,python,java,js,html,css&theme=dark" alt="Languages" />
-</a>
-
-### ⚡ Frameworks & Libraries
-<a href="https://skillicons.dev">
-  <img src="https://skillicons.dev/icons?i=react,django,flask,nodejs,tailwind,bootstrap&theme=dark" alt="Frameworks" />
-</a>
-
-### 🧰 Tools & Platforms
-<a href="https://skillicons.dev">
-  <img src="https://skillicons.dev/icons?i=git,github,vscode,sqlite,heroku,digitalocean,linux,docker&theme=dark" alt="Tools" />
-</a>
-
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=typescript,python,react,nextjs,nodejs,tailwind,django,fastapi,postgres,mongodb,redis,docker,aws,git,github,linux,vscode,figma&perline=9&theme=dark" alt="Tech Stack" />
+  </a>
 </div>
 
 <br/>
 
-<!-- ===== GITHUB STATS ===== -->
-## 📊 &nbsp;GitHub Stats
+<!-- ===== CURRENTLY WORKING ON (auto-updated) ===== -->
+## 🔥 &nbsp;Currently Working On
 
-<div align="center">
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=Rezwoan&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00f5a0&icon_color=00b4d8&text_color=c9d1d9&ring_color=00f5a0" alt="GitHub Stats" />
-  &nbsp;
-  <img width="49%" src="https://streak-stats.demolab.com?user=Rezwoan&theme=tokyonight&hide_border=true&background=0d1117&ring=00f5a0&fire=00f5a0&currStreakLabel=00f5a0&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=555555" alt="GitHub Streak" />
-</div>
+> _These repos are auto-updated every 12 hours — showing where I've pushed code in the last 30 days._
 
-<br/>
-
-<div align="center">
-  <img width="40%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Rezwoan&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00f5a0&text_color=c9d1d9" alt="Top Languages" />
-</div>
+<!--START_SECTION:active-repos-->
+_⏳ Waiting for first workflow run..._
+<!--END_SECTION:active-repos-->
 
 <br/>
 
-<!-- ===== GITHUB TROPHIES ===== -->
-## 🏆 &nbsp;GitHub Trophies
+<!-- ===== RECENT ACTIVITY (auto-updated) ===== -->
+## ⚡ &nbsp;Recent Activity
+
+> _Auto-updated every 6 hours with my latest GitHub activity._
+
+<!--START_SECTION:activity-->
+1. _⏳ Waiting for first workflow run..._
+<!--END_SECTION:activity-->
+
+<br/>
+
+<!-- ===== GITHUB STREAK ===== -->
+## 📊 &nbsp;GitHub Streak
 
 <div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Rezwoan&theme=algolia&no-frame=true&no-bg=true&column=7&margin-w=10" alt="GitHub Trophies" />
+  <img width="60%" src="https://streak-stats.demolab.com?user=Rezwoan&theme=tokyonight&hide_border=true&background=0d1117&ring=00f5a0&fire=00f5a0&currStreakLabel=00f5a0&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=555555" alt="GitHub Streak" />
 </div>
 
 <br/>
@@ -129,18 +127,7 @@ I build clean, scalable applications and love turning ideas into real-world soft
 ## 🐍 &nbsp;Contribution Snake
 
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" />
-    <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" alt="Snake animation" />
-  </picture>
-</div>
-
-<br/>
-
-<!-- ===== RANDOM DEV QUOTE ===== -->
-<div align="center">
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" />
+  <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" alt="Snake animation" />
 </div>
 
 <br/>

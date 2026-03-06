@@ -1,0 +1,99 @@
+name: Update active repos
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch recently active repos
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+            // Get all repos for the authenticated user
+            const repos = await github.paginate(github.rest.repos.listForAuthenticatedUser, {
+              sort: 'pushed',
+              direction: 'desc',
+              per_page: 100,
+              type: 'owner'
+            });
+
+            // Filter to repos pushed in the last 30 days, exclude the profile repo
+            const activeRepos = repos
+              .filter(r => new Date(r.pushed_at) >= thirtyDaysAgo)
+              .filter(r => r.name !== r.owner.login)
+              .filter(r => !r.fork)
+              .slice(0, 6);
+
+            if (activeRepos.length === 0) {
+              console.log('No recently active repos found.');
+              return;
+            }
+
+            // Build markdown table
+            let md = '';
+            for (let i = 0; i < activeRepos.length; i += 2) {
+              const left = activeRepos[i];
+              const right = activeRepos[i + 1];
+
+              const leftLang = left.language || 'Misc';
+              const leftDesc = (left.description || '_No description_').substring(0, 60);
+              const leftStars = left.stargazers_count;
+              const leftForks = left.forks_count;
+              const leftVisibility = left.private ? '🔒' : '🌐';
+
+              let leftCell = `**${leftVisibility} [${left.name}](${left.html_url})**<br/>${leftDesc}<br/>\`${leftLang}\` ⭐ ${leftStars} 🍴 ${leftForks}`;
+
+              let rightCell = '';
+              if (right) {
+                const rightLang = right.language || 'Misc';
+                const rightDesc = (right.description || '_No description_').substring(0, 60);
+                const rightStars = right.stargazers_count;
+                const rightForks = right.forks_count;
+                const rightVisibility = right.private ? '🔒' : '🌐';
+                rightCell = `**${rightVisibility} [${right.name}](${right.html_url})**<br/>${rightDesc}<br/>\`${rightLang}\` ⭐ ${rightStars} 🍴 ${rightForks}`;
+              }
+
+              md += `| ${leftCell} | ${rightCell} |\n`;
+            }
+
+            const table = `| | |\n|---|---|\n${md}`;
+            const updated = `_🕐 Last updated: ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}_\n\n${table}`;
+
+            // Read README and replace content between markers
+            let readme = fs.readFileSync('README.md', 'utf8');
+            const startMarker = '<!--START_SECTION:active-repos-->';
+            const endMarker = '<!--END_SECTION:active-repos-->';
+            const startIdx = readme.indexOf(startMarker);
+            const endIdx = readme.indexOf(endMarker);
+
+            if (startIdx === -1 || endIdx === -1) {
+              console.log('Markers not found in README.md');
+              return;
+            }
+
+            readme = readme.substring(0, startIdx + startMarker.length) + '\n' + updated + '\n' + readme.substring(endIdx);
+            fs.writeFileSync('README.md', readme);
+            console.log(`Updated README with ${activeRepos.length} active repos.`);
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet && exit 0
+          git add README.md
+          git commit -m "🔥 Update active repos"
+          git push
