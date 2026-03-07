@@ -46,10 +46,10 @@ _🕐 Last updated: Mar 7, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. ℹ️ Assigned issue [#14](https://github.com/Rezwoan/AlgoRace/issues/14) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
-2. ℹ️ Labeled issue [#14](https://github.com/Rezwoan/AlgoRace/issues/14) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
-3. ℹ️ Labeled issue [#14](https://github.com/Rezwoan/AlgoRace/issues/14) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
-4. ❗ Opened issue [#14](https://github.com/Rezwoan/AlgoRace/issues/14) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
+1. 🎉 Merged PR [#2](https://github.com/Rezwoan/S.N.A.P./pull/2) in [Rezwoan/S.N.A.P.](https://github.com/Rezwoan/S.N.A.P.)
+2. 🔒 Closed issue [#1](https://github.com/Rezwoan/S.N.A.P./issues/1) in [Rezwoan/S.N.A.P.](https://github.com/Rezwoan/S.N.A.P.)
+3. 💪 Opened PR [#2](https://github.com/Rezwoan/S.N.A.P./pull/2) in [Rezwoan/S.N.A.P.](https://github.com/Rezwoan/S.N.A.P.)
+4. ℹ️ Assigned issue [#14](https://github.com/Rezwoan/AlgoRace/issues/14) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
 <!--END_SECTION:activity-->
 
 <br/>
