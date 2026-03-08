@@ -10,12 +10,12 @@
   <g class="txt" xml:space="preserve">
     <text x="20" y="30" class="green">$ htop --user Rezwoan</text>
     
-    <text x="40" y="70">1 [<tspan class="green">||||              </tspan>] <tspan class="yellow"> 23.0%</tspan>  Tasks:    29 repos, 288 commits</text>
+    <text x="40" y="70">1 [<tspan class="green">|||||||||         </tspan>] <tspan class="yellow"> 48.0%</tspan>  Tasks:    29 repos, 306 commits</text>
     <text x="40" y="95">2 [<tspan class="green">|||||             </tspan>] <tspan class="yellow"> 29.0%</tspan>  Uptime: 2140 days (Joined 2020)</text>
-    <text x="40" y="120">3 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 14.0%</tspan>  Stars:     4 earned, 1 forks</text>
+    <text x="40" y="120">3 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 15.0%</tspan>  Stars:     4 earned, 1 forks</text>
     
     <text x="20" y="150" class="cyan">--------------------------------------------------------------------------------</text>
-    <text x="20" y="180"><tspan class="magenta">Current Streak:</tspan> 2 days (Mar 6, 2026 - Mar 7, 2026)</text>
+    <text x="20" y="180"><tspan class="magenta">Current Streak:</tspan> 0 days (-- - --)</text>
     <text x="20" y="200"><tspan class="magenta">Longest Streak:</tspan> 6 days (Feb 22, 2026 - Feb 27, 2026)</text>
     
     <text x="20" y="235" class="green">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</text>
