@@ -10,13 +10,13 @@
   <g class="txt" xml:space="preserve">
     <text x="20" y="30" class="green">$ htop --user Rezwoan</text>
     
-    <text x="40" y="70">1 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 15.0%</tspan>  Tasks:    29 repos, 308 commits</text>
-    <text x="40" y="95">2 [<tspan class="green">|||||             </tspan>] <tspan class="yellow"> 29.0%</tspan>  Uptime: 2146 days (Joined 2020)</text>
-    <text x="40" y="120">3 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 15.0%</tspan>  Stars:     4 earned, 1 forks</text>
+    <text x="40" y="70">1 [<tspan class="green">|||||             </tspan>] <tspan class="yellow"> 27.0%</tspan>  Tasks:    30 repos, 324 commits</text>
+    <text x="40" y="95">2 [<tspan class="green">|||||             </tspan>] <tspan class="yellow"> 30.0%</tspan>  Uptime: 2146 days (Joined 2020)</text>
+    <text x="40" y="120">3 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 16.0%</tspan>  Stars:     4 earned, 1 forks</text>
     
     <text x="20" y="150" class="cyan">--------------------------------------------------------------------------------</text>
-    <text x="20" y="180"><tspan class="magenta">Current Streak:</tspan> 0 days (-- - --)</text>
-    <text x="20" y="200"><tspan class="magenta">Longest Streak:</tspan> 6 days (Feb 22, 2026 - Feb 27, 2026)</text>
+    <text x="20" y="180"><tspan class="magenta">Current Streak:</tspan> 1 days (Mar 14, 2026 - Mar 14, 2026)</text>
+    <text x="20" y="200"><tspan class="magenta">Longest Streak:</tspan> 17 days (Feb 20, 2026 - Mar 8, 2026)</text>
     
     <text x="20" y="235" class="green">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</text>
     <text x="20" y="255"><tspan class="cyan">Rezwoan </tspan>  1337 99.0 12.0 923.4m 142m pts/1    R+   2020 99:99 /bin/dev/code</text>
