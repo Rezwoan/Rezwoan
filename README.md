@@ -46,10 +46,10 @@ _🕐 Last updated: Mar 15, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#2](https://github.com/Rezwoan/S.N.A.P./pull/2) in [Rezwoan/S.N.A.P.](https://github.com/Rezwoan/S.N.A.P.)
-2. 🔒 Closed issue [#1](https://github.com/Rezwoan/S.N.A.P./issues/1) in [Rezwoan/S.N.A.P.](https://github.com/Rezwoan/S.N.A.P.)
-3. 💪 Opened PR [#2](https://github.com/Rezwoan/S.N.A.P./pull/2) in [Rezwoan/S.N.A.P.](https://github.com/Rezwoan/S.N.A.P.)
-4. ℹ️ Assigned issue [#14](https://github.com/Rezwoan/AlgoRace/issues/14) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
+1. 🔒 Closed issue [#2](https://github.com/Rezwoan/AlgoRace/issues/2) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
+2. 🎉 Merged PR [#16](https://github.com/Rezwoan/AlgoRace/pull/16) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
+3. 💪 Opened PR [#16](https://github.com/Rezwoan/AlgoRace/pull/16) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
+4. 🔒 Closed issue [#1](https://github.com/Rezwoan/AlgoRace/issues/1) in [Rezwoan/AlgoRace](https://github.com/Rezwoan/AlgoRace)
 <!--END_SECTION:activity-->
 
 <br/>
