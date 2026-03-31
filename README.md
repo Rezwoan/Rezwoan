@@ -33,7 +33,7 @@ _🕐 Last updated: Mar 31, 2026_
 
 | | |
 |---|---|
-| **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`Python` ⭐ 0 🍴 0 | **🌐 [FitTrack](https://github.com/Rezwoan/FitTrack)**<br/>track gym workouts, build routines, and keep a log of your p<br/>`Python` ⭐ 0 🍴 0 |
+| **🌐 [FitTrack](https://github.com/Rezwoan/FitTrack)**<br/>track gym workouts, build routines, and keep a log of your p<br/>`Python` ⭐ 0 🍴 0 | **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`Python` ⭐ 0 🍴 0 |
 | **🌐 [AlgoRace](https://github.com/Rezwoan/AlgoRace)**<br/>AlgoRace - Maze Race with Pathfinding Visualization. Built w<br/>`Python` ⭐ 1 🍴 0 | **🌐 [AlgoRace-plan](https://github.com/Rezwoan/AlgoRace-plan)**<br/>Project planning docs for AlgoRace - Maze Race with Pathfind<br/>`Misc` ⭐ 0 🍴 0 |
 | **🌐 [PROGRAMMING-IN-PYTHON](https://github.com/Rezwoan/PROGRAMMING-IN-PYTHON)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 | **🌐 [S.N.A.P.](https://github.com/Rezwoan/S.N.A.P.)**<br/>Systematic Node Analysis & Pathfinding<br/>`Python` ⭐ 0 🍴 0 |
 
