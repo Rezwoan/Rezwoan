@@ -10,9 +10,9 @@
   <g class="txt" xml:space="preserve">
     <text x="20" y="30" class="green">$ htop --user Rezwoan</text>
     
-    <text x="40" y="70">1 [<tspan class="green">||||              </tspan>] <tspan class="yellow"> 24.0%</tspan>  Tasks:    31 repos, 369 commits</text>
-    <text x="40" y="95">2 [<tspan class="green">||||||            </tspan>] <tspan class="yellow"> 31.0%</tspan>  Uptime: 2165 days (Joined 2020)</text>
-    <text x="40" y="120">3 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 18.0%</tspan>  Stars:     4 earned, 1 forks</text>
+    <text x="40" y="70">1 [<tspan class="green">|||||||           </tspan>] <tspan class="yellow"> 39.0%</tspan>  Tasks:    32 repos, 381 commits</text>
+    <text x="40" y="95">2 [<tspan class="green">||||||            </tspan>] <tspan class="yellow"> 32.0%</tspan>  Uptime: 2166 days (Joined 2020)</text>
+    <text x="40" y="120">3 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 19.0%</tspan>  Stars:     4 earned, 1 forks</text>
     
     <text x="20" y="150" class="cyan">--------------------------------------------------------------------------------</text>
     <text x="20" y="180"><tspan class="magenta">Current Streak:</tspan> 4 days (Mar 30, 2026 - Apr 2, 2026)</text>
