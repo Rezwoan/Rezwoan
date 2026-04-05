@@ -46,10 +46,10 @@ _🕐 Last updated: Apr 5, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. ❗ Opened issue [#10](https://github.com/Rezwoan/MAD-mid-LabTask/issues/10) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
-2. ℹ️ Assigned issue [#10](https://github.com/Rezwoan/MAD-mid-LabTask/issues/10) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
-3. ℹ️ Assigned issue [#9](https://github.com/Rezwoan/MAD-mid-LabTask/issues/9) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
-4. ❗ Opened issue [#9](https://github.com/Rezwoan/MAD-mid-LabTask/issues/9) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
+1. 🔒 Closed issue [#1](https://github.com/Rezwoan/MAD-mid-LabTask/issues/1) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
+2. ❗ Opened issue [#10](https://github.com/Rezwoan/MAD-mid-LabTask/issues/10) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
+3. ℹ️ Assigned issue [#10](https://github.com/Rezwoan/MAD-mid-LabTask/issues/10) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
+4. ℹ️ Assigned issue [#9](https://github.com/Rezwoan/MAD-mid-LabTask/issues/9) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
 <!--END_SECTION:activity-->
 
 <br/>
