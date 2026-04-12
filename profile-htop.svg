@@ -10,7 +10,7 @@
   <g class="txt" xml:space="preserve">
     <text x="20" y="30" class="green">$ htop --user Rezwoan</text>
     
-    <text x="40" y="70">1 [<tspan class="green">||||||||          </tspan>] <tspan class="yellow"> 45.0%</tspan>  Tasks:    33 repos, 384 commits</text>
+    <text x="40" y="70">1 [<tspan class="green">||                </tspan>] <tspan class="yellow"> 13.0%</tspan>  Tasks:    33 repos, 384 commits</text>
     <text x="40" y="95">2 [<tspan class="green">||||||            </tspan>] <tspan class="yellow"> 33.0%</tspan>  Uptime: 2175 days (Joined 2020)</text>
     <text x="40" y="120">3 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 19.0%</tspan>  Stars:     4 earned, 1 forks</text>
     
