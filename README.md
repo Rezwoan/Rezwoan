@@ -29,13 +29,13 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-_🕐 Last updated: Apr 13, 2026_
+_🕐 Last updated: Apr 14, 2026_
 
 | | |
 |---|---|
 | **🌐 [MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [liftlog](https://github.com/Rezwoan/liftlog)**<br/>_No description_<br/>`Misc` ⭐ 0 🍴 0 |
 | **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [Rezwoan.github.io](https://github.com/Rezwoan/Rezwoan.github.io)**<br/>_No description_<br/>`JavaScript` ⭐ 0 🍴 0 |
-| **🌐 [FitTrack](https://github.com/Rezwoan/FitTrack)**<br/>track gym workouts, build routines, and keep a log of your p<br/>`Python` ⭐ 0 🍴 0 | **🌐 [AlgoRace](https://github.com/Rezwoan/AlgoRace)**<br/>AlgoRace - Maze Race with Pathfinding Visualization. Built w<br/>`Python` ⭐ 1 🍴 0 |
+| **🌐 [FitTrack](https://github.com/Rezwoan/FitTrack)**<br/>track gym workouts, build routines, and keep a log of your p<br/>`Python` ⭐ 0 🍴 0 |  |
 
 <!--END_SECTION:active-repos-->
 
