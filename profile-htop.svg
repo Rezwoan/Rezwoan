@@ -10,12 +10,12 @@
   <g class="txt" xml:space="preserve">
     <text x="20" y="30" class="green">$ htop --user Rezwoan</text>
     
-    <text x="40" y="70">1 [<tspan class="green">|||||             </tspan>] <tspan class="yellow"> 26.0%</tspan>  Tasks:    34 repos, 400 commits</text>
+    <text x="40" y="70">1 [<tspan class="green">|||||             </tspan>] <tspan class="yellow"> 29.0%</tspan>  Tasks:    34 repos, 400 commits</text>
     <text x="40" y="95">2 [<tspan class="green">||||||            </tspan>] <tspan class="yellow"> 34.0%</tspan>  Uptime: 2188 days (Joined 2020)</text>
     <text x="40" y="120">3 [<tspan class="green">||||              </tspan>] <tspan class="yellow"> 20.0%</tspan>  Stars:     4 earned, 1 forks</text>
     
     <text x="20" y="150" class="cyan">--------------------------------------------------------------------------------</text>
-    <text x="20" y="180"><tspan class="magenta">Current Streak:</tspan> 3 days (Apr 22, 2026 - Apr 24, 2026)</text>
+    <text x="20" y="180"><tspan class="magenta">Current Streak:</tspan> 0 days (-- - --)</text>
     <text x="20" y="200"><tspan class="magenta">Longest Streak:</tspan> 17 days (Feb 20, 2026 - Mar 8, 2026)</text>
     
     <text x="20" y="235" class="green">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</text>
