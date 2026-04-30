@@ -33,9 +33,9 @@ _🕐 Last updated: Apr 30, 2026_
 
 | | |
 |---|---|
-| **🌐 [PROGRAMMING-IN-PYTHON](https://github.com/Rezwoan/PROGRAMMING-IN-PYTHON)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [RepRush](https://github.com/Rezwoan/RepRush)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
-| **🌐 [MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [liftlog](https://github.com/Rezwoan/liftlog)**<br/>_No description_<br/>`Misc` ⭐ 0 🍴 0 |
-| **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [Rezwoan.github.io](https://github.com/Rezwoan/Rezwoan.github.io)**<br/>_No description_<br/>`JavaScript` ⭐ 0 🍴 0 |
+| **🌐 [The-Chess-Code](https://github.com/Rezwoan/The-Chess-Code)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [PROGRAMMING-IN-PYTHON](https://github.com/Rezwoan/PROGRAMMING-IN-PYTHON)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 |
+| **🌐 [RepRush](https://github.com/Rezwoan/RepRush)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
+| **🌐 [liftlog](https://github.com/Rezwoan/liftlog)**<br/>_No description_<br/>`Misc` ⭐ 0 🍴 0 | **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`TypeScript` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
