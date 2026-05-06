@@ -15,7 +15,7 @@ $ neofetch --profile username
  ///    ///       ///    ///    SHELL:   Full-Stack Web & Backend
  ///                     ///    UPTIME:  Learning since 2021
  ///   ///           /// ///    DE:      Dhaka, Bangladesh
-  ///   /////////////// ///     EDITOR:  VS Code
+  ///   /////////////// ///     EDITOR:  VS Code, NeoVim
    ///                 ///      PORT:    rezwoan.me
      /////////////////////      LINK:    github.com/Rezwoan
        /////////////////
