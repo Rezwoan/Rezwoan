@@ -45,10 +45,10 @@ _🕐 Last updated: May 9, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. 🔒 Closed issue [#10](https://github.com/Rezwoan/MAD-mid-LabTask/issues/10) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
-2. 🔒 Closed issue [#9](https://github.com/Rezwoan/MAD-mid-LabTask/issues/9) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
-3. 🔒 Closed issue [#8](https://github.com/Rezwoan/MAD-mid-LabTask/issues/8) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
-4. 🔒 Closed issue [#7](https://github.com/Rezwoan/MAD-mid-LabTask/issues/7) in [Rezwoan/MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)
+1. ℹ️ Labeled issue [#8](https://github.com/Rezwoan/RepRush/issues/8) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
+2. ℹ️ Labeled issue [#8](https://github.com/Rezwoan/RepRush/issues/8) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
+3. ℹ️ Labeled issue [#4](https://github.com/Rezwoan/RepRush/issues/4) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
+4. ℹ️ Labeled issue [#3](https://github.com/Rezwoan/RepRush/issues/3) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
 <!--END_SECTION:activity-->
 
 <br/>
