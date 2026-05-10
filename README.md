@@ -29,12 +29,12 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-_🕐 Last updated: May 9, 2026_
+_🕐 Last updated: May 10, 2026_
 
 | | |
 |---|---|
-| **🌐 [The-Chess-Code](https://github.com/Rezwoan/The-Chess-Code)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [PROGRAMMING-IN-PYTHON](https://github.com/Rezwoan/PROGRAMMING-IN-PYTHON)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 |
-| **🌐 [RepRush](https://github.com/Rezwoan/RepRush)**<br/>_No description_<br/>`Kotlin` ⭐ 1 🍴 0 | **🌐 [MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
+| **🌐 [RepRush](https://github.com/Rezwoan/RepRush)**<br/>_No description_<br/>`Kotlin` ⭐ 1 🍴 0 | **🌐 [The-Chess-Code](https://github.com/Rezwoan/The-Chess-Code)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 |
+| **🌐 [PROGRAMMING-IN-PYTHON](https://github.com/Rezwoan/PROGRAMMING-IN-PYTHON)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [MAD-mid-LabTask](https://github.com/Rezwoan/MAD-mid-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
