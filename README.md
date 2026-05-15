@@ -45,10 +45,10 @@ _🕐 Last updated: May 15, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#76](https://github.com/Rezwoan/RepRush/pull/76) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
-2. 💪 Opened PR [#76](https://github.com/Rezwoan/RepRush/pull/76) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
-3. 🎉 Merged PR [#75](https://github.com/Rezwoan/RepRush/pull/75) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
-4. 💪 Opened PR [#75](https://github.com/Rezwoan/RepRush/pull/75) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
+1. 🎉 Merged PR [#77](https://github.com/Rezwoan/RepRush/pull/77) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
+2. 💪 Opened PR [#77](https://github.com/Rezwoan/RepRush/pull/77) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
+3. 🔒 Closed issue [#48](https://github.com/Rezwoan/RepRush/issues/48) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
+4. 🔒 Closed issue [#47](https://github.com/Rezwoan/RepRush/issues/47) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
 <!--END_SECTION:activity-->
 
 <br/>
