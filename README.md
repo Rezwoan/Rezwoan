@@ -33,9 +33,9 @@ _🕐 Last updated: May 19, 2026_
 
 | | |
 |---|---|
-| **🌐 [RepRush](https://github.com/Rezwoan/RepRush)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [RepRush-Temp](https://github.com/Rezwoan/RepRush-Temp)**<br/>_No description_<br/>`Kotlin` ⭐ 1 🍴 0 |
-| **🌐 [cn_html_study_guide](https://github.com/Rezwoan/cn_html_study_guide)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 | **🌐 [The-Chess-Code](https://github.com/Rezwoan/The-Chess-Code)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 |
-| **🌐 [PROGRAMMING-IN-PYTHON](https://github.com/Rezwoan/PROGRAMMING-IN-PYTHON)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 |  |
+| **🌐 [RepRush](https://github.com/Rezwoan/RepRush)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [MAD-final-LabTask](https://github.com/Rezwoan/MAD-final-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
+| **🌐 [RepRush-Temp](https://github.com/Rezwoan/RepRush-Temp)**<br/>_No description_<br/>`Kotlin` ⭐ 1 🍴 0 | **🌐 [cn_html_study_guide](https://github.com/Rezwoan/cn_html_study_guide)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 |
+| **🌐 [The-Chess-Code](https://github.com/Rezwoan/The-Chess-Code)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [PROGRAMMING-IN-PYTHON](https://github.com/Rezwoan/PROGRAMMING-IN-PYTHON)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
