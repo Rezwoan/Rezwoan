@@ -46,10 +46,10 @@ _🕐 Last updated: May 19, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#12](https://github.com/Rezwoan/RepRush/pull/12) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
-2. 💪 Opened PR [#12](https://github.com/Rezwoan/RepRush/pull/12) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
-3. 🎉 Merged PR [#11](https://github.com/Rezwoan/RepRush/pull/11) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
-4. 💪 Opened PR [#11](https://github.com/Rezwoan/RepRush/pull/11) in [Rezwoan/RepRush](https://github.com/Rezwoan/RepRush)
+1. 🎉 Merged PR [#112](https://github.com/Rezwoan/git-claude-badge/pull/112) in [Rezwoan/git-claude-badge](https://github.com/Rezwoan/git-claude-badge)
+2. 💪 Opened PR [#112](https://github.com/Rezwoan/git-claude-badge/pull/112) in [Rezwoan/git-claude-badge](https://github.com/Rezwoan/git-claude-badge)
+3. 🎉 Merged PR [#111](https://github.com/Rezwoan/git-claude-badge/pull/111) in [Rezwoan/git-claude-badge](https://github.com/Rezwoan/git-claude-badge)
+4. 💪 Opened PR [#111](https://github.com/Rezwoan/git-claude-badge/pull/111) in [Rezwoan/git-claude-badge](https://github.com/Rezwoan/git-claude-badge)
 <!--END_SECTION:activity-->
 
 <br/>
