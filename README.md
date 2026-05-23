@@ -29,13 +29,13 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-_🕐 Last updated: May 22, 2026_
+_🕐 Last updated: May 23, 2026_
 
 | | |
 |---|---|
-| **🌐 [git-claude-badge](https://github.com/Rezwoan/git-claude-badge)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 | **🌐 [RepRush](https://github.com/Rezwoan/RepRush)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
-| **🌐 [MAD-final-LabTask](https://github.com/Rezwoan/MAD-final-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [RepRush-Temp](https://github.com/Rezwoan/RepRush-Temp)**<br/>_No description_<br/>`Kotlin` ⭐ 1 🍴 0 |
-| **🌐 [cn_html_study_guide](https://github.com/Rezwoan/cn_html_study_guide)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 | **🌐 [The-Chess-Code](https://github.com/Rezwoan/The-Chess-Code)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 |
+| **🌐 [G.O.B.L.I.N](https://github.com/Rezwoan/G.O.B.L.I.N)**<br/>Guided Operation Bot for Looting, Invasion, and Navigation<br/>`Python` ⭐ 0 🍴 0 | **🌐 [git-claude-badge](https://github.com/Rezwoan/git-claude-badge)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
+| **🌐 [RepRush](https://github.com/Rezwoan/RepRush)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [MAD-final-LabTask](https://github.com/Rezwoan/MAD-final-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
+| **🌐 [RepRush-Temp](https://github.com/Rezwoan/RepRush-Temp)**<br/>_No description_<br/>`Kotlin` ⭐ 1 🍴 0 | **🌐 [cn_html_study_guide](https://github.com/Rezwoan/cn_html_study_guide)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
