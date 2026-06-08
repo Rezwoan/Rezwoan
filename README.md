@@ -29,13 +29,13 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-_🕐 Last updated: Jun 7, 2026_
+_🕐 Last updated: Jun 8, 2026_
 
 | | |
 |---|---|
-| **🌐 [TermPulse](https://github.com/Rezwoan/TermPulse)**<br/>University class companion app — Expo 52, TypeScript, Native<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [G.O.B.L.I.N](https://github.com/Rezwoan/G.O.B.L.I.N)**<br/>Guided Operation Bot for Looting, Invasion, and Navigation<br/>`Python` ⭐ 0 🍴 0 |
-| **🌐 [git-claude-badge](https://github.com/Rezwoan/git-claude-badge)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 | **🌐 [RepRush-Kotlin](https://github.com/Rezwoan/RepRush-Kotlin)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
-| **🌐 [MAD-final-LabTask](https://github.com/Rezwoan/MAD-final-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [RepRush-Temp](https://github.com/Rezwoan/RepRush-Temp)**<br/>_No description_<br/>`Kotlin` ⭐ 1 🍴 0 |
+| **🌐 [RepRush-web](https://github.com/Rezwoan/RepRush-web)**<br/>_No description_<br/>`Misc` ⭐ 0 🍴 0 | **🌐 [TermPulse](https://github.com/Rezwoan/TermPulse)**<br/>University class companion app — Expo 52, TypeScript, Native<br/>`TypeScript` ⭐ 0 🍴 0 |
+| **🌐 [G.O.B.L.I.N](https://github.com/Rezwoan/G.O.B.L.I.N)**<br/>Guided Operation Bot for Looting, Invasion, and Navigation<br/>`Python` ⭐ 0 🍴 0 | **🌐 [git-claude-badge](https://github.com/Rezwoan/git-claude-badge)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
+| **🌐 [RepRush-Kotlin](https://github.com/Rezwoan/RepRush-Kotlin)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 | **🌐 [MAD-final-LabTask](https://github.com/Rezwoan/MAD-final-LabTask)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
