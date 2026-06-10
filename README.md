@@ -46,10 +46,10 @@ _🕐 Last updated: Jun 10, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#134](https://github.com/Rezwoan/git-claude-badge/pull/134) in [Rezwoan/git-claude-badge](https://github.com/Rezwoan/git-claude-badge)
-2. 💪 Opened PR [#134](https://github.com/Rezwoan/git-claude-badge/pull/134) in [Rezwoan/git-claude-badge](https://github.com/Rezwoan/git-claude-badge)
-3. 🎉 Merged PR [#133](https://github.com/Rezwoan/git-claude-badge/pull/133) in [Rezwoan/git-claude-badge](https://github.com/Rezwoan/git-claude-badge)
-4. 🎉 Merged PR [#132](https://github.com/Rezwoan/git-claude-badge/pull/132) in [Rezwoan/git-claude-badge](https://github.com/Rezwoan/git-claude-badge)
+1. 🎉 Merged PR [#3](https://github.com/Rezwoan/RepRush-web/pull/3) in [Rezwoan/RepRush-web](https://github.com/Rezwoan/RepRush-web)
+2. 💪 Opened PR [#3](https://github.com/Rezwoan/RepRush-web/pull/3) in [Rezwoan/RepRush-web](https://github.com/Rezwoan/RepRush-web)
+3. 🎉 Merged PR [#2](https://github.com/Rezwoan/RepRush-web/pull/2) in [Rezwoan/RepRush-web](https://github.com/Rezwoan/RepRush-web)
+4. 💪 Opened PR [#2](https://github.com/Rezwoan/RepRush-web/pull/2) in [Rezwoan/RepRush-web](https://github.com/Rezwoan/RepRush-web)
 <!--END_SECTION:activity-->
 
 <br/>
