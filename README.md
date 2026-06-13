@@ -33,9 +33,9 @@ _🕐 Last updated: Jun 13, 2026_
 
 | | |
 |---|---|
-| **🌐 [claude-auto-approve](https://github.com/Rezwoan/claude-auto-approve)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 | **🌐 [RepRush-web](https://github.com/Rezwoan/RepRush-web)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 |
-| **🌐 [TermPulse](https://github.com/Rezwoan/TermPulse)**<br/>University class companion app — Expo 52, TypeScript, Native<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [G.O.B.L.I.N](https://github.com/Rezwoan/G.O.B.L.I.N)**<br/>Guided Operation Bot for Looting, Invasion, and Navigation<br/>`Python` ⭐ 0 🍴 0 |
-| **🌐 [git-claude-badge](https://github.com/Rezwoan/git-claude-badge)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 | **🌐 [RepRush-Kotlin](https://github.com/Rezwoan/RepRush-Kotlin)**<br/>_No description_<br/>`Kotlin` ⭐ 0 🍴 0 |
+| **🌐 [ClassMate](https://github.com/Rezwoan/ClassMate)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [claude-auto-approve](https://github.com/Rezwoan/claude-auto-approve)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
+| **🌐 [RepRush-web](https://github.com/Rezwoan/RepRush-web)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [TermPulse](https://github.com/Rezwoan/TermPulse)**<br/>University class companion app — Expo 52, TypeScript, Native<br/>`TypeScript` ⭐ 0 🍴 0 |
+| **🌐 [G.O.B.L.I.N](https://github.com/Rezwoan/G.O.B.L.I.N)**<br/>Guided Operation Bot for Looting, Invasion, and Navigation<br/>`Python` ⭐ 0 🍴 0 | **🌐 [git-claude-badge](https://github.com/Rezwoan/git-claude-badge)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
