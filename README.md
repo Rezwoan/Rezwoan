@@ -33,9 +33,9 @@ _🕐 Last updated: Jun 23, 2026_
 
 | | |
 |---|---|
-| **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 | **🌐 [Adv-Programming-with-.net](https://github.com/Rezwoan/Adv-Programming-with-.net)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 |
-| **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [ClassMate](https://github.com/Rezwoan/ClassMate)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 |
-| **🌐 [claude-auto-approve](https://github.com/Rezwoan/claude-auto-approve)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 | **🌐 [RepRush-web](https://github.com/Rezwoan/RepRush-web)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 |
+| **🌐 [RoadVision](https://github.com/Rezwoan/RoadVision)**<br/>_No description_<br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 |
+| **🌐 [Adv-Programming-with-.net](https://github.com/Rezwoan/Adv-Programming-with-.net)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 | **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`TypeScript` ⭐ 0 🍴 0 |
+| **🌐 [ClassMate](https://github.com/Rezwoan/ClassMate)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 | **🌐 [claude-auto-approve](https://github.com/Rezwoan/claude-auto-approve)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
