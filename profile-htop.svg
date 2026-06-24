@@ -11,7 +11,7 @@
     <text x="20" y="30" class="green">$ htop --user Rezwoan</text>
     
     <text x="40" y="70">1 [<tspan class="green">|||               </tspan>] <tspan class="yellow"> 18.0%</tspan>  Tasks:    47 repos, 850 commits</text>
-    <text x="40" y="95">2 [<tspan class="green">||||||||          </tspan>] <tspan class="yellow"> 47.0%</tspan>  Uptime: 2248 days (Joined 2020)</text>
+    <text x="40" y="95">2 [<tspan class="green">||||||||          </tspan>] <tspan class="yellow"> 47.0%</tspan>  Uptime: 2249 days (Joined 2020)</text>
     <text x="40" y="120">3 [<tspan class="green">||||||||          </tspan>] <tspan class="yellow"> 43.0%</tspan>  Stars:     7 earned, 1 forks</text>
     
     <text x="20" y="150" class="cyan">--------------------------------------------------------------------------------</text>
