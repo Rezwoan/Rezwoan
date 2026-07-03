@@ -46,10 +46,10 @@ _🕐 Last updated: Jul 3, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#1](https://github.com/Rezwoan/rezwoan-portfolio/pull/1) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
-2. 💪 Opened PR [#1](https://github.com/Rezwoan/rezwoan-portfolio/pull/1) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
-3. 🎉 Merged PR [#3](https://github.com/Rezwoan/RepRush-web/pull/3) in [Rezwoan/RepRush-web](https://github.com/Rezwoan/RepRush-web)
-4. 💪 Opened PR [#3](https://github.com/Rezwoan/RepRush-web/pull/3) in [Rezwoan/RepRush-web](https://github.com/Rezwoan/RepRush-web)
+1. 🎉 Merged PR [#2](https://github.com/Rezwoan/rezwoan-portfolio/pull/2) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
+2. 💪 Opened PR [#2](https://github.com/Rezwoan/rezwoan-portfolio/pull/2) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
+3. 🎉 Merged PR [#1](https://github.com/Rezwoan/rezwoan-portfolio/pull/1) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
+4. 💪 Opened PR [#1](https://github.com/Rezwoan/rezwoan-portfolio/pull/1) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
 <!--END_SECTION:activity-->
 
 <br/>
