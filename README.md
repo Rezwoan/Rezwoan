@@ -46,10 +46,10 @@ _🕐 Last updated: Jul 10, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#2](https://github.com/Rezwoan/rezwoan-portfolio/pull/2) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
-2. 💪 Opened PR [#2](https://github.com/Rezwoan/rezwoan-portfolio/pull/2) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
-3. 🎉 Merged PR [#1](https://github.com/Rezwoan/rezwoan-portfolio/pull/1) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
-4. 💪 Opened PR [#1](https://github.com/Rezwoan/rezwoan-portfolio/pull/1) in [Rezwoan/rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)
+1. 🎉 Merged PR [#6](https://github.com/Rezwoan/CrisisConnect-Backend/pull/6) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
+2. 💪 Opened PR [#6](https://github.com/Rezwoan/CrisisConnect-Backend/pull/6) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
+3. 🎉 Merged PR [#5](https://github.com/Rezwoan/CrisisConnect-Backend/pull/5) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
+4. 🗣 Commented on [#5](https://github.com/Rezwoan/CrisisConnect-Backend/pull/5#issuecomment-4937825867) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
 <!--END_SECTION:activity-->
 
 <br/>
