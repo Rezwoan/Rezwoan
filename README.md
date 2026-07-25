@@ -29,12 +29,12 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-_🕐 Last updated: Jul 24, 2026_
+_🕐 Last updated: Jul 25, 2026_
 
 | | |
 |---|---|
-| **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 | **🌐 [ICT_Fest_Hackathon_Preliminary](https://github.com/Rezwoan/ICT_Fest_Hackathon_Preliminary)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
-| **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`TypeScript` ⭐ 0 🍴 0 |  |
+| **🌐 [nlp-mid-project-group-02](https://github.com/Rezwoan/nlp-mid-project-group-02)**<br/>Emotion detection — AIUB NLP mid-term project (Group 02): 3 <br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 |
+| **🌐 [ICT_Fest_Hackathon_Preliminary](https://github.com/Rezwoan/ICT_Fest_Hackathon_Preliminary)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 | **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`TypeScript` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
