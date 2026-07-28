@@ -33,8 +33,8 @@ _🕐 Last updated: Jul 28, 2026_
 
 | | |
 |---|---|
-| **🌐 [nlp-mid-project-group-02](https://github.com/Rezwoan/nlp-mid-project-group-02)**<br/>Emotion detection — AIUB NLP mid-term project (Group 02): 3 <br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [BloodBankDB](https://github.com/Rezwoan/BloodBankDB)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 |
-| **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 | **🌐 [ICT_Fest_Hackathon_Preliminary](https://github.com/Rezwoan/ICT_Fest_Hackathon_Preliminary)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
+| **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 | **🌐 [nlp-mid-project-group-02](https://github.com/Rezwoan/nlp-mid-project-group-02)**<br/>Emotion detection — AIUB NLP mid-term project (Group 02): 3 <br/>`Jupyter Notebook` ⭐ 0 🍴 0 |
+| **🌐 [BloodBankDB](https://github.com/Rezwoan/BloodBankDB)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 | **🌐 [ICT_Fest_Hackathon_Preliminary](https://github.com/Rezwoan/ICT_Fest_Hackathon_Preliminary)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
 | **🌐 [rezwoan-portfolio](https://github.com/Rezwoan/rezwoan-portfolio)**<br/>Portfolio website<br/>`TypeScript` ⭐ 0 🍴 0 |  |
 
 <!--END_SECTION:active-repos-->
