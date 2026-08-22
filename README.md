@@ -29,10 +29,11 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-_🕐 Last updated: Aug 21, 2026_
+_🕐 Last updated: Aug 22, 2026_
 
 | | |
 |---|---|
+| **🌐 [CrisisConnect-Frontend](https://github.com/Rezwoan/CrisisConnect-Frontend)**<br/>_No description_<br/>`Misc` ⭐ 0 🍴 0 | **🌐 [omarchy-setup](https://github.com/Rezwoan/omarchy-setup)**<br/>My Omarchy (Arch+Hyprland) setup — configs, keybindings, a n<br/>`Shell` ⭐ 1 🍴 0 |
 | **🌐 [RepRush-web](https://github.com/Rezwoan/RepRush-web)**<br/>Self-hostable gym-tracking PWA — NestJS + Next.js + SQLite, <br/>`Misc` ⭐ 0 🍴 0 | **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 |
 | **🌐 [nlp-mid-project-group-02](https://github.com/Rezwoan/nlp-mid-project-group-02)**<br/>Emotion detection — AIUB NLP mid-term project (Group 02): 3 <br/>`Jupyter Notebook` ⭐ 0 🍴 0 | **🌐 [BloodBankDB](https://github.com/Rezwoan/BloodBankDB)**<br/>_No description_<br/>`HTML` ⭐ 0 🍴 0 |
 
