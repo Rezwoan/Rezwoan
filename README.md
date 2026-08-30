@@ -47,9 +47,9 @@ _🕐 Last updated: Aug 30, 2026_
 
 <!--START_SECTION:activity-->
 1. 🚀 Published release [1.1.0](https://github.com/Rezwoan/Omarchy-PredatorSense/releases/tag/1.1.0) in [Rezwoan/Omarchy-PredatorSense](https://github.com/Rezwoan/Omarchy-PredatorSense)
-2. ❗ Opened issue [#3405](https://github.com/HANCORE-linux/omarchy-plugin-marketplace/issues/3405) in [HANCORE-linux/omarchy-plugin-marketplace](https://github.com/HANCORE-linux/omarchy-plugin-marketplace)
-3. ℹ️ Labeled issue [#2742](https://github.com/HANCORE-linux/omarchy-plugin-marketplace/issues/2742) in [HANCORE-linux/omarchy-plugin-marketplace](https://github.com/HANCORE-linux/omarchy-plugin-marketplace)
-4. ❗ Opened issue [#2742](https://github.com/HANCORE-linux/omarchy-plugin-marketplace/issues/2742) in [HANCORE-linux/omarchy-plugin-marketplace](https://github.com/HANCORE-linux/omarchy-plugin-marketplace)
+2. ❗ Opened issue [#3405](https://github.com/omacom/omarchy-plugin-marketplace/issues/3405) in [omacom/omarchy-plugin-marketplace](https://github.com/omacom/omarchy-plugin-marketplace)
+3. ℹ️ Labeled issue [#2742](https://github.com/omacom/omarchy-plugin-marketplace/issues/2742) in [omacom/omarchy-plugin-marketplace](https://github.com/omacom/omarchy-plugin-marketplace)
+4. ❗ Opened issue [#2742](https://github.com/omacom/omarchy-plugin-marketplace/issues/2742) in [omacom/omarchy-plugin-marketplace](https://github.com/omacom/omarchy-plugin-marketplace)
 <!--END_SECTION:activity-->
 
 <br/>
