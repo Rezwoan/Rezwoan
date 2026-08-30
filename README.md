@@ -33,9 +33,9 @@ _🕐 Last updated: Aug 30, 2026_
 
 | | |
 |---|---|
-| **🌐 [omarchy-setup](https://github.com/Rezwoan/omarchy-setup)**<br/>My Omarchy (Arch+Hyprland) setup — configs, keybindings, a n<br/>`Shell` ⭐ 1 🍴 0 | **🌐 [Omarchy-PredatorSense](https://github.com/Rezwoan/Omarchy-PredatorSense)**<br/>Omarchy omarchy-shell plugin: power/CPU/GPU/battery/keyboard<br/>`QML` ⭐ 2 🍴 0 |
-| **🌐 [Zero-Hunger](https://github.com/Rezwoan/Zero-Hunger)**<br/>_No description_<br/>`C#` ⭐ 0 🍴 0 | **🌐 [CrisisConnect-Frontend](https://github.com/Rezwoan/CrisisConnect-Frontend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 |
-| **🌐 [RepRush-web](https://github.com/Rezwoan/RepRush-web)**<br/>Self-hostable gym-tracking PWA — NestJS + Next.js + SQLite, <br/>`Misc` ⭐ 0 🍴 0 |  |
+| **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [Omarchy-PredatorSense](https://github.com/Rezwoan/Omarchy-PredatorSense)**<br/>Omarchy omarchy-shell plugin: power/CPU/GPU/battery/keyboard<br/>`QML` ⭐ 3 🍴 0 |
+| **🌐 [omarchy-setup](https://github.com/Rezwoan/omarchy-setup)**<br/>My Omarchy (Arch+Hyprland) setup — configs, keybindings, a n<br/>`Shell` ⭐ 1 🍴 0 | **🌐 [Zero-Hunger](https://github.com/Rezwoan/Zero-Hunger)**<br/>_No description_<br/>`C#` ⭐ 0 🍴 0 |
+| **🌐 [CrisisConnect-Frontend](https://github.com/Rezwoan/CrisisConnect-Frontend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [RepRush-web](https://github.com/Rezwoan/RepRush-web)**<br/>Self-hostable gym-tracking PWA — NestJS + Next.js + SQLite, <br/>`Misc` ⭐ 0 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
