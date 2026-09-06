@@ -46,10 +46,10 @@ _🕐 Last updated: Sep 6, 2026_
 > ⏱️ _Live tracking: Latest commits & PRs on GitHub_
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#7](https://github.com/Rezwoan/CrisisConnect-Backend/pull/7) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
-2. 💪 Opened PR [#7](https://github.com/Rezwoan/CrisisConnect-Backend/pull/7) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
-3. 🚀 Published release [1.1.0](https://github.com/Rezwoan/Omarchy-PredatorSense/releases/tag/1.1.0) in [Rezwoan/Omarchy-PredatorSense](https://github.com/Rezwoan/Omarchy-PredatorSense)
-4. ❗ Opened issue [#3405](https://github.com/omacom/omarchy-plugin-marketplace/issues/3405) in [omacom/omarchy-plugin-marketplace](https://github.com/omacom/omarchy-plugin-marketplace)
+1. 💪 Opened PR [#692](https://github.com/Evavic44/portfolio-ideas/pull/692) in [Evavic44/portfolio-ideas](https://github.com/Evavic44/portfolio-ideas)
+2. 🎉 Merged PR [#7](https://github.com/Rezwoan/CrisisConnect-Backend/pull/7) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
+3. 💪 Opened PR [#7](https://github.com/Rezwoan/CrisisConnect-Backend/pull/7) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
+4. 🚀 Published release [1.1.0](https://github.com/Rezwoan/Omarchy-PredatorSense/releases/tag/1.1.0) in [Rezwoan/Omarchy-PredatorSense](https://github.com/Rezwoan/Omarchy-PredatorSense)
 <!--END_SECTION:activity-->
 
 <br/>
