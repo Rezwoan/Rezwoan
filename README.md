@@ -33,9 +33,9 @@ _🕐 Last updated: Sep 26, 2026_
 
 | | |
 |---|---|
-| **🌐 [CrisisConnect](https://github.com/Rezwoan/CrisisConnect)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 | **🌐 [CrisisConnect-Frontend](https://github.com/Rezwoan/CrisisConnect-Frontend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 |
-| **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [ClassMate](https://github.com/Rezwoan/ClassMate)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 |
-| **🌐 [omarchy-setup](https://github.com/Rezwoan/omarchy-setup)**<br/>My Omarchy (Arch+Hyprland) setup — configs, keybindings, a n<br/>`Shell` ⭐ 1 🍴 0 | **🌐 [Omarchy-PredatorSense](https://github.com/Rezwoan/Omarchy-PredatorSense)**<br/>Omarchy omarchy-shell plugin: power/CPU/GPU/battery/keyboard<br/>`QML` ⭐ 3 🍴 1 |
+| **🌐 [dhaka-tesla-pool](https://github.com/Rezwoan/dhaka-tesla-pool)**<br/>Dhaka Tesla Pool -- ride-pooling MVP for the RoBenDevs Softw<br/>`Misc` ⭐ 0 🍴 0 | **🌐 [CrisisConnect](https://github.com/Rezwoan/CrisisConnect)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
+| **🌐 [CrisisConnect-Frontend](https://github.com/Rezwoan/CrisisConnect-Frontend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 |
+| **🌐 [ClassMate](https://github.com/Rezwoan/ClassMate)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 | **🌐 [omarchy-setup](https://github.com/Rezwoan/omarchy-setup)**<br/>My Omarchy (Arch+Hyprland) setup — configs, keybindings, a n<br/>`Shell` ⭐ 1 🍴 0 |
 
 <!--END_SECTION:active-repos-->
 
