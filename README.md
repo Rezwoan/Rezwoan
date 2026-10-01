@@ -29,13 +29,13 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-_🕐 Last updated: Sep 30, 2026_
+_🕐 Last updated: Oct 1, 2026_
 
 | | |
 |---|---|
 | **🌐 [dhaka-tesla-pool](https://github.com/Rezwoan/dhaka-tesla-pool)**<br/>Dhaka Tesla Pool -- ride-pooling MVP for the RoBenDevs Softw<br/>`Misc` ⭐ 0 🍴 0 | **🌐 [CrisisConnect](https://github.com/Rezwoan/CrisisConnect)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
 | **🌐 [CrisisConnect-Frontend](https://github.com/Rezwoan/CrisisConnect-Frontend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 | **🌐 [CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)**<br/>_No description_<br/>`TypeScript` ⭐ 0 🍴 0 |
-| **🌐 [ClassMate](https://github.com/Rezwoan/ClassMate)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 | **🌐 [omarchy-setup](https://github.com/Rezwoan/omarchy-setup)**<br/>My Omarchy (Arch+Hyprland) setup — configs, keybindings, a n<br/>`Shell` ⭐ 1 🍴 0 |
+| **🌐 [ClassMate](https://github.com/Rezwoan/ClassMate)**<br/>_No description_<br/>`TypeScript` ⭐ 1 🍴 0 |  |
 
 <!--END_SECTION:active-repos-->
 
