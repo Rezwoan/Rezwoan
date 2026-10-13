@@ -29,11 +29,11 @@ $ neofetch --profile username
 > 🚀 _Live sync: Repos updated in the last 30 days_
 
 <!--START_SECTION:active-repos-->
-_🕐 Last updated: Oct 12, 2026_
+_🕐 Last updated: Oct 13, 2026_
 
 | | |
 |---|---|
-| **🌐 [dhaka-tesla-pool](https://github.com/Rezwoan/dhaka-tesla-pool)**<br/>Dhaka Tesla Pool -- ride-pooling MVP for the RoBenDevs Softw<br/>`Misc` ⭐ 0 🍴 0 | **🌐 [CrisisConnect](https://github.com/Rezwoan/CrisisConnect)**<br/>_No description_<br/>`Python` ⭐ 0 🍴 0 |
+| **🌐 [dhaka-tesla-pool](https://github.com/Rezwoan/dhaka-tesla-pool)**<br/>Dhaka Tesla Pool -- ride-pooling MVP for the RoBenDevs Softw<br/>`Misc` ⭐ 0 🍴 0 |  |
 
 <!--END_SECTION:active-repos-->
 
