@@ -59,16 +59,10 @@
 <br/>
 
 <div align="center">
-  <img src="skins/connect.svg" alt="Let us build something together" width="100%"/>
+<a href="https://rezwoan.codes" target="_blank"><img src="skins/connect-top.svg" alt="Let us build something together" width="100%" align="top"/></a>
 </div>
-
 <div align="center">
-<a href="https://www.linkedin.com/in/din-muhammad-rezwoan-b4b87020a" target="_blank"><img src="skins/link-linkedin.svg" alt="LinkedIn" width="134"/></a>
-<a href="https://twitter.com/XRezwoan" target="_blank"><img src="skins/link-x.svg" alt="X" width="134"/></a>
-<a href="https://www.facebook.com/ager.id.hack.hoye.gase" target="_blank"><img src="skins/link-facebook.svg" alt="Facebook" width="134"/></a>
-<a href="https://www.instagram.com/din.muhammad.rezwoan" target="_blank"><img src="skins/link-instagram.svg" alt="Instagram" width="134"/></a>
-<a href="https://wa.me/8801643751861" target="_blank"><img src="skins/link-whatsapp.svg" alt="WhatsApp" width="134"/></a>
-<a href="https://rezwoan.codes" target="_blank"><img src="skins/link-portfolio.svg" alt="Portfolio" width="134"/></a>
+<a href="https://www.linkedin.com/in/din-muhammad-rezwoan-b4b87020a" target="_blank"><img src="skins/connect-linkedin.svg" alt="LinkedIn" width="18.56%" align="top"/></a><a href="https://twitter.com/XRezwoan" target="_blank"><img src="skins/connect-x.svg" alt="X" width="15.70%" align="top"/></a><a href="https://www.facebook.com/ager.id.hack.hoye.gase" target="_blank"><img src="skins/connect-facebook.svg" alt="Facebook" width="15.70%" align="top"/></a><a href="https://www.instagram.com/din.muhammad.rezwoan" target="_blank"><img src="skins/connect-instagram.svg" alt="Instagram" width="15.70%" align="top"/></a><a href="https://wa.me/8801643751861" target="_blank"><img src="skins/connect-whatsapp.svg" alt="WhatsApp" width="15.70%" align="top"/></a><a href="https://rezwoan.codes" target="_blank"><img src="skins/connect-portfolio.svg" alt="Portfolio" width="18.56%" align="top"/></a>
 </div>
 
 <br/>

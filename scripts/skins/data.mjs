@@ -1,3 +1,4 @@
+import { lc } from "./lib.mjs";
 // Fetches everything the cards draw. Needs a token that can see private work (PROFILE_TOKEN: classic PAT with `repo` + `read:user`),
 // otherwise private contributions are silently left out. Run: GITHUB_TOKEN=$(gh auth token) node scripts/skins/gen.mjs
 const gql = async (query, variables = {}) => {
@@ -39,6 +40,34 @@ function timeline(events) {
   return [...rows.values()].sort((a, b) => (a.ts < b.ts ? 1 : -1));
 }
 
+// Commits per day, tagged with the repo's main language. Repo names are used only to fetch history and are never kept.
+async function dayLanguages(repos, login, since, calendar) {
+  // 8 repositories at a time, to stay clear of GitHub's secondary rate limit
+  const queue = [...repos], per = async (r) => {
+    const out = [];
+    for (let page = 1; page <= 12; page++) {
+      const j = await rest(`/repos/${r.owner}/${r.name}/commits?author=${login}&since=${since}&per_page=100&page=${page}`);
+      if (!Array.isArray(j)) break;
+      for (const c of j) out.push({ ts: new Date(c.commit.author.date).getTime(), lang: r.lang });
+      if (j.length < 100) break;
+    }
+    return out;
+  };
+  const raw = [];
+  await Promise.all(Array.from({ length: 8 }, async () => { for (let r; (r = queue.shift()); ) raw.push(...(await per(r))); }));
+  const dayOf = (ts, off) => new Date(ts + off * 36e5).toISOString().slice(0, 10);
+  // the calendar's day boundary is the profile's timezone; pick the offset that best agrees with it
+  let best = 0, bestMiss = Infinity;
+  for (const off of [0, 6, 5.5, 1, 2, 3, 4, -5, -8]) { const miss = raw.filter((c) => !(calendar.get(dayOf(c.ts, off)) > 0)).length; if (miss < bestMiss) { bestMiss = miss; best = off; } }
+  const days = new Map(), total = new Map();
+  for (const c of raw) {
+    const day = dayOf(c.ts, best), key = c.lang?.name ?? "Other", m = days.get(day) ?? new Map();
+    const e = m.get(key) ?? { name: key, color: lc(key, c.lang?.color), n: 0 }; e.n++; m.set(key, e); days.set(day, m);
+    const t = total.get(key) ?? { name: key, color: e.color, n: 0 }; t.n++; total.set(key, t);
+  }
+  return { days, total: [...total.values()].sort((a, b) => b.n - a.n), offset: best, commits: raw.length };
+}
+
 export async function loadData(login) {
   const head = await gql(`query($u:String!){viewer{login} user(login:$u){createdAt}}`, { u: login });
   const since = new Date(head.user.createdAt).getUTCFullYear(), now = new Date().getUTCFullYear();
@@ -48,8 +77,9 @@ export async function loadData(login) {
     login name bio location avatarUrl(size:200) followers{totalCount} following{totalCount}
     all:repositories(ownerAffiliations:OWNER){totalCount} pub:repositories(ownerAffiliations:OWNER,privacy:PUBLIC){totalCount} priv:repositories(ownerAffiliations:OWNER,privacy:PRIVATE){totalCount}
     repositories(first:100,ownerAffiliations:OWNER,isFork:false,privacy:PUBLIC,orderBy:{field:PUSHED_AT,direction:DESC}){nodes{name description stargazerCount forkCount pushedAt primaryLanguage{name color} languages(first:6,orderBy:{field:SIZE,direction:DESC}){edges{size node{name color}}}}}
+    allRepos:repositories(first:100,ownerAffiliations:OWNER,isFork:false){nodes{languages(first:6,orderBy:{field:SIZE,direction:DESC}){edges{size node{name color}}}}}
     privRecent:repositories(first:30,ownerAffiliations:OWNER,privacy:PRIVATE,orderBy:{field:PUSHED_AT,direction:DESC}){nodes{pushedAt}}
-    cur:contributionsCollection{commitContributionsByRepository(maxRepositories:25){contributions{totalCount} repository{name isPrivate owner{login}}} contributionCalendar{totalContributions weeks{contributionDays{contributionCount date}}}}
+    cur:contributionsCollection{commitContributionsByRepository(maxRepositories:100){contributions{totalCount} repository{name isPrivate owner{login} primaryLanguage{name color}}} contributionCalendar{totalContributions weeks{contributionDays{contributionCount date}}}}
     ${ys}}}`, { u: login });
   const u = D.user;
   const sum = (k) => years.reduce((s, y) => s + u["y" + y][k], 0);
@@ -58,13 +88,13 @@ export async function loadData(login) {
   const thisYear = u["y" + now];
 
   const lang = new Map();
-  for (const rp of u.repositories.nodes) for (const e of rp.languages.edges) { const o = lang.get(e.node.name) ?? { name: e.node.name, color: e.node.color || "#8b949e", size: 0 }; o.size += e.size; lang.set(e.node.name, o); }
+  for (const rp of u.allRepos.nodes) for (const e of rp.languages.edges) { const o = lang.get(e.node.name) ?? { name: e.node.name, color: lc(e.node.name, e.node.color), size: 0 }; o.size += e.size; lang.set(e.node.name, o); }
   const langs = [...lang.values()].sort((a, b) => b.size - a.size), tot = langs.reduce((s, l) => s + l.size, 0) || 1;
   langs.forEach((l) => (l.pct = (l.size / tot) * 100));
 
   // public, own-account repos only: private/org repo names must never reach a public image (fail closed on undefined)
   const commits = new Map(u.cur.commitContributionsByRepository.filter((x) => x.repository.isPrivate === false && x.repository.owner.login === login).map((x) => [x.repository.name, x.contributions.totalCount]));
-  const repos = u.repositories.nodes.map((r) => ({ ...r, commits: commits.get(r.name) ?? 0 }));
+  const repos = u.repositories.nodes.map((r) => ({ ...r, primaryLanguage: r.primaryLanguage && { ...r.primaryLanguage, color: lc(r.primaryLanguage.name, r.primaryLanguage.color) }, commits: commits.get(r.name) ?? 0 }));
 
   let cur = 0, best = 0, run = 0;
   for (const d of days) { run = d.contributionCount ? run + 1 : 0; best = Math.max(best, run); }
@@ -76,10 +106,12 @@ export async function loadData(login) {
   for (let i = 11; i >= 0; i--) { const d = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth() - i, 1)); months.push({ key: d.toISOString().slice(0, 7), label: d.toLocaleString("en-US", { month: "short", timeZone: "UTC" }), n: 0 }); }
   for (const d of days) { const m = months.find((x) => x.key === d.date.slice(0, 7)); if (m) m.n += d.contributionCount; }
 
+  const calendar = new Map(days.map((x) => [x.date, x.contributionCount]));
+  const mix = await dayLanguages(u.cur.commitContributionsByRepository.map((x) => ({ owner: x.repository.owner.login, name: x.repository.name, lang: x.repository.primaryLanguage })), login, days[0].date + "T00:00:00Z", calendar);
   const events = timeline(await rest(`/users/${login}/events?per_page=100`));
   const privActive = u.privRecent.nodes.filter((r) => Date.now() - new Date(r.pushedAt) < 30 * 864e5).length;
   return {
-    events, privActive,
+    events, privActive, dayLangs: mix.days, cityLangs: mix.total, repoLangCount: u.allRepos.nodes.length,
     login: u.login, name: u.name || u.login, bio: u.bio || "", location: u.location || "", since, avatarUrl: u.avatarUrl,
     followers: u.followers.totalCount, following: u.following.totalCount,
     repoTotal: u.all.totalCount, repoPublic: u.pub.totalCount, repoPrivate: u.priv.totalCount,

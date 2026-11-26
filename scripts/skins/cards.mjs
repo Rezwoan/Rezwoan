@@ -1,3 +1,4 @@
+import { LINKS, LINK_DEFS, tile } from "./links.mjs";
 import { esc, trunc, compact, num, MONO, SANS, C, HEAT, level, text, label, wrap, card, header, rng } from "./lib.mjs";
 
 const W = 840;
@@ -151,7 +152,7 @@ export function languages(d) {
   const seg = rows.map((l, i) => { const w = (l.pct / 100) * bw, r = `<rect x="${x.toFixed(1)}" y="92" width="${Math.max(w - 2, 1).toFixed(1)}" height="14" fill="${esc(l.color)}"></rect>`; x += w; return r; }).join("");
   const cw = bw / 3, list = rows.map((l, i) => { const cx = bx + (i % 3) * cw, cy = 140 + Math.floor(i / 3) * 34; return `<circle cx="${cx + 6}" cy="${cy - 4}" r="5" fill="${esc(l.color)}"/>${text(cx + 20, cy, trunc(l.name, 18), { size: 13.5, weight: 500 })}${text(cx + cw - 24, cy, `${l.pct.toFixed(1)}%`, { size: 12.5, fill: C.mute, anchor: "end", font: MONO })}`; }).join("");
   const h = 140 + Math.ceil(rows.length / 3) * 34 + 6;
-  return card(W, h, `${header(W, "languages", "Languages", `by code written across ${d.repoPublic} public repositories`)}<clipPath id="lb"><rect x="${bx}" y="92" width="${bw}" height="14" rx="7"><animate attributeName="width" values="0;${bw};${bw};0" keyTimes="0;.14;.9;1" dur="12s" repeatCount="indefinite"/></rect></clipPath><g clip-path="url(#lb)"><rect x="${bx}" y="92" width="${bw}" height="14" fill="#161b22"/>${seg}</g>${list}`);
+  return card(W, h, `${header(W, "languages", "Languages", `by code written across ${d.repoLangCount} repositories, public and private`)}<clipPath id="lb"><rect x="${bx}" y="92" width="${bw}" height="14" rx="7"><animate attributeName="width" values="0;${bw};${bw};0" keyTimes="0;.14;.9;1" dur="12s" repeatCount="indefinite"/></rect></clipPath><g clip-path="url(#lb)"><rect x="${bx}" y="92" width="${bw}" height="14" fill="#161b22"/>${seg}</g>${list}`);
 }
 
 const ago = (iso) => { const d = Math.max(0, Math.round((Date.now() - new Date(iso)) / 864e5)); return d < 1 ? "today" : d < 14 ? `${d} days ago` : d < 60 ? `${Math.round(d / 7)} weeks ago` : `${Math.round(d / 30)} months ago`; };
@@ -160,7 +161,7 @@ export function projects(d) {
   const pick = [...d.repos].filter((r) => r.name !== d.login).sort((a, b) => b.commits - a.commits || b.stargazerCount - a.stargazerCount || new Date(b.pushedAt) - new Date(a.pushedAt)).slice(0, 6);
   const cw = (W - 56 - 12) / 2, ch = 108;
   const cards = pick.map((p, i) => {
-    const x = 28 + (i % 2) * (cw + 12), y = 86 + Math.floor(i / 2) * (ch + 12), desc = p.description ? wrap(p.description, 58, 2) : [`Last push ${ago(p.pushedAt)}`], col = p.primaryLanguage?.color || C.mute;
+    const x = 28 + (i % 2) * (cw + 12), y = 86 + Math.floor(i / 2) * (ch + 12), desc = p.description ? wrap(p.description, 58, 2) : ["Public repository"], col = p.primaryLanguage?.color || C.mute;
     return `<g>
 <rect x="${x}" y="${y}" width="${cw}" height="${ch}" rx="14" fill="#151a24" stroke="#232b38"/>
 ${icon("repo", x + 16, y + 17, C.blue)}${text(x + 40, y + 30, trunc(p.name, 30), { size: 14.5, fill: C.blue, weight: 700 })}
@@ -186,44 +187,60 @@ export function city(d) {
   const a = 9.2, b = a / 2, HMAX = 92, ox = 258 + 6 * a, oy = 112; // a/b = half tile width/height
   const P = (u, v) => [ox + (u - v) * a, oy + (u + v) * b];
   const blocks = [];
-  wk.forEach((col, u) => col.forEach((day, k) => { const v = u === 0 ? k + first : k; if (v > 6) return; blocks.push({ u, v, n: day.contributionCount }); }));
+  wk.forEach((col, u) => col.forEach((day, k) => { const v = u === 0 ? k + first : k; if (v > 6) return; blocks.push({ u, v, n: day.contributionCount, date: day.date }); }));
   blocks.sort((p, q) => p.u + p.v - (q.u + q.v) || p.u - q.u);
   const f = (n) => n.toFixed(1);
-  // ground plate under the whole strip
   const g0 = P(-0.5, -0.5), g1 = P(wk.length - 0.5, -0.5), g2 = P(wk.length - 0.5, 6.5), g3 = P(-0.5, 6.5);
-  const plate = `<polygon points="${[g0, g1, g2, g3].map((p) => p.map(f).join(",")).join(" ")}" fill="#0a2a2c" stroke="#14504f" stroke-width="1"/>`;
-  const T = 14, span = wk.length + 6;
-  const shapes = blocks.map(({ u, v, n }) => {
-    const [sx, sy] = P(u, v), t = n / max, h = n ? 3 + Math.sqrt(t) * HMAX : 0;
-    if (!n) return `<polygon points="${f(sx)},${f(sy - b)} ${f(sx + a)},${f(sy)} ${f(sx)},${f(sy + b)} ${f(sx - a)},${f(sy)}" fill="#0f3a3b" stroke="#0a2a2c" stroke-width=".6"/>`;
-    const base = mix("#1f9e8a", "#9ff5df", Math.sqrt(t)), left = shade(base, 0.74), right = shade(base, 0.52), st = 0.03 + 0.34 * ((u + v) / span), kt = [0, st, st + 0.07, 0.93, 0.97, 1].map((x) => x.toFixed(3)).join(";");
+  const plate = `<polygon points="${[g0, g1, g2, g3].map((p) => p.map(f).join(",")).join(" ")}" fill="#101826" stroke="#1d2a3a" stroke-width="1"/>`;
+  const T = 14, span = wk.length + 6, NEUTRAL = "#6b7686";
+  // a day's block is stacked from the languages committed that day, biggest share at the bottom
+  // 9 named languages (the top 8, then Rust pinned 9th); every other language is folded into a grey "Others"
+  const rank = d.cityLangs.filter((l) => l.name !== "Other"), rust = rank.find((l) => l.name === "Rust");
+  const named = [...rank.filter((l) => l.name !== "Rust").slice(0, 8), ...(rust ? [rust] : [])], isNamed = new Set(named.map((l) => l.name)), restAll = d.cityLangs.filter((l) => !isNamed.has(l.name)), rest = restAll.filter((l) => l.name !== "Other");
+  // a day's block is stacked from the languages committed that day: grey (others) at the base, then the biggest named share up
+  const segs = (date) => { const m = d.dayLangs.get(date); if (!m) return [[NEUTRAL, 1]]; let gray = 0; const l = []; for (const x of m.values()) isNamed.has(x.name) ? l.push([x.color, x.n]) : (gray += x.n); l.sort((p, q) => q[1] - p[1]); if (gray) l.unshift([NEUTRAL, gray]); const t = l.reduce((s, x) => s + x[1], 0); return l.map(([col, n]) => [col, n / t]); };
+  const shapes = blocks.map(({ u, v, n, date }) => {
+    const [sx, sy] = P(u, v), h = n ? 3 + Math.sqrt(n / max) * HMAX : 0;
+    if (!n) return `<polygon points="${f(sx)},${f(sy - b)} ${f(sx + a)},${f(sy)} ${f(sx)},${f(sy + b)} ${f(sx - a)},${f(sy)}" fill="#161f2c" stroke="#0e1522" stroke-width=".6"/>`;
+    let y0 = 0, faces = "", top = NEUTRAL;
+    for (const [col, share] of segs(date)) {
+      const y1 = y0 + h * share; top = col;
+      faces += `<polygon points="${f(-a)},${f(-y1)} 0,${f(b - y1)} 0,${f(b - y0)} ${f(-a)},${f(-y0)}" fill="${shade(col, 0.74)}"/><polygon points="${f(a)},${f(-y1)} 0,${f(b - y1)} 0,${f(b - y0)} ${f(a)},${f(-y0)}" fill="${shade(col, 0.5)}"/>`;
+      y0 = y1;
+    }
+    const st = 0.03 + 0.34 * ((u + v) / span), kt = [0, st, st + 0.07, 0.93, 0.97, 1].map((x) => x.toFixed(3)).join(";");
     // every block grows from the ground in a wave along the strip, holds, drops, repeats; base (no animation) is the full city
-    return `<g transform="translate(${f(sx)},${f(sy)})"><g><animateTransform attributeName="transform" type="scale" values="1 .001;1 .001;1 1;1 1;1 .001;1 .001" keyTimes="${kt}" calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1" dur="${T}s" repeatCount="indefinite"/><polygon points="${f(-a)},${f(-h)} 0,${f(b - h)} 0,${f(b)} ${f(-a)},0" fill="${left}"/><polygon points="${f(a)},${f(-h)} 0,${f(b - h)} 0,${f(b)} ${f(a)},0" fill="${right}"/><polygon points="0,${f(-b - h)} ${f(a)},${f(-h)} 0,${f(b - h)} ${f(-a)},${f(-h)}" fill="${base}"/></g></g>`;
+    return `<g transform="translate(${f(sx)},${f(sy)})"><g><animateTransform attributeName="transform" type="scale" values="1 .001;1 .001;1 1;1 1;1 .001;1 .001" keyTimes="${kt}" calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1" dur="${T}s" repeatCount="indefinite"/>${faces}<polygon points="0,${f(-b - h)} ${f(a)},${f(-h)} 0,${f(b - h)} ${f(-a)},${f(-h)}" fill="${mix(top, "#ffffff", 0.16)}"/></g></g>`;
   }).join("");
   const active = d.days.filter((x) => x.contributionCount).length, busy = new Date(d.busy.date + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
-  const [sx0, sy0] = P(0, 3), [sx1, sy1] = P(wk.length - 1, 3);
   const fmt = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" }).toUpperCase();
-  const H = 412;
-  const left = `${label(36, 64, "contribution city", "#5eead4")}${text(36, 118, compact(d.year.total), { size: 56, weight: 800, fill: "#d7fff6" })}${text(36, 146, "contributions in the last year", { size: 14, fill: "#8fe9d6", weight: 600 })}
-${text(36, 186, `${active} active days`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}${text(36, 208, `Busiest day: ${d.busy.contributionCount} (${busy})`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}${text(36, 230, `${d.streak} day current streak`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}
-<rect x="36" y="252" width="172" height="24" rx="12" fill="#0b3b36" stroke="#1d7a6c"/>${icon("lock", 46, 256, "#5eead4")}${text(68, 268, "includes private work", { size: 11.5, fill: "#8fe9d6" })}`;
-  const body = `<defs><linearGradient id="citybg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d3d3b"/><stop offset="1" stop-color="#08181f"/></linearGradient><clipPath id="cc"><rect width="${W}" height="${H}" rx="20"/></clipPath></defs><g clip-path="url(#cc)"><rect width="${W}" height="${H}" fill="url(#citybg)"/>${left}${plate}${shapes}${sheen(W, H, 9)}
-${text(W - 28, H - 14, `${fmt(d.days[0].date)}  →  ${fmt(d.days[d.days.length - 1].date)}  ·  one block per day, taller = more contributions`, { size: 11, fill: "#7cc7b8", anchor: "end", font: MONO })}</g><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="20" fill="none" stroke="#1d5a52"/>`;
+  const H = 440, tot = d.cityLangs.reduce((s, x) => s + x.n, 0) || 1, pct = (n) => `${Math.round((n / tot) * 100)}%`;
+  const legend = named.map((l, i) => { const x = 36 + (i % 3) * 170, y = 330 + Math.floor(i / 3) * 22; return `<circle cx="${x + 5}" cy="${y - 4}" r="5" fill="${esc(l.color)}"/>${text(x + 16, y, trunc(l.name, 16), { size: 12, fill: C.text })}${text(x + 150, y, pct(l.n), { size: 11, fill: C.dim, anchor: "end", tnum: true })}`; }).join("");
+  const noLang = d.days.some((x) => x.contributionCount && !d.dayLangs.has(x.date)), others = [...rest.map((l) => l.name), ...(rank.length < d.cityLangs.length ? ["repos with no language"] : []), ...(noLang ? ["PR and review days"] : [])];
+  const othersLine = `<rect x="36" y="${H - 42}" width="22" height="4" rx="2" fill="${NEUTRAL}"/>${text(66, H - 37, `Others ${pct(restAll.reduce((s, x) => s + x.n, 0))}  ·  ${trunc(others.join(", "), 105)}`, { size: 11, fill: C.mute })}`;
+  const info = { size: 13.5, fill: "#c9d1d9", weight: 500 };
+  const left = `${label(36, 56, "contribution city")}${text(36, 118, compact(d.year.total), { size: 56, weight: 700, ls: -2, tnum: true })}${text(36, 146, "contributions in the last year", { size: 14, fill: C.mute, weight: 500 })}
+${text(36, 186, `${active} active days`, info)}${text(36, 208, `Busiest day: ${d.busy.contributionCount} (${busy})`, info)}${text(36, 230, `${d.streak} day current streak`, info)}
+<rect x="36" y="248" width="176" height="26" rx="13" fill="${C.green}" fill-opacity=".12" stroke="${C.green}" stroke-opacity=".35"/>${icon("lock", 47, 253, C.green)}${text(69, 265, "includes private work", { size: 12, fill: C.green, weight: 500 })}
+${label(36, 304, "languages committed")}${legend}${othersLine}`;
+  const body = `<defs><linearGradient id="citybg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#131a26"/><stop offset="1" stop-color="#080b12"/></linearGradient><clipPath id="cc"><rect width="${W}" height="${H}" rx="20"/></clipPath></defs><g clip-path="url(#cc)"><rect width="${W}" height="${H}" fill="url(#citybg)"/>${left}${plate}${shapes}${sheen(W, H, 9)}
+${text(W - 28, H - 14, `${fmt(d.days[0].date)}  →  ${fmt(d.days[d.days.length - 1].date)}  ·  one block per day  ·  height = contributions  ·  colour = languages committed`, { size: 11, fill: C.dim, anchor: "end" })}</g><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="20" fill="none" stroke="#232b38"/>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img">${body}</svg>\n`;
 }
 
 // 7. NOW -----------------------------------------------------------------------------------------------------------------
 export function now(d) {
   const month = 30 * 864e5, pubRecent = d.repos.filter((r) => r.name !== d.login && Date.now() - new Date(r.pushedAt) < month).length;
-  const active = d.privActive + pubRecent, recent = d.repos.filter((r) => r.name !== d.login).sort((a, b) => new Date(b.pushedAt) - new Date(a.pushedAt)).slice(0, 3);
-  const banner = `<rect x="28" y="88" width="${W - 56}" height="52" rx="10" fill="#0e2a17" stroke="#1d5a30"/><circle cx="54" cy="114" r="5" fill="${C.neon}"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;.35;1" dur="2s" repeatCount="indefinite"/></circle>${text(76, 110, `${active} repositories had pushes in the last 30 days`, { size: 15, weight: 700, fill: "#aff5b4" })}${text(76, 128, `${d.privActive} private and ${pubRecent} public, so most of the work is not visible here`, { size: 12, fill: "#7ee787" })}`;
+  const n30 = d.days.slice(-30).reduce((s, x) => s + x.contributionCount, 0), last = d.events[0]?.ts, recent = d.repos.filter((r) => r.name !== d.login).sort((a, b) => new Date(b.pushedAt) - new Date(a.pushedAt)).slice(0, 3);
+  const sub = `${d.privActive} private repositories pushed to in 30 days${pubRecent ? `, ${pubRecent} public` : ""}  ·  ${num(n30)} contributions  ·  ${last ? `last activity ${ago2(last)}` : "active this week"}`;
+  const banner = `<rect x="28" y="88" width="${W - 56}" height="56" rx="14" fill="${C.green}" fill-opacity=".1" stroke="${C.green}" stroke-opacity=".35"/><circle cx="54" cy="116" r="5" fill="${C.green}"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;.35;1" dur="2s" repeatCount="indefinite"/></circle>${text(76, 112, "Actively building in private repositories", { size: 15, weight: 700, fill: "#9be9a8", ls: -0.2 })}${text(76, 131, sub, { size: 12, fill: C.mute, tnum: true })}`;
   const rows = recent.map((p, i) => {
-    const y = 176 + i * 58, col = p.primaryLanguage?.color || C.mute, lang = p.primaryLanguage?.name;
+    const y = 196 + i * 58, col = p.primaryLanguage?.color || C.mute, lang = p.primaryLanguage?.name;
     return `<rect x="28" y="${y}" width="${W - 56}" height="48" rx="14" fill="#151a24" stroke="#232b38"/>${icon("repo", 44, y + (p.description ? 12 : 16), C.blue)}
 ${text(68, y + (p.description ? 21 : 29), trunc(p.name, 28), { size: 14, weight: 700, fill: C.blue })}${p.description ? text(68, y + 38, trunc(p.description, 66), { size: 11.5, fill: C.mute }) : ""}
-${lang ? `<circle cx="${W - 232}" cy="${y + 24}" r="5" fill="${esc(col)}"/>${text(W - 220, y + 28, lang, { size: 12, fill: C.text })}` : ""}${text(W - 44, y + 28, `pushed ${ago2(p.pushedAt)}`, { size: 12, fill: C.mute, anchor: "end" })}`;
+${lang ? `<circle cx="${W - 120}" cy="${y + 24}" r="5" fill="${esc(col)}"/>${text(W - 108, y + 28, lang, { size: 12, fill: C.text })}` : ""}`;
   }).join("");
-  return card(W, 176 + recent.length * 58 + 18, `${header(W, "now", "Currently working on", "live from the GitHub API")}${banner}${label(28, 164, "latest public repositories", C.mute)}${rows}`);
+  return card(W, 196 + recent.length * 58 + 18, `${header(W, "now", "Currently working on", "live from the GitHub API")}${banner}${label(28, 176, "public projects", C.mute)}${rows}`);
 }
 
 // 8. RECENT ACTIVITY -----------------------------------------------------------------------------------------------------
@@ -246,7 +263,7 @@ export function timeline(d) {
 export function about(d) {
   const facts = [
     ["cap", "Education", "CS student at AIUB", C.blue], ["pin", "Location", d.location || "Dhaka, Bangladesh", C.pink], ["code", "Focus", "Full-stack web and backend", C.green],
-    ["term", "Daily drivers", "VS Code, NeoVim, Linux", C.orange], ["sprout", "Journey", "Learning since 2021, shipping since 2023", C.yellow], ["globe", "Portfolio", "rezwoan.codes", C.purple],
+    ["term", "Daily drivers", "VS Code, NeoVim, Linux", C.orange], ["sprout", "Learning since 2021", "Shipping since 2023", C.yellow], ["globe", "Portfolio", "rezwoan.codes", C.purple],
   ];
   const tw = (W - 56 - 24) / 3, th = 88;
   const t = facts.map(([ic, k, v, col], i) => { const x = 28 + (i % 3) * (tw + 12), y = 122 + Math.floor(i / 3) * (th + 12), lines = wrap(v, 26, 2);
@@ -274,7 +291,12 @@ export function techStack() {
   return card(W, 92 + STACK.length * rowH + 14, `${header(W, "tech stack", "Tools I build with", "languages, frameworks, data and daily tools")}${rows}`);
 }
 
-// 10. CONNECT HEADER -----------------------------------------------------------------------------------------------------
-export function connect() {
-  return card(W, 92, `${header(W, "connect", "Let's build something together", "rezwoan.codes")}`);
+// 10. CONNECT: one card with the buttons inside it. A README can only link an <img>, so the card is cut into a top piece
+// and one slice per button; every slice is the same card cropped with viewBox, so they join with no visible seams.
+export function connectParts() {
+  const bw = 124, step = 132, y0 = 96, H = 166, TOP = 92;
+  const full = card(W, H, header(W, "connect", "Let's build something together", "rezwoan.codes") + LINKS.map((l, i) => tile(l, 28 + i * step, y0, bw)).join(""), LINK_DEFS);
+  const cut = (x, y, w, h) => full.replace(`width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"`, `width="${w}" height="${h}" viewBox="${x} ${y} ${w} ${h}"`);
+  const xs = [0, ...LINKS.slice(1).map((_, i) => 28 + (i + 1) * step - 4), W]; // cut through the middle of each 8px gap
+  return [["top", cut(0, 0, W, TOP)], ...LINKS.map((l, i) => [l[0], cut(xs[i], TOP, xs[i + 1] - xs[i], H - TOP)])];
 }
