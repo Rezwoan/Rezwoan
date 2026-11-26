@@ -7,7 +7,7 @@ import { LINKS, button } from "./links.mjs";
 
 const login = process.argv[2] || process.env.GITHUB_REPOSITORY_OWNER || "Rezwoan";
 const out = process.argv[3] || "skins";
-const CARDS = { hero: K.hero, stats: K.stats, activity: K.activity, languages: K.languages, projects: K.projects, city: K.city, now: K.now, timeline: K.timeline };
+const CARDS = { hero: K.hero, about: K.about, stack: K.techStack, connect: K.connect, stats: K.stats, activity: K.activity, languages: K.languages, projects: K.projects, city: K.city, now: K.now, timeline: K.timeline };
 
 const d = await loadData(login);
 if (d.hidden > 0) { console.error(`Token cannot see ${d.hidden} private contributions; use a PAT with repo + read:user. Not writing.`); process.exit(2); }

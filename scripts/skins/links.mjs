@@ -13,7 +13,7 @@ const TILE = { in: "#0a66c2", x: "#111", f: "#1877f2", ig: "url(#ig)", wa: "#25d
 
 export const LINKS = [
   ["linkedin", "LinkedIn", "Connect", "in"], ["x", "X", "@XRezwoan", "x"], ["facebook", "Facebook", "Follow", "f"],
-  ["instagram", "Instagram", "Follow", "ig"], ["whatsapp", "WhatsApp", "Message", "wa"], ["portfolio", "Portfolio", "rezwoan.me", "web"],
+  ["instagram", "Instagram", "Follow", "ig"], ["whatsapp", "WhatsApp", "Message", "wa"], ["portfolio", "Portfolio", "rezwoan.codes", "web"],
 ];
 
 export function button([, name, sub, g]) {
