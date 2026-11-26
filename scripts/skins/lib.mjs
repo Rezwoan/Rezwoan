@@ -10,7 +10,7 @@ export const SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue
 export const C = { bg: "#0a0c12", card: "#11151d", line: "#222a37", text: "#f5f5f7", mute: "#a1a8b3", dim: "#7b8494", green: "#30d158", neon: "#30d158", blue: "#4d9dff", purple: "#bf5af2", orange: "#ff9f0a", pink: "#ff6482", yellow: "#ffd60a" };
 export const HEAT = ["#171c26", "#12402a", "#17703a", "#25a84e", "#30d158"];
 // language -> the colour of its logo / brand, so a colour is recognisable on sight. Anything unlisted keeps GitHub's colour.
-const LANG = { TypeScript: "#3178C6", JavaScript: "#F7DF1E", Python: "#FFD43B", Go: "#00ADD8", PHP: "#777BB4", Rust: "#DEA584", Kotlin: "#7F52FF", HTML: "#E34F26", CSS: "#2965F1", SCSS: "#CC6699", "Jupyter Notebook": "#F37626", Shell: "#4EAA25", Blade: "#F7523F", "C++": "#659AD2", C: "#A8B9CC", "C#": "#9B4F96", Java: "#ED8B00", Ruby: "#CC342D", Swift: "#F05138", Dart: "#0175C2", Dockerfile: "#2496ED", Vue: "#42B883", QML: "#41CD52", TeX: "#3D9970", Batchfile: "#8B949E" };
+const LANG = { TypeScript: "#3178C6", JavaScript: "#F7DF1E", Python: "#FFC331", Go: "#00ADD8", PHP: "#777BB4", Rust: "#DEA584", Kotlin: "#7F52FF", HTML: "#E34F26", CSS: "#2965F1", SCSS: "#CC6699", "Jupyter Notebook": "#F37626", Shell: "#4EAA25", Blade: "#F7523F", "C++": "#659AD2", C: "#A8B9CC", "C#": "#9B4F96", Java: "#ED8B00", Ruby: "#CC342D", Swift: "#F05138", Dart: "#0175C2", Dockerfile: "#2496ED", Vue: "#42B883", QML: "#41CD52", TeX: "#3D9970", Batchfile: "#8B949E" };
 export const lc = (name, fallback) => LANG[name] ?? fallback ?? "#8b949e";
 export const level = (n, max) => (n === 0 ? 0 : Math.min(4, 1 + Math.floor((n / Math.max(max, 1)) * 3.999)));
 
