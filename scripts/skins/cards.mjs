@@ -129,35 +129,39 @@ ${text(x + cw - 16, y + ch - 14, [p.commits ? `${p.commits} commits this year` :
 
 const ago2 = (iso) => { const m = Math.max(0, Math.round((Date.now() - new Date(iso)) / 6e4)); return m < 60 ? `${m}m ago` : m < 1440 ? `${Math.round(m / 60)}h ago` : m < 2880 ? "yesterday" : m < 14 * 1440 ? `${Math.round(m / 1440)}d ago` : `${Math.round(m / 10080)}w ago`; };
 
-// 6. NIGHT CITY ----------------------------------------------------------------------------------------------------------
+// 6. CONTRIBUTION CITY (isometric 3D: one block per day, height = contributions that day) --------------------------------
+const hex = (c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+const mix = (a, b, t) => "#" + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * t).toString(16).padStart(2, "0")).join("");
+const shade = (c, k) => "#" + hex(c).map((v) => Math.round(v * k).toString(16).padStart(2, "0")).join("");
+
 export function city(d) {
-  const r = rng("city" + d.login), H = 340, ground = 296, n = d.months.length && d.days.length ? Math.ceil(d.days.length / 7) : 53;
-  const wk = []; for (let i = 0; i < d.days.length; i += 7) wk.push(d.days.slice(i, i + 7).reduce((a, x) => a + x.contributionCount, 0));
-  const mx = Math.max(...wk, 1), bw = W / wk.length;
-  const stars = Array.from({ length: 70 }, () => { const x = (r() * W).toFixed(0), y = (r() * 150).toFixed(0), tw = r() > 0.7; return `<circle cx="${x}" cy="${y}" r="${(0.5 + r() * 0.9).toFixed(1)}" fill="#fff" opacity="${(0.25 + r() * 0.6).toFixed(2)}">${tw ? `<animate attributeName="opacity" values=".15;.9;.15" dur="${(2 + r() * 4).toFixed(1)}s" begin="${(-r() * 4).toFixed(1)}s" repeatCount="indefinite"/>` : ""}</circle>`; }).join("");
-  // distant skyline for depth
-  let far = "", x = 0; while (x < W) { const w = 18 + r() * 26, h = 40 + r() * 70; far += `<rect x="${x.toFixed(0)}" y="${(ground - h).toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}" fill="#171235"/>`; x += w + 2; }
-  let towers = "", wins = "", beacons = "";
-  wk.forEach((v, i) => {
-    const h = 18 + Math.sqrt(v / mx) * 138, x = i * bw, y = ground - h, hot = v / mx, col = hot > 0.55 ? "#ff7eb6" : hot > 0.2 ? "#58a6ff" : "#8a6bff";
-    towers += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(bw - 1.5).toFixed(1)}" height="${h.toFixed(1)}" fill="url(#tw)"/><rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(bw - 1.5).toFixed(1)}" height="1.6" fill="${col}"/><rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="1" height="${h.toFixed(1)}" fill="${col}" opacity=".25"/>`;
-    for (let wy = y + 6; wy < ground - 4; wy += 8) for (let wx = x + 3; wx < x + bw - 5; wx += 5) if (r() > 0.62) wins += `<rect x="${wx.toFixed(1)}" y="${wy.toFixed(1)}" width="2.2" height="3.4" fill="${r() > 0.2 ? "#ffd76a" : "#8fd3ff"}" opacity="${(0.45 + r() * 0.55).toFixed(2)}">${r() > 0.93 ? `<animate attributeName="opacity" values="1;.15;1" dur="${(2 + r() * 5).toFixed(1)}s" begin="${(-r() * 5).toFixed(1)}s" repeatCount="indefinite"/>` : ""}</rect>`;
-    if (hot > 0.5) beacons += `<line x1="${(x + bw / 2).toFixed(1)}" y1="${y.toFixed(1)}" x2="${(x + bw / 2).toFixed(1)}" y2="${(y - 10).toFixed(1)}" stroke="#46506b"/><circle cx="${(x + bw / 2).toFixed(1)}" cy="${(y - 11).toFixed(1)}" r="1.6" fill="#ff4d6d"><animate attributeName="opacity" values="1;.1;1" dur="1.6s" repeatCount="indefinite"/></circle>`;
-  });
-  const sign = (cx, cy, w, h, col, t, sub, size = 24) => `<g filter="url(#glow)"><rect x="${cx - w / 2}" y="${cy - h / 2}" width="${w}" height="${h}" rx="9" fill="#0a0a1c" fill-opacity=".72" stroke="${col}" stroke-width="2.4"><animate attributeName="stroke-opacity" values="1;.7;1;.92;1" dur="${(3 + w / 200).toFixed(1)}s" repeatCount="indefinite"/></rect>${text(cx, cy + (sub ? 2 : size / 3), t, { size, weight: 700, fill: "#fff", anchor: "middle" })}${sub ? text(cx, cy + 18, sub, { size: 10.5, fill: col, anchor: "middle", font: MONO, weight: 600, ls: 1.5 }) : ""}</g>`;
-  const langs = d.langs.filter((l) => l.name !== "Jupyter Notebook").slice(0, 3), lc = ["#ffd76a", "#58a6ff", "#ff7eb6"];
-  const signs = langs.map((l, i) => { const cx = 160 + i * 260 + (i === 1 ? 0 : 0); return `<line x1="${cx}" y1="150" x2="${cx}" y2="${ground - 60 - 8 * i}" stroke="#2a2f55" stroke-dasharray="2 4" opacity=".6"/>${sign(cx, 138, 150, 38, lc[i], trunc(l.name, 12), `${Math.round(l.pct)}%`, 15)}`; }).join("");
-  const cars = [[0, 9, "#ffd76a"], [-14, 11, "#ff4d6d"]].map(([o, du, c]) => `<circle r="1.8" cy="${ground + 12}" fill="${c}"><animate attributeName="cx" from="${o < 0 ? W + 10 : -10}" to="${o < 0 ? -10 : W + 10}" dur="${du}s" repeatCount="indefinite"/></circle>`).join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#060914"/><stop offset=".6" stop-color="#150f33"/><stop offset="1" stop-color="#2d1650"/></linearGradient><linearGradient id="tw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2060"/><stop offset="1" stop-color="#0d0a26"/></linearGradient><radialGradient id="moon"><stop offset="0" stop-color="#fff6d6" stop-opacity=".5"/><stop offset="1" stop-color="#fff6d6" stop-opacity="0"/></radialGradient><filter id="glow" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><clipPath id="rc"><rect width="${W}" height="${H}" rx="14"/></clipPath></defs>
-<g clip-path="url(#rc)"><rect width="${W}" height="${H}" fill="url(#sky)"/>${stars}
-<circle cx="760" cy="62" r="46" fill="url(#moon)"/><circle cx="760" cy="62" r="15" fill="#fff3c4"/><circle cx="767" cy="57" r="13" fill="#190f36" opacity=".0"/>
-<line x1="0" y1="0" x2="60" y2="22" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;.7;.74;.8;1" dur="9s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="120 20;420 140" dur="9s" repeatCount="indefinite"/></line>
-${far}${towers}${wins}${beacons}
-<rect y="${ground}" width="${W}" height="${H - ground}" fill="#07050f"/><line x1="0" y1="${ground}" x2="${W}" y2="${ground}" stroke="#3a2a70"/>${cars}
-${sign(W / 2, 54, 430, 60, "#ff7eb6", d.name.toUpperCase().slice(0, 26), "", d.name.length > 16 ? 22 : 28)}${signs}
-${text(W / 2, H - 12, `each tower is a week · ${num(d.year.total)} contributions in the last year`, { size: 11, fill: "#8b7fb8", anchor: "middle", font: MONO })}</g>
-<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="14" fill="none" stroke="${C.line}"/></svg>
-`;
+  const wk = []; for (let i = 0; i < d.days.length; i += 7) wk.push(d.days.slice(i, i + 7));
+  const first = new Date(d.days[0].date + "T00:00:00Z").getUTCDay(), max = Math.max(...d.days.map((x) => x.contributionCount), 1);
+  const a = 9.2, b = a / 2, HMAX = 92, ox = 258 + 6 * a, oy = 112; // a/b = half tile width/height
+  const P = (u, v) => [ox + (u - v) * a, oy + (u + v) * b];
+  const blocks = [];
+  wk.forEach((col, u) => col.forEach((day, k) => { const v = u === 0 ? k + first : k; if (v > 6) return; blocks.push({ u, v, n: day.contributionCount }); }));
+  blocks.sort((p, q) => p.u + p.v - (q.u + q.v) || p.u - q.u);
+  const f = (n) => n.toFixed(1);
+  // ground plate under the whole strip
+  const g0 = P(-0.5, -0.5), g1 = P(wk.length - 0.5, -0.5), g2 = P(wk.length - 0.5, 6.5), g3 = P(-0.5, 6.5);
+  const plate = `<polygon points="${[g0, g1, g2, g3].map((p) => p.map(f).join(",")).join(" ")}" fill="#0a2a2c" stroke="#14504f" stroke-width="1"/>`;
+  const shapes = blocks.map(({ u, v, n }) => {
+    const [sx, sy] = P(u, v), t = n / max, h = n ? 3 + Math.sqrt(t) * HMAX : 0;
+    if (!n) return `<polygon points="${f(sx)},${f(sy - b)} ${f(sx + a)},${f(sy)} ${f(sx)},${f(sy + b)} ${f(sx - a)},${f(sy)}" fill="#0f3a3b" stroke="#0a2a2c" stroke-width=".6"/>`;
+    const base = mix("#1f9e8a", "#9ff5df", Math.sqrt(t)), top = base, left = shade(base, 0.74), right = shade(base, 0.52);
+    return `<g><polygon points="${f(sx - a)},${f(sy - h)} ${f(sx)},${f(sy + b - h)} ${f(sx)},${f(sy + b)} ${f(sx - a)},${f(sy)}" fill="${left}"/><polygon points="${f(sx + a)},${f(sy - h)} ${f(sx)},${f(sy + b - h)} ${f(sx)},${f(sy + b)} ${f(sx + a)},${f(sy)}" fill="${right}"/><polygon points="${f(sx)},${f(sy - b - h)} ${f(sx + a)},${f(sy - h)} ${f(sx)},${f(sy + b - h)} ${f(sx - a)},${f(sy - h)}" fill="${top}"/></g>`;
+  }).join("");
+  const active = d.days.filter((x) => x.contributionCount).length, busy = new Date(d.busy.date + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+  const [sx0, sy0] = P(0, 3), [sx1, sy1] = P(wk.length - 1, 3);
+  const fmt = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" }).toUpperCase();
+  const H = 412;
+  const left = `${label(36, 64, "contribution city", "#5eead4")}${text(36, 118, compact(d.year.total), { size: 56, weight: 800, fill: "#d7fff6" })}${text(36, 146, "contributions in the last year", { size: 14, fill: "#8fe9d6", weight: 600 })}
+${text(36, 186, `${active} active days`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}${text(36, 208, `Busiest day: ${d.busy.contributionCount} (${busy})`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}${text(36, 230, `${d.streak} day current streak`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}
+<rect x="36" y="252" width="172" height="24" rx="12" fill="#0b3b36" stroke="#1d7a6c"/>${icon("lock", 46, 256, "#5eead4")}${text(68, 268, "includes private work", { size: 11.5, fill: "#8fe9d6" })}`;
+  const body = `<defs><linearGradient id="citybg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d3d3b"/><stop offset="1" stop-color="#08181f"/></linearGradient><clipPath id="cc"><rect width="${W}" height="${H}" rx="14"/></clipPath></defs><g clip-path="url(#cc)"><rect width="${W}" height="${H}" fill="url(#citybg)"/>${left}${plate}${shapes}
+${text(W - 28, H - 14, `${fmt(d.days[0].date)}  →  ${fmt(d.days[d.days.length - 1].date)}  ·  one block per day, taller = more contributions`, { size: 10.5, fill: "#5aa99a", anchor: "end", font: MONO })}</g><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="14" fill="none" stroke="#1d5a52"/>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img">${body}</svg>\n`;
 }
 
 // 7. NOW -----------------------------------------------------------------------------------------------------------------

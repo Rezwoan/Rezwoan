@@ -29,7 +29,7 @@
 <br/>
 
 <div align="center">
-  <img src="skins/city.svg" alt="Night city: one tower per week of contributions" width="100%"/>
+  <img src="skins/city.svg" alt="Contribution city: an isometric 3D block for every day of contributions" width="100%"/>
 </div>
 
 <br/>
