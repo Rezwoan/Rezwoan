@@ -2,13 +2,13 @@ name: Generate Profile Cards
 
 on:
   schedule:
-    - cron: "17 */12 * * *" # offset from the other 12h jobs so pushes rarely overlap
+    - cron: "17 */6 * * *"
   workflow_dispatch:
   push:
     branches: [main]
     paths: ["scripts/skins/**", ".github/workflows/generate-skins.yml"]
 
-# one committer at a time on this repo (the other workflows push to main too)
+# the only committer on this repo; the group still serialises overlapping runs
 concurrency:
   group: profile-commit
   cancel-in-progress: false

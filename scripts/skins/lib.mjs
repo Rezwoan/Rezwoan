@@ -32,3 +32,9 @@ export function card(w, h, body, defs = "") {
 }
 // section header used by every card: mono kicker, bold title, optional right-aligned note
 export const header = (w, kicker, title, note = "") => `${label(28, 36, kicker)}${text(28, 64, title, { size: 22, weight: 700 })}${note ? text(w - 28, 62, note, { size: 12, fill: C.mute, anchor: "end" }) : ""}`;
+
+// deterministic PRNG so identical data gives identical files (no noisy commits)
+export function rng(seed) {
+  let s = [...String(seed)].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7) || 1;
+  return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296);
+}

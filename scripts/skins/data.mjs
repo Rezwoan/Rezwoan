@@ -11,6 +11,34 @@ const gql = async (query, variables = {}) => {
 
 const YEAR = `totalCommitContributions totalPullRequestContributions totalIssueContributions totalPullRequestReviewContributions restrictedContributionsCount contributionCalendar{totalContributions}`;
 
+const rest = async (path) => {
+  const r = await fetch("https://api.github.com" + path, { headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}`, "User-Agent": "gen-skins" } });
+  return r.ok ? r.json() : [];
+};
+
+// Turn raw events into display rows. Private events are rolled up into counts per day; their repo names are never read.
+function timeline(events) {
+  const rows = new Map();
+  const add = (e, kind, repo) => {
+    const day = e.created_at.slice(0, 10), pub = e.public === true, key = `${day}|${kind}|${pub ? repo : "private"}`;
+    const r = rows.get(key) ?? { kind, day, ts: e.created_at, pub, repo: pub ? repo : "", n: 0, num: e.payload?.number ?? e.payload?.pull_request?.number };
+    r.n++; rows.set(key, r);
+  };
+  for (const e of events) {
+    const t = e.type, a = e.payload?.action;
+    if (t === "PushEvent") add(e, "push", e.repo.name);
+    else if (t === "PullRequestEvent") add(e, a === "opened" ? "pr-open" : a === "merged" || e.payload.pull_request?.merged ? "pr-merge" : "pr-close", e.repo.name);
+    else if (t === "PullRequestReviewEvent") add(e, "review", e.repo.name);
+    else if (t === "IssuesEvent") add(e, a === "opened" ? "issue-open" : "issue-close", e.repo.name);
+    else if (t === "IssueCommentEvent" || t === "CommitCommentEvent") add(e, "comment", e.repo.name);
+    else if (t === "ReleaseEvent") add(e, "release", e.repo.name);
+    else if (t === "CreateEvent") add(e, e.payload.ref_type === "repository" ? "create-repo" : "branch", e.repo.name);
+    else if (t === "WatchEvent") add(e, "star", e.repo.name);
+    else if (t === "ForkEvent") add(e, "fork", e.repo.name);
+  }
+  return [...rows.values()].sort((a, b) => (a.ts < b.ts ? 1 : -1));
+}
+
 export async function loadData(login) {
   const head = await gql(`query($u:String!){viewer{login} user(login:$u){createdAt}}`, { u: login });
   const since = new Date(head.user.createdAt).getUTCFullYear(), now = new Date().getUTCFullYear();
@@ -20,6 +48,7 @@ export async function loadData(login) {
     login name bio location avatarUrl(size:200) followers{totalCount} following{totalCount}
     all:repositories(ownerAffiliations:OWNER){totalCount} pub:repositories(ownerAffiliations:OWNER,privacy:PUBLIC){totalCount} priv:repositories(ownerAffiliations:OWNER,privacy:PRIVATE){totalCount}
     repositories(first:100,ownerAffiliations:OWNER,isFork:false,privacy:PUBLIC,orderBy:{field:PUSHED_AT,direction:DESC}){nodes{name description stargazerCount forkCount pushedAt primaryLanguage{name color} languages(first:6,orderBy:{field:SIZE,direction:DESC}){edges{size node{name color}}}}}
+    privRecent:repositories(first:30,ownerAffiliations:OWNER,privacy:PRIVATE,orderBy:{field:PUSHED_AT,direction:DESC}){nodes{pushedAt}}
     cur:contributionsCollection{commitContributionsByRepository(maxRepositories:25){contributions{totalCount} repository{name isPrivate owner{login}}} contributionCalendar{totalContributions weeks{contributionDays{contributionCount date}}}}
     ${ys}}}`, { u: login });
   const u = D.user;
@@ -47,7 +76,10 @@ export async function loadData(login) {
   for (let i = 11; i >= 0; i--) { const d = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth() - i, 1)); months.push({ key: d.toISOString().slice(0, 7), label: d.toLocaleString("en-US", { month: "short", timeZone: "UTC" }), n: 0 }); }
   for (const d of days) { const m = months.find((x) => x.key === d.date.slice(0, 7)); if (m) m.n += d.contributionCount; }
 
+  const events = timeline(await rest(`/users/${login}/events?per_page=100`));
+  const privActive = u.privRecent.nodes.filter((r) => Date.now() - new Date(r.pushedAt) < 30 * 864e5).length;
   return {
+    events, privActive,
     login: u.login, name: u.name || u.login, bio: u.bio || "", location: u.location || "", since, avatarUrl: u.avatarUrl,
     followers: u.followers.totalCount, following: u.following.totalCount,
     repoTotal: u.all.totalCount, repoPublic: u.pub.totalCount, repoPrivate: u.priv.totalCount,

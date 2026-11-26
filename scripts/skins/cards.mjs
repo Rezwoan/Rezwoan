@@ -1,4 +1,4 @@
-import { esc, trunc, compact, num, MONO, SANS, C, HEAT, level, text, label, wrap, card, header } from "./lib.mjs";
+import { esc, trunc, compact, num, MONO, SANS, C, HEAT, level, text, label, wrap, card, header, rng } from "./lib.mjs";
 
 const W = 840;
 const ICON = { // 16px stroke icons
@@ -77,7 +77,15 @@ export function activity(d) {
   }));
   const gridW = wk.length * (cs + g);
   const dayL = ["Mon", "Wed", "Fri"].map((s, i) => text(28, y0 + (1 + i * 2) * (cs + g) + 9, s, { size: 10, fill: C.dim })).join("");
-  const scan = `<clipPath id="gridclip"><rect x="${x0}" y="${y0 - 4}" width="${gridW}" height="${7 * (cs + g) + 4}"/></clipPath><g clip-path="url(#gridclip)"><rect x="${x0}" y="${y0 - 4}" width="70" height="${7 * (cs + g) + 4}" fill="url(#scan)"><animate attributeName="x" from="${x0 - 70}" to="${x0 + gridW}" dur="7s" repeatCount="indefinite"/></rect></g>`;
+  // our own snake: walks the grid column by column (boustrophedon) and eats the lit cells; loops every D seconds
+  const D = 48, ctr = (c, r) => [x0 + c * (cs + g) + cs / 2, y0 + r * (cs + g) + cs / 2];
+  const order = []; for (let c = 0; c < wk.length; c++) for (let k = 0; k < 7; k++) order.push([c, c % 2 ? 6 - k : k]);
+  const N = order.length, dt = D / N, [fx, fy] = ctr(...order[0]), path = "M 0 0 L " + order.slice(1).map(([c, r]) => ctr(c, r).map((v, i) => (v - (i ? fy : fx)).toFixed(1)).join(" ")).join(" L ");
+  const eat = order.map(([c, r], idx) => { const day = wk[c][c === 0 ? r - first : r]; if (!day || (c === 0 && r < first)) return ""; const lv = level(day.contributionCount, max); if (!lv) return ""; const [cx, cy] = ctr(c, r), t = idx / N;
+    return `<rect x="${(cx - cs / 2).toFixed(1)}" y="${(cy - cs / 2).toFixed(1)}" width="${cs}" height="${cs}" rx="2.5" fill="${HEAT[lv]}"><animate attributeName="fill" calcMode="discrete" values="${HEAT[lv]};#1b2330;${HEAT[lv]}" keyTimes="0;${t.toFixed(4)};${Math.min(0.9999, t + 0.001).toFixed(4)}" dur="${D}s" repeatCount="indefinite"/></rect>`; }).join("");
+  // note: the lit rects above sit on top of the base grid and flip to the "eaten" colour as the head passes
+  const body8 = Array.from({ length: 9 }, (_, k) => { const lag = k * dt * 1.6; return `<g transform="translate(${fx.toFixed(1)},${fy.toFixed(1)})"><rect x="${-(cs + 1) / 2}" y="${-(cs + 1) / 2}" width="${cs + 1}" height="${cs + 1}" rx="3.5" fill="${k ? "#7c5cff" : "#bc8cff"}" opacity="${(1 - k * 0.09).toFixed(2)}">${k ? `<set attributeName="visibility" to="hidden" begin="0s" end="${lag.toFixed(2)}s"/>` : ""}<animateMotion dur="${D}s" begin="${lag.toFixed(2)}s" repeatCount="indefinite" path="${path}"/></rect></g>`; }).join("");
+  const scan = eat + body8;
   const legendX = W - 28 - 5 * 14 - 74;
   const legend = `${text(legendX, y0 + 7 * (cs + g) + 22, "Less", { size: 10, fill: C.dim })}${HEAT.map((c, i) => `<rect x="${legendX + 30 + i * 14}" y="${y0 + 7 * (cs + g) + 13}" width="11" height="11" rx="2.5" fill="${c}"/>`).join("")}${text(legendX + 30 + 5 * 14 + 4, y0 + 7 * (cs + g) + 22, "More", { size: 10, fill: C.dim })}`;
   // monthly bars
@@ -117,4 +125,67 @@ ${text(x + cw - 16, y + ch - 14, [p.commits ? `${p.commits} commits this year` :
   const y2 = 86 + Math.ceil(pick.length / 2) * (ch + 12);
   const priv = `<rect x="28" y="${y2}" width="${W - 56}" height="46" rx="10" fill="#0c121c" stroke="${C.line}" stroke-dasharray="4 4"/>${icon("lock", 46, y2 + 15, C.mute)}${text(72, y2 + 28, `+ ${d.repoPrivate} private repositories — client and product work, shown as counts only`, { size: 12.5, fill: C.mute })}`;
   return card(W, y2 + 46 + 24, `${header(W, "04 · work", "Selected projects", "most active public repositories this year")}${cards}${priv}`);
+}
+
+const ago2 = (iso) => { const m = Math.max(0, Math.round((Date.now() - new Date(iso)) / 6e4)); return m < 60 ? `${m}m ago` : m < 1440 ? `${Math.round(m / 60)}h ago` : m < 2880 ? "yesterday" : m < 14 * 1440 ? `${Math.round(m / 1440)}d ago` : `${Math.round(m / 10080)}w ago`; };
+
+// 6. NIGHT CITY ----------------------------------------------------------------------------------------------------------
+export function city(d) {
+  const r = rng("city" + d.login), H = 340, ground = 296, n = d.months.length && d.days.length ? Math.ceil(d.days.length / 7) : 53;
+  const wk = []; for (let i = 0; i < d.days.length; i += 7) wk.push(d.days.slice(i, i + 7).reduce((a, x) => a + x.contributionCount, 0));
+  const mx = Math.max(...wk, 1), bw = W / wk.length;
+  const stars = Array.from({ length: 70 }, () => { const x = (r() * W).toFixed(0), y = (r() * 150).toFixed(0), tw = r() > 0.7; return `<circle cx="${x}" cy="${y}" r="${(0.5 + r() * 0.9).toFixed(1)}" fill="#fff" opacity="${(0.25 + r() * 0.6).toFixed(2)}">${tw ? `<animate attributeName="opacity" values=".15;.9;.15" dur="${(2 + r() * 4).toFixed(1)}s" begin="${(-r() * 4).toFixed(1)}s" repeatCount="indefinite"/>` : ""}</circle>`; }).join("");
+  // distant skyline for depth
+  let far = "", x = 0; while (x < W) { const w = 18 + r() * 26, h = 40 + r() * 70; far += `<rect x="${x.toFixed(0)}" y="${(ground - h).toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}" fill="#171235"/>`; x += w + 2; }
+  let towers = "", wins = "", beacons = "";
+  wk.forEach((v, i) => {
+    const h = 18 + Math.sqrt(v / mx) * 138, x = i * bw, y = ground - h, hot = v / mx, col = hot > 0.55 ? "#ff7eb6" : hot > 0.2 ? "#58a6ff" : "#8a6bff";
+    towers += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(bw - 1.5).toFixed(1)}" height="${h.toFixed(1)}" fill="url(#tw)"/><rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(bw - 1.5).toFixed(1)}" height="1.6" fill="${col}"/><rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="1" height="${h.toFixed(1)}" fill="${col}" opacity=".25"/>`;
+    for (let wy = y + 6; wy < ground - 4; wy += 8) for (let wx = x + 3; wx < x + bw - 5; wx += 5) if (r() > 0.62) wins += `<rect x="${wx.toFixed(1)}" y="${wy.toFixed(1)}" width="2.2" height="3.4" fill="${r() > 0.2 ? "#ffd76a" : "#8fd3ff"}" opacity="${(0.45 + r() * 0.55).toFixed(2)}">${r() > 0.93 ? `<animate attributeName="opacity" values="1;.15;1" dur="${(2 + r() * 5).toFixed(1)}s" begin="${(-r() * 5).toFixed(1)}s" repeatCount="indefinite"/>` : ""}</rect>`;
+    if (hot > 0.5) beacons += `<line x1="${(x + bw / 2).toFixed(1)}" y1="${y.toFixed(1)}" x2="${(x + bw / 2).toFixed(1)}" y2="${(y - 10).toFixed(1)}" stroke="#46506b"/><circle cx="${(x + bw / 2).toFixed(1)}" cy="${(y - 11).toFixed(1)}" r="1.6" fill="#ff4d6d"><animate attributeName="opacity" values="1;.1;1" dur="1.6s" repeatCount="indefinite"/></circle>`;
+  });
+  const sign = (cx, cy, w, h, col, t, sub, size = 24) => `<g filter="url(#glow)"><rect x="${cx - w / 2}" y="${cy - h / 2}" width="${w}" height="${h}" rx="9" fill="#0a0a1c" fill-opacity=".72" stroke="${col}" stroke-width="2.4"><animate attributeName="stroke-opacity" values="1;.7;1;.92;1" dur="${(3 + w / 200).toFixed(1)}s" repeatCount="indefinite"/></rect>${text(cx, cy + (sub ? 2 : size / 3), t, { size, weight: 700, fill: "#fff", anchor: "middle" })}${sub ? text(cx, cy + 18, sub, { size: 10.5, fill: col, anchor: "middle", font: MONO, weight: 600, ls: 1.5 }) : ""}</g>`;
+  const langs = d.langs.filter((l) => l.name !== "Jupyter Notebook").slice(0, 3), lc = ["#ffd76a", "#58a6ff", "#ff7eb6"];
+  const signs = langs.map((l, i) => { const cx = 160 + i * 260 + (i === 1 ? 0 : 0); return `<line x1="${cx}" y1="150" x2="${cx}" y2="${ground - 60 - 8 * i}" stroke="#2a2f55" stroke-dasharray="2 4" opacity=".6"/>${sign(cx, 138, 150, 38, lc[i], trunc(l.name, 12), `${Math.round(l.pct)}%`, 15)}`; }).join("");
+  const cars = [[0, 9, "#ffd76a"], [-14, 11, "#ff4d6d"]].map(([o, du, c]) => `<circle r="1.8" cy="${ground + 12}" fill="${c}"><animate attributeName="cx" from="${o < 0 ? W + 10 : -10}" to="${o < 0 ? -10 : W + 10}" dur="${du}s" repeatCount="indefinite"/></circle>`).join("");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#060914"/><stop offset=".6" stop-color="#150f33"/><stop offset="1" stop-color="#2d1650"/></linearGradient><linearGradient id="tw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2060"/><stop offset="1" stop-color="#0d0a26"/></linearGradient><radialGradient id="moon"><stop offset="0" stop-color="#fff6d6" stop-opacity=".5"/><stop offset="1" stop-color="#fff6d6" stop-opacity="0"/></radialGradient><filter id="glow" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><clipPath id="rc"><rect width="${W}" height="${H}" rx="14"/></clipPath></defs>
+<g clip-path="url(#rc)"><rect width="${W}" height="${H}" fill="url(#sky)"/>${stars}
+<circle cx="760" cy="62" r="46" fill="url(#moon)"/><circle cx="760" cy="62" r="15" fill="#fff3c4"/><circle cx="767" cy="57" r="13" fill="#190f36" opacity=".0"/>
+<line x1="0" y1="0" x2="60" y2="22" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;.7;.74;.8;1" dur="9s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="120 20;420 140" dur="9s" repeatCount="indefinite"/></line>
+${far}${towers}${wins}${beacons}
+<rect y="${ground}" width="${W}" height="${H - ground}" fill="#07050f"/><line x1="0" y1="${ground}" x2="${W}" y2="${ground}" stroke="#3a2a70"/>${cars}
+${sign(W / 2, 54, 430, 60, "#ff7eb6", d.name.toUpperCase().slice(0, 26), "", d.name.length > 16 ? 22 : 28)}${signs}
+${text(W / 2, H - 12, `each tower is a week · ${num(d.year.total)} contributions in the last year`, { size: 11, fill: "#8b7fb8", anchor: "middle", font: MONO })}</g>
+<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="14" fill="none" stroke="${C.line}"/></svg>
+`;
+}
+
+// 7. NOW -----------------------------------------------------------------------------------------------------------------
+export function now(d) {
+  const month = 30 * 864e5, pubRecent = d.repos.filter((r) => r.name !== d.login && Date.now() - new Date(r.pushedAt) < month).length;
+  const active = d.privActive + pubRecent, recent = d.repos.filter((r) => r.name !== d.login).sort((a, b) => new Date(b.pushedAt) - new Date(a.pushedAt)).slice(0, 3);
+  const banner = `<rect x="28" y="88" width="${W - 56}" height="52" rx="10" fill="#0e2a17" stroke="#1d5a30"/><circle cx="54" cy="114" r="5" fill="${C.neon}"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;.35;1" dur="2s" repeatCount="indefinite"/></circle>${text(76, 110, `${active} repositories pushed to in the last 30 days`, { size: 15, weight: 700, fill: "#aff5b4" })}${text(76, 128, `${d.privActive} private and ${pubRecent} public, so most of the work is not visible here`, { size: 12, fill: "#7ee787" })}`;
+  const rows = recent.map((p, i) => {
+    const y = 176 + i * 58, col = p.primaryLanguage?.color || C.mute, lang = p.primaryLanguage?.name;
+    return `<rect x="28" y="${y}" width="${W - 56}" height="48" rx="10" fill="#0c121c" stroke="${C.line}"/>${icon("repo", 44, y + (p.description ? 12 : 16), C.blue)}
+${text(68, y + (p.description ? 21 : 29), trunc(p.name, 28), { size: 14, weight: 700, fill: C.blue })}${p.description ? text(68, y + 38, trunc(p.description, 66), { size: 11.5, fill: C.mute }) : ""}
+${lang ? `<circle cx="${W - 232}" cy="${y + 24}" r="5" fill="${esc(col)}"/>${text(W - 220, y + 28, lang, { size: 12, fill: C.text })}` : ""}${text(W - 44, y + 28, `pushed ${ago2(p.pushedAt)}`, { size: 12, fill: C.mute, anchor: "end" })}`;
+  }).join("");
+  return card(W, 176 + recent.length * 58 + 18, `${header(W, "05 · now", "Currently working on", "live from the GitHub API")}${banner}${label(28, 164, "latest public repositories", C.mute)}${rows}`);
+}
+
+// 8. RECENT ACTIVITY -----------------------------------------------------------------------------------------------------
+const VERB = { "pr-merge": ["Merged", "pull request", "merge", C.purple], "pr-open": ["Opened", "pull request", "pr", C.green], "pr-close": ["Closed", "pull request", "pr", C.mute], review: ["Reviewed", "pull request", "review", C.orange], "issue-open": ["Opened", "issue", "issue", C.pink], "issue-close": ["Closed", "issue", "issue", C.mute], push: ["Pushed", "time", "commit", C.blue], comment: ["Commented", "thread", "chat", C.yellow], release: ["Published", "release", "tag", C.green], "create-repo": ["Created", "repository", "repo", C.green], branch: ["Created", "branch", "branch", C.mute], star: ["Starred", "repository", "star", C.yellow], fork: ["Forked", "repository", "repo", C.blue] };
+export function timeline(d) {
+  const rows = d.events.slice(0, 8);
+  const body = rows.map((e, i) => {
+    const [verb, noun, , col] = VERB[e.kind], y = 96 + i * 36, many = e.n > 1;
+    const what = e.kind === "push" ? (many ? `${e.n} times` : "once") : many ? `${e.n} ${noun === "branch" ? "branches" : noun + "s"}` : `a ${noun}`;
+    const where = e.pub ? e.repo : "private repositories", tail = e.kind === "comment" ? `on ${where}` : `in ${where}`;
+    const label = `<tspan fill="${C.text}" font-weight="600">${esc(verb)}</tspan><tspan fill="${C.mute}"> ${esc(e.kind === "push" ? what + " to" : what + " " + tail.split(" ")[0])} </tspan>`;
+    const line = e.kind === "push" ? `${label}<tspan fill="${e.pub ? C.blue : C.mute}" font-weight="${e.pub ? 600 : 400}">${esc(where)}</tspan>` : `${label}<tspan fill="${e.pub ? C.blue : C.mute}" font-weight="${e.pub ? 600 : 400}">${esc(tail.split(" ").slice(1).join(" "))}</tspan>`;
+    return `${i < rows.length - 1 ? `<line x1="37" y1="${y + 8}" x2="37" y2="${y + 36 - 8}" stroke="${C.line}"/>` : ""}<circle cx="37" cy="${y}" r="5.5" fill="${C.card}" stroke="${col}" stroke-width="2"/>${e.pub ? "" : icon("lock", W - 28 - 64 - 24, y - 8, C.dim)}
+<text x="60" y="${y + 4}" font-family="${SANS}" font-size="13.5">${line}</text>${text(W - 28, y + 4, ago2(e.ts), { size: 12, fill: C.mute, anchor: "end" })}`;
+  }).join("");
+  return card(W, 96 + rows.length * 36 + 12, `${header(W, "06 · log", "Recent activity", "private work is summarised, never named")}${body}`);
 }

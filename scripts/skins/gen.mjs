@@ -3,10 +3,11 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { loadData, avatarDataUri } from "./data.mjs";
 import * as K from "./cards.mjs";
+import { LINKS, button } from "./links.mjs";
 
 const login = process.argv[2] || process.env.GITHUB_REPOSITORY_OWNER || "Rezwoan";
 const out = process.argv[3] || "skins";
-const CARDS = { hero: K.hero, stats: K.stats, activity: K.activity, languages: K.languages, projects: K.projects };
+const CARDS = { hero: K.hero, stats: K.stats, activity: K.activity, languages: K.languages, projects: K.projects, city: K.city, now: K.now, timeline: K.timeline };
 
 const d = await loadData(login);
 if (d.hidden > 0) { console.error(`Token cannot see ${d.hidden} private contributions; use a PAT with repo + read:user. Not writing.`); process.exit(2); }
@@ -18,5 +19,6 @@ for (const [name, fn] of Object.entries(CARDS)) {
   writeFileSync(file, fn(d, ctx));
   try { execFileSync("xmllint", ["--noout", file]); } catch { bad++; console.error("INVALID XML:", file); }
 }
+for (const l of LINKS) { const file = `${out}/link-${l[0]}.svg`; writeFileSync(file, button(l)); try { execFileSync("xmllint", ["--noout", file]); } catch { bad++; console.error("INVALID XML:", file); } }
 console.log(`${Object.keys(CARDS).length - bad}/${Object.keys(CARDS).length} cards written to ${out}/`);
 process.exit(bad ? 1 : 0);
