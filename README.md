@@ -67,4 +67,4 @@
 
 <br/>
 
-<p align="center"><sub>Built from live GitHub data, including private work. Refreshed every 6 hours.</sub></p>
+<p align="center"><sub>Built from live GitHub data, including private work. Refreshed every 12 hours.</sub></p>
