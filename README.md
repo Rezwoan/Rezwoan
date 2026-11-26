@@ -23,6 +23,13 @@ $ neofetch --profile username
 
 <br/>
 
+<!-- ===== SKIN: HOLO CARD ===== -->
+<div align="center">
+  <img src="skins/holo-card.svg" alt="Holo card" width="100%"/>
+</div>
+
+<br/>
+
 <!-- ===== DYNAMIC FEEDS (TERMINAL STYLE) ===== -->
 ## 💻 `user@rezwoan:~$ cat currently_working_on.md`
 
@@ -63,6 +70,19 @@ _🕐 Last updated: Oct 26, 2026_
 
 <br/>
 
+<!-- ===== SKIN: SIGNAL RUN + NEON SKYLINE ===== -->
+## 🛰️ `user@rezwoan:~$ ./signal_run --year`
+
+<div align="center">
+  <img src="skins/signal-run.svg" alt="Signal run: a ship flying the contribution grid" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/neon-skyline.svg" alt="Neon skyline: a tower per week" width="100%"/>
+</div>
+
+<br/>
+
 <!-- ===== 3D ISOMETRIC CITY ===== -->
 ## 🏙️ `user@rezwoan:~$ ./render_3d_contributions.sh`
 
@@ -93,6 +113,89 @@ _🕐 Last updated: Oct 26, 2026_
 <div align="center">
   <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" alt="Snake animation" />
 </div>
+
+<br/>
+
+<!-- ===== SKIN GALLERY ===== -->
+## 🎞️ `user@rezwoan:~$ ls skins/`
+
+> 🎨 _Generated from my real GitHub data every 12 hours. Open a drawer._
+
+<details>
+<summary><b>🕹️ Arcade &amp; Games</b></summary>
+
+<div align="center">
+  <img src="skins/arcade.svg" alt="Arcade cabinet" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/game-of-life.svg" alt="Game of life on my contribution grid" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/code-pet.svg" alt="Code pet" width="100%"/>
+</div>
+
+</details>
+
+<details>
+<summary><b>📊 Data Stories</b></summary>
+
+<div align="center">
+  <img src="skins/bar-chart-race.svg" alt="Commit race" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/stock-ticker.svg" alt="Stock ticker" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/year-in-slides.svg" alt="Year in slides" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/character-sheet.svg" alt="RPG character sheet" width="100%"/>
+</div>
+
+</details>
+
+<details>
+<summary><b>🌌 Worlds</b></summary>
+
+<div align="center">
+  <img src="skins/solar-system.svg" alt="Solar system" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/repo-galaxy.svg" alt="Repo galaxy" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/aquarium.svg" alt="Aquarium" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/living-scene.svg" alt="Living garden" width="100%"/>
+</div>
+
+</details>
+
+<details>
+<summary><b>🎬 Media</b></summary>
+
+<div align="center">
+  <img src="skins/mixtape.svg" alt="Mixtape" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/retro-tv.svg" alt="Retro TV" width="100%"/>
+</div>
+
+<div align="center">
+  <img src="skins/title-sequence.svg" alt="Title sequence" width="100%"/>
+</div>
+
+</details>
 
 <br/>
 

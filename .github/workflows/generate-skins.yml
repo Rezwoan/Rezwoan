@@ -1,0 +1,41 @@
+name: Generate Profile Skins
+
+on:
+  schedule:
+    - cron: "17 */12 * * *" # offset from the other 12h jobs so pushes rarely overlap
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/skins/**", ".github/workflows/generate-skins.yml"]
+
+# one committer at a time on this repo (the other workflows push to main too)
+concurrency:
+  group: profile-commit
+  cancel-in-progress: false
+
+jobs:
+  skins:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate skins
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          sudo apt-get install -y -qq libxml2-utils >/dev/null
+          node scripts/skins/gen.mjs "${{ github.repository_owner }}" skins
+      - name: Commit & push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add skins
+          git diff --cached --quiet && exit 0
+          git commit -m "🎨 generate profile skins"
+          git pull --rebase origin main
+          git push
