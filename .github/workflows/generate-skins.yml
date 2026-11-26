@@ -1,0 +1,49 @@
+name: Generate Profile Cards
+
+on:
+  schedule:
+    - cron: "17 */12 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/skins/**", ".github/workflows/generate-skins.yml"]
+
+# the only committer on this repo; the group still serialises overlapping runs
+concurrency:
+  group: profile-commit
+  cancel-in-progress: false
+
+jobs:
+  skins:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Private contributions need a PAT (classic: repo + read:user) saved as the PROFILE_TOKEN secret.
+      # Without it the default token cannot see private work, so skip instead of overwriting good numbers.
+      - name: Check token
+        id: tok
+        env:
+          T: ${{ secrets.PROFILE_TOKEN }}
+        run: |
+          if [ -z "$T" ]; then echo "::warning::PROFILE_TOKEN is not set; skipping so private-inclusive stats are not overwritten"; echo "ok=false" >> "$GITHUB_OUTPUT"; else echo "ok=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Generate cards
+        if: steps.tok.outputs.ok == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN }}
+        run: node scripts/skins/gen.mjs "${{ github.repository_owner }}" skins
+      - name: Commit & push
+        if: steps.tok.outputs.ok == 'true'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add skins
+          git diff --cached --quiet && exit 0
+          git commit -m "🎨 generate profile cards"
+          git pull --rebase origin main
+          git push

@@ -1,135 +1,70 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=500&color=39FF14&center=true&vCenter=true&width=800&height=120&duration=1500&multiline=true&lines=%24+whoami;Din+Muhammad+Rezwoan+%7C+Full-Stack+Dev+%7C+System+Builder" alt="Typing SVG Whoami" />
+  <img src="skins/hero.svg" alt="Din Muhammad Rezwoan: Full-Stack Developer, System Builder, CS student at AIUB" width="100%"/>
 </div>
-
-<!-- ===== NEOFETCH TERMINAL ===== -->
-<br/>
-
-```console
-$ neofetch --profile username
-
-       /////////////////        root@rezwoan:~$
-     /////////////////////      ---------------
-   ///                 ///      OS:      CS Student @ AIUB
-  ///   ///       ///   ///     KERNEL:  Problem Solver
- ///    ///       ///    ///    SHELL:   Full-Stack Web & Backend
- ///                     ///    UPTIME:  Learning since 2021
- ///   ///           /// ///    DE:      Dhaka, Bangladesh
-  ///   /////////////// ///     EDITOR:  VS Code, NeoVim
-   ///                 ///      PORT:    rezwoan.me
-     /////////////////////      LINK:    github.com/Rezwoan
-       /////////////////
-```
-
-<br/>
-
-<!-- ===== DYNAMIC FEEDS (TERMINAL STYLE) ===== -->
-## 💻 `user@rezwoan:~$ cat currently_working_on.md`
-
-> 🚀 _Live sync: Repos updated in the last 30 days_
-
-<!--START_SECTION:active-repos-->
-_🕐 Last updated: Oct 26, 2026_
-
-| | |
-|---|---|
-| **🌐 [dhaka-tesla-pool](https://github.com/Rezwoan/dhaka-tesla-pool)**<br/>Dhaka Tesla Pool -- ride-pooling MVP for the RoBenDevs Softw<br/>`Misc` ⭐ 0 🍴 0 |  |
-
-<!--END_SECTION:active-repos-->
-
-<br/>
-
-## 📡 `user@rezwoan:~$ tail -f recent_activity.log`
-
-> ⏱️ _Live tracking: Latest commits & PRs on GitHub_
-
-<!--START_SECTION:activity-->
-1. 💪 Opened PR [#692](https://github.com/Evavic44/portfolio-ideas/pull/692) in [Evavic44/portfolio-ideas](https://github.com/Evavic44/portfolio-ideas)
-2. 🎉 Merged PR [#7](https://github.com/Rezwoan/CrisisConnect-Backend/pull/7) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
-3. 💪 Opened PR [#7](https://github.com/Rezwoan/CrisisConnect-Backend/pull/7) in [Rezwoan/CrisisConnect-Backend](https://github.com/Rezwoan/CrisisConnect-Backend)
-4. 🚀 Published release [1.1.0](https://github.com/Rezwoan/Omarchy-PredatorSense/releases/tag/1.1.0) in [Rezwoan/Omarchy-PredatorSense](https://github.com/Rezwoan/Omarchy-PredatorSense)
-<!--END_SECTION:activity-->
-
-<br/>
-
-<!-- ===== HIGH CONTRAST TECH STACK ===== -->
-## ⚙️ `user@rezwoan:~$ sudo apt install stack`
-
-<div align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=typescript,python,react,nextjs,nodejs,tailwind,django,fastapi,postgres,mongodb,redis,docker,aws,git,github,linux,vscode,figma&perline=9&theme=light" alt="Tech Stack" />
-  </a>
-</div>
-
-<br/>
-
-<!-- ===== 3D ISOMETRIC CITY ===== -->
-## 🏙️ `user@rezwoan:~$ ./render_3d_contributions.sh`
-
-<div align="center">
-  <picture>
-    <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/main/profile-3d-contrib/profile-night-view.svg" alt="3D Isometric Contributions" width="100%"/>
-  </picture>
-</div>
-<p align="center"><em>Generated automatically via GitHub Actions</em></p>
 
 <br/>
 
 <div align="center">
-
-<!--START_SECTION:htop-stats-->
-<picture>
-  <img src="profile-htop.svg" alt="Htop Stats" width="100%" />
-</picture>
-<!--END_SECTION:htop-stats-->
-
+  <img src="skins/about.svg" alt="About: education, location, focus, tools, journey and portfolio" width="100%"/>
 </div>
 
 <br/>
 
-<!-- ===== SNAKE ANIMATION ===== -->
-## 🐍 `user@rezwoan:~$ ./play_snake.py`
-
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Rezwoan/Rezwoan/output/snake.svg" alt="Snake animation" />
+  <img src="skins/stats.svg" alt="Lifetime GitHub stats including private work" width="100%"/>
 </div>
 
 <br/>
 
-<!-- ===== CONNECT ===== -->
-## 🌐 `user@rezwoan:~$ ssh connect@socials`
-
 <div align="center">
-  <a href="https://www.linkedin.com/in/din-muhammad-rezwoan-b4b87020a" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>&nbsp;
-  <a href="https://twitter.com/XRezwoan" target="_blank">
-    <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" />
-  </a>&nbsp;
-  <a href="https://www.facebook.com/ager.id.hack.hoye.gase" target="_blank">
-    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook" />
-  </a>&nbsp;
-  <a href="https://www.instagram.com/din.muhammad.rezwoan" target="_blank">
-    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
-  </a>&nbsp;
-  <a href="https://wa.me/8801643751861" target="_blank">
-    <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp" />
-  </a>
-  &nbsp;
-  <a href="http://rezwoan.me" target="_blank">
-    <img src="https://img.shields.io/badge/🌐_Portfolio-rezwoan.me-FF00FF?style=for-the-badge&logoColor=0d1117&labelColor=0d1117" alt="Portfolio" />
-  </a>
+  <img src="skins/activity.svg" alt="Contribution heatmap with a snake eating the lit days, and monthly activity" width="100%"/>
 </div>
 
 <br/>
 
-<!-- ===== FOOTER ===== -->
 <div align="center">
-
-```console
-$ logout
-Connection to rezwoan closed.
-```
-
+  <img src="skins/city.svg" alt="Contribution city: an animated isometric 3D block for every day of contributions" width="100%"/>
 </div>
-<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&color=0d1117&height=50&section=footer" />
+
+<br/>
+
+<div align="center">
+  <img src="skins/languages.svg" alt="Language breakdown" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="skins/stack.svg" alt="Tech stack: languages, frameworks, data and infrastructure, tools" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="skins/projects.svg" alt="Selected projects" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="skins/now.svg" alt="Currently working on" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="skins/timeline.svg" alt="Recent activity" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+<a href="https://rezwoan.codes" target="_blank"><img src="skins/connect-top.svg" alt="Let us build something together" width="100%" align="top"/></a>
+</div>
+<div align="center">
+<a href="https://www.linkedin.com/in/din-muhammad-rezwoan-b4b87020a" target="_blank"><img src="skins/connect-linkedin.svg" alt="LinkedIn" width="18.56%" align="top"/></a><a href="https://twitter.com/XRezwoan" target="_blank"><img src="skins/connect-x.svg" alt="X" width="15.70%" align="top"/></a><a href="https://www.facebook.com/ager.id.hack.hoye.gase" target="_blank"><img src="skins/connect-facebook.svg" alt="Facebook" width="15.70%" align="top"/></a><a href="https://www.instagram.com/din.muhammad.rezwoan" target="_blank"><img src="skins/connect-instagram.svg" alt="Instagram" width="15.70%" align="top"/></a><a href="https://wa.me/8801643751861" target="_blank"><img src="skins/connect-whatsapp.svg" alt="WhatsApp" width="15.70%" align="top"/></a><a href="https://rezwoan.codes" target="_blank"><img src="skins/connect-portfolio.svg" alt="Portfolio" width="18.56%" align="top"/></a>
+</div>
+
+<br/>
+
+<p align="center"><sub>Built from live GitHub data, including private work. Refreshed every 12 hours.</sub></p>
