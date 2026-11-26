@@ -32,6 +32,10 @@ jobs:
           T: ${{ secrets.PROFILE_TOKEN }}
         run: |
           if [ -z "$T" ]; then echo "::warning::PROFILE_TOKEN is not set; skipping so private-inclusive stats are not overwritten"; echo "ok=false" >> "$GITHUB_OUTPUT"; else echo "ok=true" >> "$GITHUB_OUTPUT"; fi
+      # gen.mjs validates every card with xmllint, which the runner image does not ship
+      - name: Install xmllint
+        if: steps.tok.outputs.ok == 'true'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libxml2-utils
       - name: Generate cards
         if: steps.tok.outputs.ok == 'true'
         env:
