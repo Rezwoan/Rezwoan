@@ -21,27 +21,27 @@ const ICON = { // 16px stroke icons
 const icon = (k, x, y, col) => `<g transform="translate(${x},${y})" fill="none" stroke="${col}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</g>`;
 
 // soft light band that sweeps across a card every few seconds (clipped to the card's rounded corners)
-const sheen = (w, h, dur = 7) => `<clipPath id="shc"><rect x="1" y="1" width="${w - 2}" height="${h - 2}" rx="13"/></clipPath><g clip-path="url(#shc)"><rect y="0" width="110" height="${h}" fill="url(#shg)" transform="skewX(-20)"><animate attributeName="x" values="-200;${w + 60};${w + 60}" keyTimes="0;.45;1" dur="${dur}s" repeatCount="indefinite"/></rect></g><linearGradient id="shg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>`;
+const sheen = (w, h, dur = 7) => `<clipPath id="shc"><rect x="1" y="1" width="${w - 2}" height="${h - 2}" rx="19"/></clipPath><g clip-path="url(#shc)"><rect y="0" width="110" height="${h}" fill="url(#shg)" transform="skewX(-20)"><animate attributeName="x" values="-200;${w + 60};${w + 60}" keyTimes="0;.45;1" dur="${dur}s" repeatCount="indefinite"/></rect></g><linearGradient id="shg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>`;
 
 // 1. HERO ---------------------------------------------------------------------------------------------------------------
 export function hero(d, { avatar }) {
   const roles = ["Full-Stack Developer", "System Builder", "CS Student @ AIUB"], T = 3.2;
   const role = roles.map((r, i) => {
     const a = i / 3, b = (i + 1) / 3, f = 0.015, kt = [0, a, a + f, b - f, b, 1].map((v) => +v.toFixed(3));
-    return `<g opacity="${i ? 0 : 1}"><animate attributeName="opacity" values="${i ? "0;0;1;1;0;0" : "1;1;1;1;0;0"}" keyTimes="${kt.join(";")}" dur="${T * 3}s" repeatCount="indefinite"/>${text(222, 140, r, { size: 19, fill: C.neon, font: MONO, weight: 600 })}</g>`;
+    return `<g opacity="${i ? 0 : 1}"><animate attributeName="opacity" values="${i ? "0;0;1;1;0;0" : "1;1;1;1;0;0"}" keyTimes="${kt.join(";")}" dur="${T * 3}s" repeatCount="indefinite"/>${text(222, 142, r, { size: 20, fill: C.green, font: SANS, weight: 600, ls: -0.2 })}</g>`;
   }).join("");
   const stats = [[compact(d.life.total), "contributions"], [String(d.repoTotal), "repositories"], [String(d.followers), "followers"], [String(new Date().getFullYear() - d.since), "years on GitHub"]];
   const body = `
-<pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#fff" opacity=".07"/></pattern>
-<rect x="1" y="1" width="${W - 2}" height="282" rx="13" fill="url(#dots)"/>
+
+
 <circle cx="112" cy="120" r="76" fill="none" stroke="url(#ring)" stroke-width="3"><animateTransform attributeName="transform" type="rotate" from="0 112 120" to="360 112 120" dur="14s" repeatCount="indefinite"/></circle>
 <clipPath id="av"><circle cx="112" cy="120" r="66"/></clipPath><image x="46" y="54" width="132" height="132" href="${avatar}" clip-path="url(#av)" preserveAspectRatio="xMidYMid slice"/>
 ${label(222, 64, `${d.location || "Earth"}  ·  since ${d.since}`)}
-${text(222, 108, d.name, { size: d.name.length > 20 ? 38 : 44, weight: 800 })}
+${text(222, 108, d.name, { size: d.name.length > 20 ? 40 : 46, weight: 700, ls: -1.2 })}
 ${role}
 ${text(222, 172, d.bio || "Building things on the web.", { size: 14, fill: C.mute })}
 <line x1="28" y1="216" x2="${W - 28}" y2="216" stroke="${C.line}"/>
-${stats.map(([v, k], i) => { const x = 28 + i * 196; return `${i ? `<line x1="${x - 14}" y1="232" x2="${x - 14}" y2="262" stroke="${C.line}"/>` : ""}${text(x, 254, v, { size: 22, weight: 700, extra: "" })}${text(x + (String(v).length * 13.5) + 8, 254, k, { size: 12, fill: C.mute })}`; }).join("")}`;
+${stats.map(([v, k], i) => { const x = 28 + i * 196; return `${i ? `<line x1="${x - 14}" y1="232" x2="${x - 14}" y2="262" stroke="${C.line}"/>` : ""}${text(x, 254, v, { size: 24, weight: 700, ls: -0.6, tnum: true })}${text(x + (String(v).length * 13.5) + 8, 254, k, { size: 12, fill: C.mute })}`; }).join("")}`;
   return card(W, 284, body, `<linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${C.neon}"/><stop offset=".5" stop-color="${C.blue}"/><stop offset="1" stop-color="${C.purple}"/></linearGradient>`);
 }
 
@@ -58,17 +58,17 @@ export function stats(d) {
     ["bolt", "Longest streak", d.best, "days, last 12 months", C.yellow, true],
     ["repo", "Repositories", d.repoTotal, `${d.repoPublic} public · ${d.repoPrivate} private`, C.blue],
   ];
-  const tw = (W - 56 - 36) / 4, th = 104;
+  const tw = (W - 56 - 36) / 4, th = 112;
   const t = tiles.map(([ic, k, v, sub, col, small], i) => {
     const x = 28 + (i % 4) * (tw + 12), y = 86 + Math.floor(i / 4) * (th + 12);
     return `<g>
-<rect x="${x}" y="${y}" width="${tw}" height="${th}" rx="10" fill="#0c121c" stroke="${C.line}"/><rect x="${x}" y="${y + 18}" width="3" height="28" rx="1.5" fill="${col}"/>
-${icon(ic, x + 18, y + 16, col)}${text(x + 42, y + 29, k.toUpperCase(), { size: 10, fill: C.mute, font: MONO, weight: 600, ls: 1.5 })}
-${text(x + 18, y + 72, num(v), { size: 34, weight: 800 })}${text(x + 18, y + 92, sub, { size: 11.5, fill: C.mute })}</g>`;
+<rect x="${x}" y="${y}" width="${tw}" height="${th}" rx="14" fill="#151a24" stroke="#232b38"/>
+<rect x="${x + 16}" y="${y + 16}" width="28" height="28" rx="9" fill="${col}" fill-opacity=".15"/>${icon(ic, x + 22, y + 22, col)}${text(x + 54, y + 35, k, { size: 13, fill: C.mute, weight: 500 })}
+${text(x + 18, y + 80, num(v), { size: 34, weight: 700, ls: -1, tnum: true })}${text(x + 18, y + 98, sub, { size: 12, fill: C.dim })}</g>`;
   }).join("");
   const h = 86 + 2 * (th + 12) + 4;
   const pill = `<rect x="${W - 28 - 196}" y="46" width="196" height="24" rx="12" fill="#0e2a17" stroke="#1d5a30"/>${icon("lock", W - 28 - 184, 50, C.green)}${text(W - 28 - 160, 62, "includes private work", { size: 11.5, fill: "#7ee787" })}`;
-  return card(W, h, `${label(28, 36, "02 · by the numbers")}${text(28, 64, "Lifetime stats", { size: 22, weight: 700 })}${pill}${t}${sheen(W, h)}`);
+  return card(W, h, `${label(28, 36, "by the numbers")}${text(28, 64, "Lifetime stats", { size: 24, weight: 700, ls: -0.5 })}${pill}${t}${sheen(W, h)}`);
 }
 
 
@@ -118,7 +118,7 @@ export function activity(d) {
     if (r === 0 && m !== lastM && x < W - 70) { lastM = m; if (x - lastX < 34) return; lastX = x; mon += text(x.toFixed(1), y0 - 10, new Date(day.date + "T00:00:00Z").toLocaleString("en-US", { month: "short", timeZone: "UTC" }), { size: 10.5, fill: C.mute }); }
   }));
   const gridW = wk.length * (cs + g);
-  const dayL = ["Mon", "Wed", "Fri"].map((s, i) => text(28, y0 + (1 + i * 2) * (cs + g) + 9, s, { size: 10, fill: C.dim })).join("");
+  const dayL = ["Mon", "Wed", "Fri"].map((s, i) => text(28, y0 + (1 + i * 2) * (cs + g) + 9, s, { size: 11, fill: C.dim })).join("");
   // our own snake: heads for the nearest lit cell, never crosses its own body, eats lit cells it enters, then the board resets
   const L = 7, STEP = 0.07;
   const cellAt = (c, r) => { const rr = c === 0 ? r - first : r; return rr < 0 ? undefined : wk[c]?.[rr]; };
@@ -133,14 +133,14 @@ export function activity(d) {
   const seg = Array.from({ length: L }, (_, k) => { const lag = k * STEP, size = cs + 1 - k * 0.35; return `<g transform="translate(${fx.toFixed(1)},${fy.toFixed(1)})"><rect x="${-size / 2}" y="${-size / 2}" width="${size}" height="${size}" rx="3.5" fill="${k ? "#7c5cff" : "#c8a2ff"}" opacity="${(1 - k * 0.07).toFixed(2)}">${k ? `<set attributeName="visibility" to="hidden" begin="0s" end="${lag.toFixed(2)}s"/>` : ""}<animateMotion dur="${D.toFixed(2)}s" begin="${lag.toFixed(2)}s" repeatCount="indefinite" path="${path}" keyPoints="0;1;1" keyTimes="0;${(S / N).toFixed(4)};1" calcMode="linear"/><animate attributeName="visibility" calcMode="discrete" values="visible;hidden" keyTimes="0;${(S / N).toFixed(4)}" dur="${D.toFixed(2)}s" begin="${lag.toFixed(2)}s" repeatCount="indefinite"/></rect></g>`; }).reverse().join("");
   const scan = eat + seg;
   const legendX = W - 28 - 5 * 14 - 74;
-  const legend = `${text(legendX, y0 + 7 * (cs + g) + 22, "Less", { size: 10, fill: C.dim })}${HEAT.map((c, i) => `<rect x="${legendX + 30 + i * 14}" y="${y0 + 7 * (cs + g) + 13}" width="11" height="11" rx="2.5" fill="${c}"/>`).join("")}${text(legendX + 30 + 5 * 14 + 4, y0 + 7 * (cs + g) + 22, "More", { size: 10, fill: C.dim })}`;
+  const legend = `${text(legendX, y0 + 7 * (cs + g) + 22, "Less", { size: 11, fill: C.dim })}${HEAT.map((c, i) => `<rect x="${legendX + 30 + i * 14}" y="${y0 + 7 * (cs + g) + 13}" width="11" height="11" rx="2.5" fill="${c}"/>`).join("")}${text(legendX + 30 + 5 * 14 + 4, y0 + 7 * (cs + g) + 22, "More", { size: 11, fill: C.dim })}`;
   // monthly bars
   const by = y0 + 7 * (cs + g) + 56, bh = 70, mmax = Math.max(...d.months.map((m) => m.n), 1), bw = (W - 56 - 11 * 10) / 12;
-  const bars = d.months.map((m, i) => { const h = Math.max(3, (m.n / mmax) * bh), x = 28 + i * (bw + 10), st = 0.02 + i * 0.012, kt = `0;${st.toFixed(3)};${(st + 0.1).toFixed(3)};.92;.97;1`; return `<rect x="${x.toFixed(1)}" y="${(by + bh - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="4" fill="${i === 11 ? C.green : "#1f6f3a"}"><animate attributeName="height" values="3;3;${h.toFixed(1)};${h.toFixed(1)};3;3" keyTimes="${kt}" dur="12s" repeatCount="indefinite"/><animate attributeName="y" values="${by + bh - 3};${by + bh - 3};${(by + bh - h).toFixed(1)};${(by + bh - h).toFixed(1)};${by + bh - 3};${by + bh - 3}" keyTimes="${kt}" dur="12s" repeatCount="indefinite"/></rect>${text((x + bw / 2).toFixed(1), by + bh + 16, m.label, { size: 10, fill: C.dim, anchor: "middle" })}${m.n ? text((x + bw / 2).toFixed(1), (by + bh - h - 6).toFixed(1), compact(m.n), { size: 10, fill: C.mute, anchor: "middle" }) : ""}`; }).join("");
+  const bars = d.months.map((m, i) => { const h = Math.max(3, (m.n / mmax) * bh), x = 28 + i * (bw + 10), st = 0.02 + i * 0.012, kt = `0;${st.toFixed(3)};${(st + 0.1).toFixed(3)};.92;.97;1`; return `<rect x="${x.toFixed(1)}" y="${(by + bh - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="4" fill="${i === 11 ? C.green : "#1a6a37"}"><animate attributeName="height" values="3;3;${h.toFixed(1)};${h.toFixed(1)};3;3" keyTimes="${kt}" calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1" dur="12s" repeatCount="indefinite"/><animate attributeName="y" values="${by + bh - 3};${by + bh - 3};${(by + bh - h).toFixed(1)};${(by + bh - h).toFixed(1)};${by + bh - 3};${by + bh - 3}" keyTimes="${kt}" calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1" dur="12s" repeatCount="indefinite"/></rect>${text((x + bw / 2).toFixed(1), by + bh + 16, m.label, { size: 11, fill: C.dim, anchor: "middle" })}${m.n ? text((x + bw / 2).toFixed(1), (by + bh - h - 6).toFixed(1), compact(m.n), { size: 11, fill: C.dim, anchor: "middle" }) : ""}`; }).join("");
   const busy = new Date(d.busy.date + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
   const h = by + bh + 34;
-  return card(W, h, `${label(28, 36, "03 · activity")}${text(28, 64, `${num(d.year.total)} contributions in the last year`, { size: 22, weight: 700 })}${text(W - 28, 62, `${d.streak} day streak · busiest day ${busy} (${d.busy.contributionCount})`, { size: 12, fill: C.mute, anchor: "end" })}
-${dayL}${mon}${cells}${scan}${legend}` + `${text(28, by - 12, "MONTH BY MONTH", { size: 10.5, fill: C.green, font: MONO, weight: 600, ls: 2 })}${bars}`, `<linearGradient id="scan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>`);
+  return card(W, h, `${label(28, 36, "activity")}${text(28, 64, `${num(d.year.total)} contributions in the last year`, { size: 24, weight: 700, ls: -0.5 })}${text(W - 28, 62, `${d.streak} day streak · busiest day ${busy} (${d.busy.contributionCount})`, { size: 12, fill: C.mute, anchor: "end" })}
+${dayL}${mon}${cells}${scan}${legend}` + `${label(28, by - 12, "Month by month")}${bars}`, `<linearGradient id="scan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>`);
 }
 
 // 4. LANGUAGES -----------------------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ export function languages(d) {
   const seg = rows.map((l, i) => { const w = (l.pct / 100) * bw, r = `<rect x="${x.toFixed(1)}" y="92" width="${Math.max(w - 2, 1).toFixed(1)}" height="14" fill="${esc(l.color)}"></rect>`; x += w; return r; }).join("");
   const cw = bw / 3, list = rows.map((l, i) => { const cx = bx + (i % 3) * cw, cy = 140 + Math.floor(i / 3) * 34; return `<circle cx="${cx + 6}" cy="${cy - 4}" r="5" fill="${esc(l.color)}"/>${text(cx + 20, cy, trunc(l.name, 18), { size: 13.5, weight: 500 })}${text(cx + cw - 24, cy, `${l.pct.toFixed(1)}%`, { size: 12.5, fill: C.mute, anchor: "end", font: MONO })}`; }).join("");
   const h = 140 + Math.ceil(rows.length / 3) * 34 + 6;
-  return card(W, h, `${header(W, "05 · languages", "Languages", `by code written across ${d.repoPublic} public repositories`)}<clipPath id="lb"><rect x="${bx}" y="92" width="${bw}" height="14" rx="7"><animate attributeName="width" values="0;${bw};${bw};0" keyTimes="0;.14;.9;1" dur="12s" repeatCount="indefinite"/></rect></clipPath><g clip-path="url(#lb)"><rect x="${bx}" y="92" width="${bw}" height="14" fill="#161b22"/>${seg}</g>${list}`);
+  return card(W, h, `${header(W, "languages", "Languages", `by code written across ${d.repoPublic} public repositories`)}<clipPath id="lb"><rect x="${bx}" y="92" width="${bw}" height="14" rx="7"><animate attributeName="width" values="0;${bw};${bw};0" keyTimes="0;.14;.9;1" dur="12s" repeatCount="indefinite"/></rect></clipPath><g clip-path="url(#lb)"><rect x="${bx}" y="92" width="${bw}" height="14" fill="#161b22"/>${seg}</g>${list}`);
 }
 
 const ago = (iso) => { const d = Math.max(0, Math.round((Date.now() - new Date(iso)) / 864e5)); return d < 1 ? "today" : d < 14 ? `${d} days ago` : d < 60 ? `${Math.round(d / 7)} weeks ago` : `${Math.round(d / 30)} months ago`; };
@@ -162,15 +162,15 @@ export function projects(d) {
   const cards = pick.map((p, i) => {
     const x = 28 + (i % 2) * (cw + 12), y = 86 + Math.floor(i / 2) * (ch + 12), desc = p.description ? wrap(p.description, 58, 2) : [`Last push ${ago(p.pushedAt)}`], col = p.primaryLanguage?.color || C.mute;
     return `<g>
-<rect x="${x}" y="${y}" width="${cw}" height="${ch}" rx="10" fill="#0c121c" stroke="${C.line}"/>
+<rect x="${x}" y="${y}" width="${cw}" height="${ch}" rx="14" fill="#151a24" stroke="#232b38"/>
 ${icon("repo", x + 16, y + 17, C.blue)}${text(x + 40, y + 30, trunc(p.name, 30), { size: 14.5, fill: C.blue, weight: 700 })}
 ${desc.map((l, j) => text(x + 16, y + 54 + j * 17, l, { size: 12, fill: C.mute })).join("")}
 <circle cx="${x + 20}" cy="${y + ch - 18}" r="5" fill="${esc(col)}"/>${text(x + 32, y + ch - 14, p.primaryLanguage?.name ?? "—", { size: 11.5, fill: C.text })}
 ${text(x + cw - 16, y + ch - 14, [p.commits ? `${p.commits} commits this year` : "", p.stargazerCount ? `★ ${p.stargazerCount}` : ""].filter(Boolean).join("   ·   "), { size: 11.5, fill: C.mute, anchor: "end" })}</g>`;
   }).join("");
   const y2 = 86 + Math.ceil(pick.length / 2) * (ch + 12);
-  const priv = `<rect x="28" y="${y2}" width="${W - 56}" height="46" rx="10" fill="#0c121c" stroke="${C.line}" stroke-dasharray="4 4"/>${icon("lock", 46, y2 + 15, C.mute)}${text(72, y2 + 28, `+ ${d.repoPrivate} private repositories — client and product work, shown as counts only`, { size: 12.5, fill: C.mute })}`;
-  return card(W, y2 + 46 + 24, `${header(W, "07 · work", "Selected projects", "most active public repositories this year")}${cards}${priv}`);
+  const priv = `<rect x="28" y="${y2}" width="${W - 56}" height="46" rx="14" fill="#151a24" stroke="#232b38" stroke-dasharray="4 4"/>${icon("lock", 46, y2 + 15, C.mute)}${text(72, y2 + 28, `+ ${d.repoPrivate} private repositories — client and product work, shown as counts only`, { size: 12.5, fill: C.mute })}`;
+  return card(W, y2 + 46 + 24, `${header(W, "work", "Selected projects", "most active public repositories this year")}${cards}${priv}`);
 }
 
 const ago2 = (iso) => { const m = Math.max(0, Math.round((Date.now() - new Date(iso)) / 6e4)); return m < 60 ? `${m}m ago` : m < 1440 ? `${Math.round(m / 60)}h ago` : m < 2880 ? "yesterday" : m < 14 * 1440 ? `${Math.round(m / 1440)}d ago` : `${Math.round(m / 10080)}w ago`; };
@@ -198,7 +198,7 @@ export function city(d) {
     if (!n) return `<polygon points="${f(sx)},${f(sy - b)} ${f(sx + a)},${f(sy)} ${f(sx)},${f(sy + b)} ${f(sx - a)},${f(sy)}" fill="#0f3a3b" stroke="#0a2a2c" stroke-width=".6"/>`;
     const base = mix("#1f9e8a", "#9ff5df", Math.sqrt(t)), left = shade(base, 0.74), right = shade(base, 0.52), st = 0.03 + 0.34 * ((u + v) / span), kt = [0, st, st + 0.07, 0.93, 0.97, 1].map((x) => x.toFixed(3)).join(";");
     // every block grows from the ground in a wave along the strip, holds, drops, repeats; base (no animation) is the full city
-    return `<g transform="translate(${f(sx)},${f(sy)})"><g><animateTransform attributeName="transform" type="scale" values="1 .001;1 .001;1 1;1 1;1 .001;1 .001" keyTimes="${kt}" dur="${T}s" repeatCount="indefinite"/><polygon points="${f(-a)},${f(-h)} 0,${f(b - h)} 0,${f(b)} ${f(-a)},0" fill="${left}"/><polygon points="${f(a)},${f(-h)} 0,${f(b - h)} 0,${f(b)} ${f(a)},0" fill="${right}"/><polygon points="0,${f(-b - h)} ${f(a)},${f(-h)} 0,${f(b - h)} ${f(-a)},${f(-h)}" fill="${base}"/></g></g>`;
+    return `<g transform="translate(${f(sx)},${f(sy)})"><g><animateTransform attributeName="transform" type="scale" values="1 .001;1 .001;1 1;1 1;1 .001;1 .001" keyTimes="${kt}" calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1" dur="${T}s" repeatCount="indefinite"/><polygon points="${f(-a)},${f(-h)} 0,${f(b - h)} 0,${f(b)} ${f(-a)},0" fill="${left}"/><polygon points="${f(a)},${f(-h)} 0,${f(b - h)} 0,${f(b)} ${f(a)},0" fill="${right}"/><polygon points="0,${f(-b - h)} ${f(a)},${f(-h)} 0,${f(b - h)} ${f(-a)},${f(-h)}" fill="${base}"/></g></g>`;
   }).join("");
   const active = d.days.filter((x) => x.contributionCount).length, busy = new Date(d.busy.date + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
   const [sx0, sy0] = P(0, 3), [sx1, sy1] = P(wk.length - 1, 3);
@@ -207,8 +207,8 @@ export function city(d) {
   const left = `${label(36, 64, "contribution city", "#5eead4")}${text(36, 118, compact(d.year.total), { size: 56, weight: 800, fill: "#d7fff6" })}${text(36, 146, "contributions in the last year", { size: 14, fill: "#8fe9d6", weight: 600 })}
 ${text(36, 186, `${active} active days`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}${text(36, 208, `Busiest day: ${d.busy.contributionCount} (${busy})`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}${text(36, 230, `${d.streak} day current streak`, { size: 13.5, fill: "#8fe9d6", weight: 600 })}
 <rect x="36" y="252" width="172" height="24" rx="12" fill="#0b3b36" stroke="#1d7a6c"/>${icon("lock", 46, 256, "#5eead4")}${text(68, 268, "includes private work", { size: 11.5, fill: "#8fe9d6" })}`;
-  const body = `<defs><linearGradient id="citybg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d3d3b"/><stop offset="1" stop-color="#08181f"/></linearGradient><clipPath id="cc"><rect width="${W}" height="${H}" rx="14"/></clipPath></defs><g clip-path="url(#cc)"><rect width="${W}" height="${H}" fill="url(#citybg)"/>${left}${plate}${shapes}${sheen(W, H, 9)}
-${text(W - 28, H - 14, `${fmt(d.days[0].date)}  →  ${fmt(d.days[d.days.length - 1].date)}  ·  one block per day, taller = more contributions`, { size: 10.5, fill: "#5aa99a", anchor: "end", font: MONO })}</g><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="14" fill="none" stroke="#1d5a52"/>`;
+  const body = `<defs><linearGradient id="citybg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d3d3b"/><stop offset="1" stop-color="#08181f"/></linearGradient><clipPath id="cc"><rect width="${W}" height="${H}" rx="20"/></clipPath></defs><g clip-path="url(#cc)"><rect width="${W}" height="${H}" fill="url(#citybg)"/>${left}${plate}${shapes}${sheen(W, H, 9)}
+${text(W - 28, H - 14, `${fmt(d.days[0].date)}  →  ${fmt(d.days[d.days.length - 1].date)}  ·  one block per day, taller = more contributions`, { size: 11, fill: "#7cc7b8", anchor: "end", font: MONO })}</g><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="20" fill="none" stroke="#1d5a52"/>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img">${body}</svg>\n`;
 }
 
@@ -216,14 +216,14 @@ ${text(W - 28, H - 14, `${fmt(d.days[0].date)}  →  ${fmt(d.days[d.days.length 
 export function now(d) {
   const month = 30 * 864e5, pubRecent = d.repos.filter((r) => r.name !== d.login && Date.now() - new Date(r.pushedAt) < month).length;
   const active = d.privActive + pubRecent, recent = d.repos.filter((r) => r.name !== d.login).sort((a, b) => new Date(b.pushedAt) - new Date(a.pushedAt)).slice(0, 3);
-  const banner = `<rect x="28" y="88" width="${W - 56}" height="52" rx="10" fill="#0e2a17" stroke="#1d5a30"/><circle cx="54" cy="114" r="5" fill="${C.neon}"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;.35;1" dur="2s" repeatCount="indefinite"/></circle>${text(76, 110, `${active} repositories pushed to in the last 30 days`, { size: 15, weight: 700, fill: "#aff5b4" })}${text(76, 128, `${d.privActive} private and ${pubRecent} public, so most of the work is not visible here`, { size: 12, fill: "#7ee787" })}`;
+  const banner = `<rect x="28" y="88" width="${W - 56}" height="52" rx="10" fill="#0e2a17" stroke="#1d5a30"/><circle cx="54" cy="114" r="5" fill="${C.neon}"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;.35;1" dur="2s" repeatCount="indefinite"/></circle>${text(76, 110, `${active} repositories had pushes in the last 30 days`, { size: 15, weight: 700, fill: "#aff5b4" })}${text(76, 128, `${d.privActive} private and ${pubRecent} public, so most of the work is not visible here`, { size: 12, fill: "#7ee787" })}`;
   const rows = recent.map((p, i) => {
     const y = 176 + i * 58, col = p.primaryLanguage?.color || C.mute, lang = p.primaryLanguage?.name;
-    return `<rect x="28" y="${y}" width="${W - 56}" height="48" rx="10" fill="#0c121c" stroke="${C.line}"/>${icon("repo", 44, y + (p.description ? 12 : 16), C.blue)}
+    return `<rect x="28" y="${y}" width="${W - 56}" height="48" rx="14" fill="#151a24" stroke="#232b38"/>${icon("repo", 44, y + (p.description ? 12 : 16), C.blue)}
 ${text(68, y + (p.description ? 21 : 29), trunc(p.name, 28), { size: 14, weight: 700, fill: C.blue })}${p.description ? text(68, y + 38, trunc(p.description, 66), { size: 11.5, fill: C.mute }) : ""}
 ${lang ? `<circle cx="${W - 232}" cy="${y + 24}" r="5" fill="${esc(col)}"/>${text(W - 220, y + 28, lang, { size: 12, fill: C.text })}` : ""}${text(W - 44, y + 28, `pushed ${ago2(p.pushedAt)}`, { size: 12, fill: C.mute, anchor: "end" })}`;
   }).join("");
-  return card(W, 176 + recent.length * 58 + 18, `${header(W, "08 · now", "Currently working on", "live from the GitHub API")}${banner}${label(28, 164, "latest public repositories", C.mute)}${rows}`);
+  return card(W, 176 + recent.length * 58 + 18, `${header(W, "now", "Currently working on", "live from the GitHub API")}${banner}${label(28, 164, "latest public repositories", C.mute)}${rows}`);
 }
 
 // 8. RECENT ACTIVITY -----------------------------------------------------------------------------------------------------
@@ -239,7 +239,7 @@ export function timeline(d) {
     return `${i < rows.length - 1 ? `<line x1="37" y1="${y + 8}" x2="37" y2="${y + 36 - 8}" stroke="${C.line}"/>` : ""}<circle cx="37" cy="${y}" r="5.5" fill="${C.card}" stroke="${col}" stroke-width="2">${i === 0 ? `<animate attributeName="r" values="5.5;8;5.5" dur="2s" repeatCount="indefinite"/>` : ""}</circle>${e.pub ? "" : icon("lock", W - 28 - 64 - 24, y - 8, C.dim)}
 <text x="60" y="${y + 4}" font-family="${SANS}" font-size="13.5">${line}</text>${text(W - 28, y + 4, ago2(e.ts), { size: 12, fill: C.mute, anchor: "end" })}`;
   }).join("");
-  return card(W, 96 + rows.length * 36 + 12, `${header(W, "09 · log", "Recent activity", "private work is summarised, never named")}${body}`);
+  return card(W, 96 + rows.length * 36 + 12, `${header(W, "log", "Recent activity", "private work is summarised, never named")}${body}`);
 }
 
 // 0. ABOUT ---------------------------------------------------------------------------------------------------------------
@@ -248,10 +248,10 @@ export function about(d) {
     ["cap", "Education", "CS student at AIUB", C.blue], ["pin", "Location", d.location || "Dhaka, Bangladesh", C.pink], ["code", "Focus", "Full-stack web and backend", C.green],
     ["term", "Daily drivers", "VS Code, NeoVim, Linux", C.orange], ["sprout", "Journey", "Learning since 2021, shipping since 2023", C.yellow], ["globe", "Portfolio", "rezwoan.codes", C.purple],
   ];
-  const tw = (W - 56 - 24) / 3, th = 78;
+  const tw = (W - 56 - 24) / 3, th = 88;
   const t = facts.map(([ic, k, v, col], i) => { const x = 28 + (i % 3) * (tw + 12), y = 122 + Math.floor(i / 3) * (th + 12), lines = wrap(v, 26, 2);
-    return `<rect x="${x}" y="${y}" width="${tw}" height="${th}" rx="10" fill="#0c121c" stroke="${C.line}"/><rect x="${x}" y="${y + 16}" width="3" height="26" rx="1.5" fill="${col}"/>${icon(ic, x + 18, y + 15, col)}${text(x + 42, y + 28, k.toUpperCase(), { size: 10, fill: C.mute, font: MONO, weight: 600, ls: 1.5 })}${lines.map((l, j) => text(x + 18, y + 54 + j * 17, l, { size: 14.5, weight: 600 })).join("")}`; }).join("");
-  return card(W, 122 + 2 * (th + 12) + 8, `${header(W, "01 · about", "Hi, I'm Rezwoan")}${text(28, 92, "I build systems end to end, from the interface to the database.", { size: 14, fill: C.mute })}${t}${sheen(W, 122 + 2 * (th + 12) + 8, 9)}`);
+    return `<rect x="${x}" y="${y}" width="${tw}" height="${th}" rx="14" fill="#151a24" stroke="#232b38"/><rect x="${x + 16}" y="${y + 14}" width="28" height="28" rx="9" fill="${col}" fill-opacity=".15"/>${icon(ic, x + 22, y + 20, col)}${text(x + 54, y + 33, k, { size: 13, fill: C.mute, weight: 500 })}${lines.map((l, j) => text(x + 18, y + 62 + j * 18, l, { size: 15, weight: 600, ls: -0.2 })).join("")}`; }).join("");
+  return card(W, 122 + 2 * (th + 12) + 8, `${header(W, "about", "Hi, I'm Rezwoan")}${text(28, 92, "I build systems end to end, from the interface to the database.", { size: 14, fill: C.mute })}${t}${sheen(W, 122 + 2 * (th + 12) + 8, 9)}`);
 }
 
 // 5b. TECH STACK ---------------------------------------------------------------------------------------------------------
@@ -270,11 +270,11 @@ export function techStack() {
       const x = x0 + i * pitch, ic = ICONS[key], col = BRIGHT[key] || ic?.hex || fallback || C.mute, glyph = ic
         ? `<g transform="translate(${x + 20},${y + 10}) scale(1.2)" fill="${col}"><path d="${ic.d}"/></g>`
         : text(x + 34, y + 38, key === "vscode" ? "VS" : key.toUpperCase(), { size: 15, weight: 800, fill: col, anchor: "middle" });
-      return `<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="${(3 + (i * 7 + r * 3) % 5 * 0.4).toFixed(1)}s" begin="${((i + r) % 4 * 0.3).toFixed(1)}s" repeatCount="indefinite"/><rect x="${x}" y="${y}" width="68" height="70" rx="12" fill="#0c121c" stroke="${C.line}"/>${glyph}${text(x + 34, y + 62, name, { size: 10, fill: C.mute, anchor: "middle" })}</g>`; }).join(""); }).join("");
-  return card(W, 92 + STACK.length * rowH + 14, `${header(W, "06 · tech stack", "Tools I build with", "languages, frameworks, data and daily tools")}${rows}`);
+      return `<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="${(3 + (i * 7 + r * 3) % 5 * 0.4).toFixed(1)}s" begin="${((i + r) % 4 * 0.3).toFixed(1)}s" repeatCount="indefinite"/><rect x="${x}" y="${y}" width="68" height="70" rx="14" fill="#151a24" stroke="#232b38"/>${glyph}${text(x + 34, y + 62, name, { size: 11, fill: C.dim, anchor: "middle" })}</g>`; }).join(""); }).join("");
+  return card(W, 92 + STACK.length * rowH + 14, `${header(W, "tech stack", "Tools I build with", "languages, frameworks, data and daily tools")}${rows}`);
 }
 
 // 10. CONNECT HEADER -----------------------------------------------------------------------------------------------------
 export function connect() {
-  return card(W, 92, `${header(W, "10 · connect", "Let's build something together", "rezwoan.codes")}`);
+  return card(W, 92, `${header(W, "connect", "Let's build something together", "rezwoan.codes")}`);
 }

@@ -18,7 +18,7 @@ export const LINKS = [
 
 export function button([, name, sub, g]) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="134" height="46" viewBox="0 0 134 46" role="img"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#121a28"/><stop offset="1" stop-color="#0c121c"/></linearGradient><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".4" stop-color="#d62976"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient><linearGradient id="wb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fb950"/><stop offset="1" stop-color="#58a6ff"/></linearGradient></defs>
-<rect x=".5" y=".5" width="133" height="45" rx="11" fill="url(#bg)" stroke="${C.line}"/><g transform="translate(9,9)"><rect width="28" height="28" rx="8" fill="${TILE[g]}"${g === "x" ? ` stroke="#30363d"` : ""}/>${G[g]}</g>
+<rect x=".5" y=".5" width="133" height="45" rx="14" fill="url(#bg)" stroke="${C.line}"/><g transform="translate(9,9)"><rect width="28" height="28" rx="8" fill="${TILE[g]}"${g === "x" ? ` stroke="#30363d"` : ""}/>${G[g]}</g>
 ${text(46, 21, name, { size: 13.5, weight: 700 })}${text(46, 35, sub, { size: 10.5, fill: C.mute, font: MONO })}</svg>
 `;
 }
