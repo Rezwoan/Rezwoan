@@ -67,9 +67,37 @@ export function stats(d) {
 <rect x="${x + 16}" y="${y + 16}" width="28" height="28" rx="9" fill="${col}" fill-opacity=".15"/>${icon(ic, x + 22, y + 22, col)}${text(x + 54, y + 35, k, { size: 13, fill: C.mute, weight: 500 })}
 ${text(x + 18, y + 80, num(v), { size: 34, weight: 700, ls: -1, tnum: true })}${text(x + 18, y + 98, sub, { size: 12, fill: C.dim })}</g>`;
   }).join("");
-  const h = 86 + 2 * (th + 12) + 4;
+  const h0 = 86 + 2 * (th + 12) + 4;
+  const M = d.month, y0 = h0 - 20, ty = y0 + 86, cy = ty + th + 12, h = M ? cy + 112 + 24 : h0;
+  const SPL = 'calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1"';
+  let pace = "";
+  if (M) {
+    const lines = M.add + M.del, perDay = M.commits / M.elapsed, fmt1 = (n) => (n >= 100 ? Math.round(n) : n.toFixed(1)).toString();
+    const sub2 = `<tspan fill="${C.green}">+${compact(M.add)}</tspan>`;
+    const mt = [
+      ["commit", "Commits per day", fmt1(perDay), `${num(M.commits)} commits in ${M.elapsed} days`, C.blue],
+      ["code", "Lines per day", compact(Math.round(lines / M.elapsed)), null, C.purple],
+      ["graph", "Active days", `${M.active}/${M.elapsed}`, `${Math.round((M.active / M.elapsed) * 100)}% of the month so far`, C.green],
+      ["bolt", "Typical commit", num(M.median), "median lines per commit", C.yellow],
+    ].map(([ic, k, v, sub, col], i) => {
+      const x = 28 + i * (tw + 12), s = sub ?? "";
+      const subEl = sub ? text(x + 18, ty + 98, s, { size: 12, fill: C.dim }) : `${text(x + 18, ty + 98, `+${compact(M.add)}`, { size: 12, fill: C.green, tnum: true })}${text(x + 18 + `+${compact(M.add)}`.length * 6.8 + 8, ty + 98, `−${compact(M.del)}`, { size: 12, fill: C.pink, tnum: true })}${text(x + 18 + (`+${compact(M.add)}`.length + `−${compact(M.del)}`.length) * 6.8 + 16, ty + 98, "this month", { size: 12, fill: C.dim })}`;
+      return `<g><rect x="${x}" y="${ty}" width="${tw}" height="${th}" rx="14" fill="#151a24" stroke="#232b38"/><rect x="${x + 16}" y="${ty + 16}" width="28" height="28" rx="9" fill="${col}" fill-opacity=".15"/>${icon(ic, x + 22, ty + 22, col)}${text(x + 54, ty + 35, k, { size: 13, fill: C.mute, weight: 500 })}${text(x + 18, ty + 80, v, { size: 34, weight: 700, ls: -1, tnum: true })}${subEl}</g>`;
+    }).join("");
+    // daily commits this month: one bar per day so far, dashed line at the average, today in green
+    const px = 44, pw = W - 88, base = cy + 112 - 30, bh = 50, slot = pw / M.total, vmax = Math.max(...M.byDay.map((b) => b.commits), 1);
+    const bars = M.byDay.map((b, i) => {
+      const hh = Math.max(3, (b.commits / vmax) * bh), x = px + i * slot, st = 0.02 + i * 0.01, kt = `0;${st.toFixed(3)};${(st + 0.1).toFixed(3)};.92;.97;1`, today = i === M.elapsed - 1;
+      return `<rect x="${(x + 1.5).toFixed(1)}" y="${(base - hh).toFixed(1)}" width="${(slot - 3).toFixed(1)}" height="${hh.toFixed(1)}" rx="3" fill="${today ? C.green : b.commits ? "#1f7a40" : "#1c2330"}"><animate attributeName="height" values="3;3;${hh.toFixed(1)};${hh.toFixed(1)};3;3" keyTimes="${kt}" ${SPL} dur="12s" repeatCount="indefinite"/><animate attributeName="y" values="${base - 3};${base - 3};${(base - hh).toFixed(1)};${(base - hh).toFixed(1)};${base - 3};${base - 3}" keyTimes="${kt}" ${SPL} dur="12s" repeatCount="indefinite"/></rect>`;
+    }).join("");
+    const ay = base - Math.max(3, (perDay / vmax) * bh), top = M.byDay.reduce((m, b, i) => (b.commits > M.byDay[m].commits ? i : m), 0);
+    const xl = (i, s, anchor = "middle") => text((px + i * slot + slot / 2).toFixed(1), base + 18, s, { size: 11, fill: C.dim, anchor });
+    const mon = M.label.slice(0, 3);
+    pace = `<line x1="28" y1="${h0 - 6}" x2="${W - 28}" y2="${h0 - 6}" stroke="#222a37"/>${label(28, y0 + 36, `this month · ${M.label}`)}${text(28, y0 + 64, "Pace this month", { size: 24, weight: 700, ls: -0.5 })}${text(W - 28, y0 + 62, `day ${M.elapsed} of ${M.total}`, { size: 12.5, fill: C.mute, anchor: "end" })}${mt}
+<rect x="28" y="${cy}" width="${W - 56}" height="112" rx="14" fill="#151a24" stroke="#232b38"/>${label(44, cy + 28, "Daily commits")}${text(160, cy + 28, `average ${fmt1(perDay)} a day`, { size: 12, fill: C.mute, tnum: true })}${bars}<line x1="${px}" y1="${ay.toFixed(1)}" x2="${px + pw}" y2="${ay.toFixed(1)}" stroke="#a1a8b3" stroke-opacity=".55" stroke-dasharray="4 4"/>${text((px + top * slot + slot / 2).toFixed(1), base - Math.max(3, (M.byDay[top].commits / vmax) * bh) - 6, String(M.byDay[top].commits), { size: 11, fill: C.text, anchor: "middle", tnum: true })}${xl(0, `${mon} 1`, "start")}${M.elapsed > 14 ? xl(14, "15") : ""}${xl(M.elapsed - 1, M.elapsed === 1 ? "" : `${mon} ${M.elapsed}`, "end")}`;
+  }
   const pill = `<rect x="${W - 28 - 196}" y="46" width="196" height="24" rx="12" fill="#0e2a17" stroke="#1d5a30"/>${icon("lock", W - 28 - 184, 50, C.green)}${text(W - 28 - 160, 62, "includes private work", { size: 11.5, fill: "#7ee787" })}`;
-  return card(W, h, `${label(28, 36, "by the numbers")}${text(28, 64, "Lifetime stats", { size: 24, weight: 700, ls: -0.5 })}${pill}${t}${sheen(W, h)}`);
+  return card(W, h, `${label(28, 36, "by the numbers")}${text(28, 64, "Lifetime stats", { size: 24, weight: 700, ls: -0.5 })}${pill}${t}${pace}${sheen(W, h)}`);
 }
 
 

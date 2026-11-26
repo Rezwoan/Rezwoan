@@ -68,8 +68,25 @@ async function dayLanguages(repos, login, since, calendar) {
   return { days, total: [...total.values()].sort((a, b) => b.n - a.n), offset: best, commits: raw.length };
 }
 
+// This month's pace: commits and lines changed per day on default branches (the commits GitHub counts as contributions), private repos included.
+// Only totals are kept; repository names are used to fetch history and then dropped.
+async function monthPace(login, userId, lastDate, offset) {
+  const monthStart = lastDate.slice(0, 8) + "01", t0 = Date.parse(monthStart + "T00:00:00Z"), elapsed = Number(lastDate.slice(8, 10));
+  const total = new Date(Date.UTC(Number(lastDate.slice(0, 4)), Number(lastDate.slice(5, 7)), 0)).getUTCDate();
+  const repos = (await gql(`query($u:String!,$f:DateTime!){user(login:$u){contributionsCollection(from:$f){commitContributionsByRepository(maxRepositories:100){repository{name owner{login}}}}}}`, { u: login, f: new Date(t0 - 12 * 36e5).toISOString() })).user.contributionsCollection.commitContributionsByRepository.map((x) => x.repository);
+  const since = new Date(t0 - offset * 36e5).toISOString(), nodes = [], queue = [...repos];
+  const Q = `query($o:String!,$n:String!,$s:GitTimestamp!,$id:ID!,$a:String){repository(owner:$o,name:$n){defaultBranchRef{target{... on Commit{history(first:100,since:$s,author:{id:$id},after:$a){nodes{additions deletions committedDate}pageInfo{hasNextPage endCursor}}}}}}}`;
+  const one = async (r) => { let after = null; for (let i = 0; i < 20; i++) { let h; try { h = (await gql(Q, { o: r.owner.login, n: r.name, s: since, id: userId, a: after })).repository?.defaultBranchRef?.target?.history; } catch { return; } if (!h) return; nodes.push(...h.nodes); if (!h.pageInfo.hasNextPage) return; after = h.pageInfo.endCursor; } };
+  await Promise.all(Array.from({ length: 8 }, async () => { for (let r; (r = queue.shift()); ) await one(r); }));
+  const byDay = Array.from({ length: elapsed }, (_, i) => ({ date: `${monthStart.slice(0, 8)}${String(i + 1).padStart(2, "0")}`, commits: 0, lines: 0 }));
+  let add = 0, del = 0; const sizes = [];
+  for (const x of nodes) { const day = new Date(Date.parse(x.committedDate) + offset * 36e5).getUTCDate(), b = byDay[day - 1]; if (!b) continue; b.commits++; b.lines += x.additions + x.deletions; add += x.additions; del += x.deletions; sizes.push(x.additions + x.deletions); }
+  sizes.sort((p, q) => p - q);
+  return { label: new Date(t0).toLocaleString("en-US", { month: "long", timeZone: "UTC" }), elapsed, total, byDay, add, del, commits: sizes.length, active: byDay.filter((x) => x.commits).length, median: sizes.length ? sizes[Math.floor(sizes.length / 2)] : 0 };
+}
+
 export async function loadData(login) {
-  const head = await gql(`query($u:String!){viewer{login} user(login:$u){createdAt}}`, { u: login });
+  const head = await gql(`query($u:String!){viewer{login} user(login:$u){createdAt id}}`, { u: login });
   const since = new Date(head.user.createdAt).getUTCFullYear(), now = new Date().getUTCFullYear();
   const years = Array.from({ length: now - since + 1 }, (_, i) => since + i);
   const ys = years.map((y) => `y${y}:contributionsCollection(from:"${y}-01-01T00:00:00Z",to:"${y}-12-31T23:59:59Z"){${YEAR}}`).join(" ");
@@ -108,10 +125,11 @@ export async function loadData(login) {
 
   const calendar = new Map(days.map((x) => [x.date, x.contributionCount]));
   const mix = await dayLanguages(u.cur.commitContributionsByRepository.map((x) => ({ owner: x.repository.owner.login, name: x.repository.name, lang: x.repository.primaryLanguage })), login, days[0].date + "T00:00:00Z", calendar);
+  const month = await monthPace(login, head.user.id, days[days.length - 1].date, mix.offset);
   const events = timeline(await rest(`/users/${login}/events?per_page=100`));
   const privActive = u.privRecent.nodes.filter((r) => Date.now() - new Date(r.pushedAt) < 30 * 864e5).length;
   return {
-    events, privActive, dayLangs: mix.days, cityLangs: mix.total, repoLangCount: u.allRepos.nodes.length,
+    month, events, privActive, dayLangs: mix.days, cityLangs: mix.total, repoLangCount: u.allRepos.nodes.length,
     login: u.login, name: u.name || u.login, bio: u.bio || "", location: u.location || "", since, avatarUrl: u.avatarUrl,
     followers: u.followers.totalCount, following: u.following.totalCount,
     repoTotal: u.all.totalCount, repoPublic: u.pub.totalCount, repoPrivate: u.priv.totalCount,
