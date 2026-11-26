@@ -110,12 +110,14 @@ export function activity(d) {
   const cs = 11, g = 3.5, x0 = 56, y0 = 118, days = d.days, max = Math.max(...days.map((x) => x.contributionCount), 1);
   const wk = []; for (let i = 0; i < days.length; i += 7) wk.push(days.slice(i, i + 7));
   const first = new Date(days[0].date + "T00:00:00Z").getUTCDay(); // pad so rows are weekdays
-  const sk = streaks(days), fillOf = (day) => { const s = sk.get(day.date), f0 = HEAT[level(day.contributionCount, max)]; return s ? mix(f0, "#6dff96", 0.1 * s.tier) : f0; }, pos = [];
+  const GRAY = "#6e7681", RAMP = [0, 0.5, 0.68, 0.85, 1], named = new Set(d.cityLangs.filter((l) => l.name !== "Other").slice(0, 9).map((l) => l.name)), pos = [];
+  // a day's colour is its biggest language that day (grey when it is an "other" language or a PR/review-only day); brightness = contributions
+  const dayCol = (date) => { const m = d.dayLangs.get(date); if (!m) return GRAY; const t = [...m.values()].sort((p, q) => q.n - p.n)[0]; return named.has(t.name) ? t.color : GRAY; };
+  const fillOf = (day) => { const lv = level(day.contributionCount, max); return lv ? mix("#1c2330", dayCol(day.date), RAMP[lv]) : HEAT[0]; };
   let cells = "", mon = "", lastM = -1, lastX = -99;
   wk.forEach((col, c) => col.forEach((day, r) => {
     const row = c === 0 ? r + first : r; if (row > 6) return;
     const x = x0 + c * (cs + g), y = y0 + row * (cs + g), lv = level(day.contributionCount, max);
-    pos.push([c, row, x, y, day]);
     cells += `<rect x="${x.toFixed(1)}" y="${y}" width="${cs}" height="${cs}" rx="2.5" fill="${fillOf(day)}"/>`;
     const m = new Date(day.date + "T00:00:00Z").getUTCMonth();
     if (r === 0 && m !== lastM && x < W - 70) { lastM = m; if (x - lastX < 34) return; lastX = x; mon += text(x.toFixed(1), y0 - 10, new Date(day.date + "T00:00:00Z").toLocaleString("en-US", { month: "short", timeZone: "UTC" }), { size: 11, fill: C.mute }); }
@@ -133,25 +135,22 @@ export function activity(d) {
   const path = "M 0 0 L " + steps.slice(1).map(([c, r]) => { const [px, py] = ctr(c, r); return `${(px - fx).toFixed(1)} ${(py - fy).toFixed(1)}`; }).join(" L ");
   const eat = [...eaten].map(([k, step]) => { const c = Math.floor(k / 7), r = k % 7, day = cellAt(c, r), lv = fillOf(day), [cx, cy] = ctr(c, r), t = step / N;
     return `<rect x="${(cx - cs / 2).toFixed(1)}" y="${(cy - cs / 2).toFixed(1)}" width="${cs}" height="${cs}" rx="2.5" fill="${lv}"><animate attributeName="fill" calcMode="discrete" values="${lv};#1b2330;${lv}" keyTimes="0;${Math.max(t, 0.0001).toFixed(4)};${Math.min(0.9999, (S + 1) / N + 0.02).toFixed(4)}" dur="${D.toFixed(2)}s" repeatCount="indefinite"/></rect>`; }).join("");
-  const seg = Array.from({ length: L }, (_, k) => { const lag = k * STEP, size = cs + 1 - k * 0.35; return `<g transform="translate(${fx.toFixed(1)},${fy.toFixed(1)})"><rect x="${-size / 2}" y="${-size / 2}" width="${size}" height="${size}" rx="3.5" fill="${k ? "#7c5cff" : "#c8a2ff"}" opacity="${(1 - k * 0.07).toFixed(2)}">${k ? `<set attributeName="visibility" to="hidden" begin="0s" end="${lag.toFixed(2)}s"/>` : ""}<animateMotion dur="${D.toFixed(2)}s" begin="${lag.toFixed(2)}s" repeatCount="indefinite" path="${path}" keyPoints="0;1;1" keyTimes="0;${(S / N).toFixed(4)};1" calcMode="linear"/><animate attributeName="visibility" calcMode="discrete" values="visible;hidden" keyTimes="0;${(S / N).toFixed(4)}" dur="${D.toFixed(2)}s" begin="${lag.toFixed(2)}s" repeatCount="indefinite"/></rect></g>`; }).reverse().join("");
-  // streak cells glow (brighter and pulsing the longer the streak); the glow goes out with the cell when the snake eats it
-  const glows = pos.map(([c, row, x, y, day]) => {
-    const s = sk.get(day.date); if (!s) return "";
-    const layers = [[1.5, 0.3], [3, 0.18], [4.5, 0.1], [6, 0.06]].slice(0, s.tier).map(([e, o]) => `<rect x="${(x - e).toFixed(1)}" y="${y - e}" width="${cs + 2 * e}" height="${cs + 2 * e}" rx="${2.5 + e}" fill="#5dff8a" fill-opacity="${o}"/>`).join("");
-    const pulse = s.tier >= 3 ? `<animate attributeName="opacity" values="1;.45;1" dur="2.6s" begin="${(s.i * 0.12).toFixed(2)}s" repeatCount="indefinite"/>` : "";
-    const step = eaten.get(c * 7 + row), kt = step === undefined ? "" : `<animate attributeName="opacity" calcMode="discrete" values="1;0;1" keyTimes="0;${Math.max(step / N, 0.0001).toFixed(4)};${Math.min(0.9999, (S + 1) / N + 0.02).toFixed(4)}" dur="${D.toFixed(2)}s" repeatCount="indefinite"/>`;
-    return `<g>${kt}<g>${pulse}${layers}</g></g>`;
-  }).join("");
+  // the head turns the colour of each lit cell it eats; every body segment replays the same colours, lagging by its place in the body
+  const SNAKE0 = "#8b7cff", kts = ["0"], cols = [SNAKE0];
+  for (const [step, col] of [...eaten].map(([k, st]) => [st, dayCol(cellAt(Math.floor(k / 7), k % 7).date)]).sort((p, q) => p[0] - q[0])) { const t = Math.max(step / N, 0.0001).toFixed(4); if (t === kts[kts.length - 1]) cols[cols.length - 1] = col; else { kts.push(t); cols.push(col); } }
+  const paint = (lag, fn) => `<animate attributeName="fill" calcMode="discrete" values="${cols.map(fn).join(";")}" keyTimes="${kts.join(";")}" dur="${D.toFixed(2)}s" begin="${lag.toFixed(2)}s" repeatCount="indefinite"/>`;
+  const seg = Array.from({ length: L }, (_, k) => { const lag = k * STEP, size = cs + 1 - k * 0.35; return `<g transform="translate(${fx.toFixed(1)},${fy.toFixed(1)})"><rect x="${-size / 2}" y="${-size / 2}" width="${size}" height="${size}" rx="3.5" fill="${SNAKE0}" opacity="${(1 - k * 0.07).toFixed(2)}">${k ? `<set attributeName="visibility" to="hidden" begin="0s" end="${lag.toFixed(2)}s"/>` : ""}<animateMotion dur="${D.toFixed(2)}s" begin="${lag.toFixed(2)}s" repeatCount="indefinite" path="${path}" keyPoints="0;1;1" keyTimes="0;${(S / N).toFixed(4)};1" calcMode="linear"/><animate attributeName="visibility" calcMode="discrete" values="visible;hidden" keyTimes="0;${(S / N).toFixed(4)}" dur="${D.toFixed(2)}s" begin="${lag.toFixed(2)}s" repeatCount="indefinite"/>${paint(lag, k ? (col) => col : (col) => mix(col, "#ffffff", 0.3))}</rect></g>`; }).reverse().join("");
   const scan = eat + seg;
   const legendX = W - 28 - 5 * 14 - 74;
-  const legend = `${text(56, y0 + 7 * (cs + g) + 22, "Glow marks streaks of 3+ days. The longer the streak, the brighter.", { size: 11, fill: C.dim })}${text(legendX, y0 + 7 * (cs + g) + 22, "Less", { size: 11, fill: C.dim })}${HEAT.map((c, i) => `<rect x="${legendX + 30 + i * 14}" y="${y0 + 7 * (cs + g) + 13}" width="11" height="11" rx="2.5" fill="${c}"/>`).join("")}${text(legendX + 30 + 5 * 14 + 4, y0 + 7 * (cs + g) + 22, "More", { size: 11, fill: C.dim })}`;
+  const LEG = [HEAT[0], ...RAMP.slice(1).map((t) => mix("#1c2330", "#c9d1d9", t))];
+  const legend = `${text(56, y0 + 7 * (cs + g) + 22, "Colour is the main language that day. Brighter means more contributions.", { size: 11, fill: C.dim })}${text(legendX, y0 + 7 * (cs + g) + 22, "Less", { size: 11, fill: C.dim })}${LEG.map((c, i) => `<rect x="${legendX + 30 + i * 14}" y="${y0 + 7 * (cs + g) + 13}" width="11" height="11" rx="2.5" fill="${c}"/>`).join("")}${text(legendX + 30 + 5 * 14 + 4, y0 + 7 * (cs + g) + 22, "More", { size: 11, fill: C.dim })}`;
   // monthly bars
   const by = y0 + 7 * (cs + g) + 56, bh = 70, mmax = Math.max(...d.months.map((m) => m.n), 1), bw = (W - 56 - 11 * 10) / 12;
   const bars = d.months.map((m, i) => { const h = Math.max(3, (m.n / mmax) * bh), x = 28 + i * (bw + 10), st = 0.02 + i * 0.012, kt = `0;${st.toFixed(3)};${(st + 0.1).toFixed(3)};.92;.97;1`; return `<rect x="${x.toFixed(1)}" y="${(by + bh - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="4" fill="${i === 11 ? C.green : "#1a6a37"}"><animate attributeName="height" values="3;3;${h.toFixed(1)};${h.toFixed(1)};3;3" keyTimes="${kt}" calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1" dur="12s" repeatCount="indefinite"/><animate attributeName="y" values="${by + bh - 3};${by + bh - 3};${(by + bh - h).toFixed(1)};${(by + bh - h).toFixed(1)};${by + bh - 3};${by + bh - 3}" keyTimes="${kt}" calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1" dur="12s" repeatCount="indefinite"/></rect>${text((x + bw / 2).toFixed(1), by + bh + 16, m.label, { size: 11, fill: C.dim, anchor: "middle" })}${m.n ? text((x + bw / 2).toFixed(1), (by + bh - h - 6).toFixed(1), compact(m.n), { size: 11, fill: C.dim, anchor: "middle" }) : ""}`; }).join("");
   const busy = new Date(d.busy.date + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
   const h = by + bh + 34;
   return card(W, h, `${label(28, 36, "activity")}${text(28, 64, `${num(d.year.total)} contributions in the last year`, { size: 24, weight: 700, ls: -0.5 })}${text(W - 28, 62, `${d.streak} day streak · busiest day ${busy} (${d.busy.contributionCount})`, { size: 12, fill: C.mute, anchor: "end" })}
-${dayL}${mon}${glows}${cells}${scan}${legend}` + `${label(28, by - 12, "Month by month")}${bars}`, `<linearGradient id="scan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>`);
+${dayL}${mon}${cells}${scan}${legend}` + `${label(28, by - 12, "Month by month")}${bars}`, `<linearGradient id="scan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>`);
 }
 
 // 4. LANGUAGES -----------------------------------------------------------------------------------------------------------
