@@ -115,7 +115,7 @@ export function activity(d) {
     const x = x0 + c * (cs + g), y = y0 + row * (cs + g), lv = level(day.contributionCount, max);
     cells += `<rect x="${x.toFixed(1)}" y="${y}" width="${cs}" height="${cs}" rx="2.5" fill="${HEAT[lv]}"/>`;
     const m = new Date(day.date + "T00:00:00Z").getUTCMonth();
-    if (r === 0 && m !== lastM && x < W - 70) { lastM = m; if (x - lastX < 34) return; lastX = x; mon += text(x.toFixed(1), y0 - 10, new Date(day.date + "T00:00:00Z").toLocaleString("en-US", { month: "short", timeZone: "UTC" }), { size: 10.5, fill: C.mute }); }
+    if (r === 0 && m !== lastM && x < W - 70) { lastM = m; if (x - lastX < 34) return; lastX = x; mon += text(x.toFixed(1), y0 - 10, new Date(day.date + "T00:00:00Z").toLocaleString("en-US", { month: "short", timeZone: "UTC" }), { size: 11, fill: C.mute }); }
   }));
   const gridW = wk.length * (cs + g);
   const dayL = ["Mon", "Wed", "Fri"].map((s, i) => text(28, y0 + (1 + i * 2) * (cs + g) + 9, s, { size: 11, fill: C.dim })).join("");
