@@ -78,9 +78,9 @@ async function monthPace(login, userId, lastDate, offset) {
   const Q = `query($o:String!,$n:String!,$s:GitTimestamp!,$id:ID!,$a:String){repository(owner:$o,name:$n){defaultBranchRef{target{... on Commit{history(first:100,since:$s,author:{id:$id},after:$a){nodes{additions deletions committedDate}pageInfo{hasNextPage endCursor}}}}}}}`;
   const one = async (r) => { let after = null; for (let i = 0; i < 20; i++) { let h; try { h = (await gql(Q, { o: r.owner.login, n: r.name, s: since, id: userId, a: after })).repository?.defaultBranchRef?.target?.history; } catch { return; } if (!h) return; nodes.push(...h.nodes); if (!h.pageInfo.hasNextPage) return; after = h.pageInfo.endCursor; } };
   await Promise.all(Array.from({ length: 8 }, async () => { for (let r; (r = queue.shift()); ) await one(r); }));
-  const byDay = Array.from({ length: elapsed }, (_, i) => ({ date: `${monthStart.slice(0, 8)}${String(i + 1).padStart(2, "0")}`, commits: 0, lines: 0 }));
+  const byDay = Array.from({ length: elapsed }, (_, i) => ({ date: `${monthStart.slice(0, 8)}${String(i + 1).padStart(2, "0")}`, commits: 0, lines: 0, add: 0, del: 0 }));
   let add = 0, del = 0; const sizes = [];
-  for (const x of nodes) { const day = new Date(Date.parse(x.committedDate) + offset * 36e5).getUTCDate(), b = byDay[day - 1]; if (!b) continue; b.commits++; b.lines += x.additions + x.deletions; add += x.additions; del += x.deletions; sizes.push(x.additions + x.deletions); }
+  for (const x of nodes) { const day = new Date(Date.parse(x.committedDate) + offset * 36e5).getUTCDate(), b = byDay[day - 1]; if (!b) continue; b.commits++; b.lines += x.additions + x.deletions; b.add += x.additions; b.del += x.deletions; add += x.additions; del += x.deletions; sizes.push(x.additions + x.deletions); }
   sizes.sort((p, q) => p - q);
   return { label: new Date(t0).toLocaleString("en-US", { month: "long", timeZone: "UTC" }), elapsed, total, byDay, add, del, commits: sizes.length, active: byDay.filter((x) => x.commits).length, median: sizes.length ? sizes[Math.floor(sizes.length / 2)] : 0 };
 }

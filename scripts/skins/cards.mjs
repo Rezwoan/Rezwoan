@@ -68,7 +68,7 @@ export function stats(d) {
 ${text(x + 18, y + 80, num(v), { size: 34, weight: 700, ls: -1, tnum: true })}${text(x + 18, y + 98, sub, { size: 12, fill: C.dim })}</g>`;
   }).join("");
   const h0 = 86 + 2 * (th + 12) + 4;
-  const M = d.month, y0 = h0 - 20, ty = y0 + 86, cy = ty + th + 12, h = M ? cy + 112 + 24 : h0;
+  const M = d.month, y0 = h0 - 20, ty = y0 + 86, cy = ty + th + 12, PH = 172, h = M ? cy + PH + 24 : h0;
   let pace = "";
   if (M) {
     const lines = M.add + M.del, perDay = M.commits / M.elapsed, fmt1 = (n) => (n >= 100 ? Math.round(n) : n.toFixed(1)).toString();
@@ -81,14 +81,21 @@ ${text(x + 18, y + 80, num(v), { size: 34, weight: 700, ls: -1, tnum: true })}${
       const x = 28 + i * (tw + 12), subEl = text(x + 18, ty + 98, sub, { size: 12, fill: C.dim });
       return `<g><rect x="${x}" y="${ty}" width="${tw}" height="${th}" rx="14" fill="#151a24" stroke="#232b38"/><rect x="${x + 16}" y="${ty + 16}" width="28" height="28" rx="9" fill="${col}" fill-opacity=".15"/>${icon(ic, x + 22, ty + 22, col)}${text(x + 54, ty + 35, k, { size: 13, fill: C.mute, weight: 500 })}${text(x + 18, ty + 80, v, { size: 34, weight: 700, ls: -1, tnum: true })}${subEl}</g>`;
     }).join("");
-    // code changes this month: lines added vs removed as one bar, with the net and the busiest day
-    const px = 44, pw = W - 88, by = cy + 46, addW = pw * (M.add / Math.max(M.add + M.del, 1)), net = M.add - M.del;
-    const top = M.byDay.reduce((m, b, i) => (b.commits > M.byDay[m].commits ? i : m), 0), mon = M.label.slice(0, 3);
-    const kv = (x, dot, v, rest) => `${dot ? `<circle cx="${x + 5}" cy="${cy + 90}" r="5" fill="${dot}"/>` : ""}<text x="${x + (dot ? 18 : 0)}" y="${cy + 94}" font-family="${SANS}" font-size="13" fill="${C.mute}"><tspan fill="${C.text}" font-weight="700" style="font-variant-numeric:tabular-nums">${esc(v)}</tspan> ${esc(rest)}</text>`;
+    // daily code changes this month: green bars up for lines added, red bars down for lines removed, one slot per day of the month.
+    // Heights are square-root scaled so one huge day does not flatten all the others.
+    const RED = "#ff453a", px = 44, pw = W - 88, base = cy + 94, half = 44, slot = pw / M.total, peak = Math.max(...M.byDay.map((b) => Math.max(b.add, b.del)), 1);
+    const SPL = 'calcMode="spline" keySplines="0 0 1 1;0.16 1 0.3 1;0 0 1 1;0.7 0 0.84 0;0 0 1 1"', mon = M.label.slice(0, 3), net = M.add - M.del;
+    const bars = M.byDay.map((b, i) => {
+      const x = (px + i * slot + 1.5).toFixed(1), w = (slot - 3).toFixed(1), st = 0.02 + i * 0.01, kt = `0;${st.toFixed(3)};${(st + 0.1).toFixed(3)};.92;.97;1`;
+      const up = b.add ? Math.max(2.5, Math.sqrt(b.add / peak) * half) : 0, dn = b.del ? Math.max(2.5, Math.sqrt(b.del / peak) * half) : 0;
+      const grow = (attr, from, to) => `<animate attributeName="${attr}" values="${from};${from};${to};${to};${from};${from}" keyTimes="${kt}" ${SPL} dur="12s" repeatCount="indefinite"/>`;
+      return `${up ? `<rect x="${x}" y="${(base - up - 1).toFixed(1)}" width="${w}" height="${up.toFixed(1)}" rx="2.5" fill="${C.green}">${grow("height", 0, up.toFixed(1))}${grow("y", base - 1, (base - up - 1).toFixed(1))}</rect>` : ""}${dn ? `<rect x="${x}" y="${base + 1}" width="${w}" height="${dn.toFixed(1)}" rx="2.5" fill="${RED}">${grow("height", 0, dn.toFixed(1))}</rect>` : ""}`;
+    }).join("");
+    const xl = (i, s, anchor = "middle") => text((px + i * slot + (anchor === "start" ? 1.5 : anchor === "end" ? slot - 1.5 : slot / 2)).toFixed(1), cy + 160, s, { size: 11, fill: C.dim, anchor });
     pace = `<line x1="28" y1="${h0 - 6}" x2="${W - 28}" y2="${h0 - 6}" stroke="#222a37"/>${label(28, y0 + 36, `this month · ${M.label}`)}${text(28, y0 + 64, "Pace this month", { size: 24, weight: 700, ls: -0.5 })}${text(W - 28, y0 + 62, `day ${M.elapsed} of ${M.total}`, { size: 12.5, fill: C.mute, anchor: "end" })}${mt}
-<rect x="28" y="${cy}" width="${W - 56}" height="112" rx="14" fill="#151a24" stroke="#232b38"/>${label(44, cy + 30, "Code changes this month")}${text(W - 44, cy + 30, `net ${net >= 0 ? "+" : "−"}${compact(Math.abs(net))} lines`, { size: 12.5, fill: net >= 0 ? C.green : C.pink, anchor: "end", weight: 600, tnum: true })}
-<clipPath id="pb"><rect x="${px}" y="${by}" width="${pw}" height="14" rx="7"><animate attributeName="width" values="0;${pw};${pw};0" keyTimes="0;.14;.9;1" dur="12s" repeatCount="indefinite"/></rect></clipPath><g clip-path="url(#pb)"><rect x="${px}" y="${by}" width="${pw}" height="14" fill="${C.pink}"/><rect x="${px}" y="${by}" width="${addW.toFixed(1)}" height="14" fill="${C.green}"/><rect x="${(px + addW - 1).toFixed(1)}" y="${by}" width="2" height="14" fill="#151a24"/></g>
-${kv(px, C.green, compact(M.add), "lines added")}${kv(px + 210, C.pink, compact(M.del), "lines removed")}${kv(px + 440, null, `${mon} ${top + 1}`, `busiest day, ${M.byDay[top].commits} commits`)}`;
+<rect x="28" y="${cy}" width="${W - 56}" height="${PH}" rx="14" fill="#151a24" stroke="#232b38"/>${label(44, cy + 30, "Daily code changes")}
+<circle cx="${W - 332}" cy="${cy + 26}" r="5" fill="${C.green}"/>${text(W - 320, cy + 30, `${compact(M.add)} added`, { size: 12.5, fill: C.text, weight: 600, tnum: true })}<circle cx="${W - 218}" cy="${cy + 26}" r="5" fill="${RED}"/>${text(W - 206, cy + 30, `${compact(M.del)} removed`, { size: 12.5, fill: C.text, weight: 600, tnum: true })}${text(W - 44, cy + 30, `net ${net >= 0 ? "+" : "−"}${compact(Math.abs(net))}`, { size: 12.5, fill: net >= 0 ? C.green : RED, anchor: "end", weight: 600, tnum: true })}
+<line x1="${px}" y1="${base}" x2="${px + pw}" y2="${base}" stroke="#2c3646"/>${bars}${xl(0, `${mon} 1`, "start")}${xl(M.total - 1, `${mon} ${M.total}`, "end")}${text(px + pw / 2, cy + 160, "bar height is square-root scaled, so one huge day does not hide the rest", { size: 11, fill: C.dim, anchor: "middle" })}`;
   }
   const pill = `<rect x="${W - 28 - 196}" y="46" width="196" height="24" rx="12" fill="#0e2a17" stroke="#1d5a30"/>${icon("lock", W - 28 - 184, 50, C.green)}${text(W - 28 - 160, 62, "includes private work", { size: 11.5, fill: "#7ee787" })}`;
   return card(W, h, `${label(28, 36, "by the numbers")}${text(28, 64, "Lifetime stats", { size: 24, weight: 700, ls: -0.5 })}${pill}${t}${pace}${sheen(W, h)}`);
