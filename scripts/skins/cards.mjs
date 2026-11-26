@@ -74,7 +74,7 @@ ${text(x + 18, y + 80, num(v), { size: 34, weight: 700, ls: -1, tnum: true })}${
     const lines = M.add + M.del, perDay = M.commits / M.elapsed, fmt1 = (n) => (n >= 100 ? Math.round(n) : n.toFixed(1)).toString();
     const mt = [
       ["commit", "Commits per day", fmt1(perDay), `${num(M.commits)} commits in ${M.elapsed} days`, C.blue],
-      ["code", "Lines per day", compact(Math.round(lines / M.elapsed)), `${compact(lines)} lines changed in ${M.elapsed} days`, C.purple],
+      ["code", "Lines per day", compact(Math.round(lines / M.elapsed)), `${compact(lines)} lines in ${M.elapsed} days`, C.purple],
       ["graph", "Active days", `${M.active}/${M.elapsed}`, `${Math.round((M.active / M.elapsed) * 100)}% of the month so far`, C.green],
       ["bolt", "Typical commit", num(M.median), "median lines per commit", C.yellow],
     ].map(([ic, k, v, sub, col], i) => {
